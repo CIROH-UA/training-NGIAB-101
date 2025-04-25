@@ -51,9 +51,7 @@ Managing NextGen's complex software ecosystem remains challenging. The NextGen f
 
 NGIAB is designed as a multi-layered containerized tool that encapsulates the NextGen framework and many components relevant to the NWM within a reproducible environment. 
 
-| ![Figure 1: Architecture of the NGIAB, highlighting its core modeling foundation, CI/CD pipelines, containerized tools and supporting technologies.](fig/fig1-1.png) |
-| :--: |
-| *Figure 1: Architecture of the NGIAB, highlighting its core modeling foundation, CI/CD pipelines, containerized tools and supporting technologies.* |
+![Figure 1: Architecture of the NGIAB, highlighting its core modeling foundation, CI/CD pipelines, containerized tools and supporting technologies.](fig/fig1-1.png){alt='A concentric circle diagram titled "NGIAB Containerization Architecture." It consists of four nested layers representing different components. At the center is "1. Core Framework" in gray, symbolizing the core hydrological modeling framework. Surrounding it is "2. CI/CD Pipeline" in green, representing tools that facilitate rapid development and reliability. The next layer is "3. NGIAB Containerization" in blue, indicating simplified access to modeling tools. The outermost layer is "4. Technologies & Methods" in dark blue, representing supportive tools and practices. Labels on the left of the diagram describe the increasing level of support from the core outward.'}
 
 Figure 1 illustrates the layered architecture of NGIAB. 
 
@@ -73,21 +71,16 @@ The architecture emphasizes four key aspects:
 
 Several extensions of NGIAB are already integrated with NextGen-related tools like [Data Preprocess](/site/docs/data-preparation.html), [Tools for Exploratory Evaluation in Hydrologic Research (TEEHR)](/site/docs/evaluation.html), and [Data Visualizer](/site/docs/visualization.html) (Figure 2). These extensions will be discussed in later episodes.
 
-| ![Figure 2: Workflow of data acquisition, model execution, evaluation, and results visualization.](fig/fig1-2.png) |
-| :--: |
-| *Figure 2: Workflow of data acquisition, model execution, evaluation, and results visualization.* |
+![Figure 2: Workflow of data acquisition, model execution, evaluation, and results visualization.](fig/fig1-2.png){alt='A flowchart diagram showing the NGIAB model execution process. The central box labeled "NGIAB Model Execution" is connected to three components. To the left is a yellow-green box labeled "Data Preprocess," with three subcomponents listed: "GPKG Sub-setting," "Realization," and "Forcing." To the right, two boxes are connected to the center: a purple box labeled "TEEHR Evaluation" and a green box labeled "Data Visualizer." Dashed arrows indicate the flow of data between preprocessing, model execution, and evaluation/visualization.'}
+
 
 ## Example Applications
 
 Steps common to all hydrologic modeling frameworks include data collection and preparation, framework setup and model execution, evaluation, results visualization, and calibration. Researchers can use NGIAB to execute model runs for their basins of interest. *Note that calibration is not yet an integrated capability within NGIAB.* Figures 3 and 4 show examples of how NGIAB and its extensions have been used to simulate streamflow for five years in the Provo River basin.
 
-| ![Figure 3: Map showing the drainage basin used as our demonstration case, the Provo River near Woodland, UT (Gage-10154200). This view shows the NGIAB interactive preprocessing tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots).](fig/fig1-4.png) |
-| :--: |
-| *Figure 3: Map showing the drainage basin used as our demonstration case, the Provo River near Woodland, UT (Gage-10154200). This view shows the NGIAB interactive preprocessing tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots).* |
+![Figure 3: Map showing the drainage basin used as our demonstration case, the Provo River near Woodland, UT (Gage-10154200). This view shows the NGIAB interactive preprocessing tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots).](fig/fig1-4.png){alt='A map view displaying the Provo River network and basin boundaries in the area around Woodland, UT. The map includes the stream network shown in blue, basin boundaries in orange shaded regions, the downstream-most basin in a pink shaded reagion, and black dots representing USGS gage locations.'}
 
-| ![Figure 4: Map showing the geospatial visualization using the Data Visualizer for a selected outlet point as well as displaying a time series plot between observed (labeled “USGS”; blue line) and simulated (labelled “ngen”; orange line) with the performance metrics (Kling-Gupta Efficiency (KGE), Nash-Sutcliffe Efficiency (NSE), and relative bias). These metrics assess how closely simulated results match observed data. The Visualizer can also show the performance of the NWM 3.0 compared to the observed time series.](fig/fig1-5.png) |
-| :--: |
-| *Figure 4: Map showing the geospatial visualization using the Data Visualizer for a selected outlet point as well as displaying a time series plot between observed (labeled “USGS”; blue line) and simulated (labelled “ngen”; orange line) with the performance metrics (Kling-Gupta Efficiency (KGE), Nash-Sutcliffe Efficiency (NSE), and relative bias). These metrics assess how closely simulated results match observed data. The Visualizer can also show the performance of the NWM 3.0 compared to the observed time series.* |
+![Figure 4: Map showing the geospatial visualization using the Data Visualizer for a selected outlet point as well as displaying a time series plot between observed (labeled “USGS”; blue line) and simulated (labeled “ngen”; orange line) with the performance metrics (Kling-Gupta Efficiency (KGE), Nash-Sutcliffe Efficiency (NSE), and relative bias). These metrics assess how closely simulated results match observed data. The Visualizer can also show the performance of the NWM 3.0 compared to the observed time series.](fig/fig1-5.png){alt='A screenshot of the NextGen in a Box Visualizer web interface. The left panel contains a "Time Series Menu" where the user can select a Nexus ID, variable (e.g., flow), and TEEHR data source. A map in the center displays a stream reach with a highlighted section representing the drainage basin and a blue point, indicating the selected nexus location. Below the map, a time series plot compares USGS (blue line) and Ngen (orange line) streamflow data from 2017 to 2023. On the lower left, a table labeled "Teehr Metrics" presents performance metrics (e.g., Kling-Gupta Efficiency, Nash-Sutcliffe Efficiency, and Relative Bias) for the selected model versus reference data.'}
 
 ## Why should I use NGIAB?
 
