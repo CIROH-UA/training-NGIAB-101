@@ -65,6 +65,21 @@ Note: Users who already have Docker installed will still need to install a separ
     ```
     This should generate a message that shows that your installation is working.
 
+::::::::::::::::::::::::::::::::::::: caution
+
+### CAUTION: WSL distributions
+
+NGIAB commands cannot be run through the `docker-desktop` distribution. If you installed Docker before WSL, you will likely need to install a new WSL distribution and set it as your default.
+
+For example, Ubuntu can be installed and set as the default distribution with the following commands:
+```bash
+wsl --install -d Ubuntu
+wsl --setdefault Ubuntu
+
+```
+
+:::::::::::::::::::::::::::::::::::::::::::::
+
 ::::::::::::::::::::::::
 
 :::::::::::::::: spoiler
@@ -213,6 +228,18 @@ git clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git
 cd NGIAB-CloudInfra
 
 ```
+
+::::::::::::::::::::::::::::::::::::: caution
+
+### CAUTION: For Windows users: pulling with LFs
+
+Before cloning the repository, please ensure that Git is configured to pull with LF line breaks instead of CRLFs. If CRLFs are used, then the carriage return characters will prevent the shell scripts from running properly.
+
+```bash
+git config --global core.autocrlf false
+```
+
+:::::::::::::::::::::::::::::::::::::::::::::
 
 ## ✅ Ready to Go!
 
