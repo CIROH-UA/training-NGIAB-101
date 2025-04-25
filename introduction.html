@@ -342,7 +342,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction</h1>
-        <p>Last updated on 2025-04-22 |
+        <p>Last updated on 2025-04-25 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -441,11 +441,10 @@ et al., 2005</a>) to streamline deployment.</li>
 <hr class="half-width"><p>NGIAB is designed as a multi-layered containerized tool that
 encapsulates the NextGen framework and many components relevant to the
 NWM within a reproducible environment.</p>
-<table class="table"><colgroup><col width="100%"></colgroup><thead><tr class="header"><th align="center"><img src="fig/fig1-1.png" alt="Figure 1: Architecture of the NGIAB, highlighting its core modeling foundation, CI/CD pipelines, containerized tools and supporting technologies." class="figure"></th>
-</tr></thead><tbody><tr class="odd"><td align="center"><em>Figure 1: Architecture of the NGIAB, highlighting
-its core modeling foundation, CI/CD pipelines, containerized tools and
-supporting technologies.</em></td>
-</tr></tbody></table><p>Figure 1 illustrates the layered architecture of NGIAB.</p>
+<figure><img src="fig/fig1-1.png" alt='A concentric circle diagram titled "NGIAB Containerization Architecture." It consists of four nested layers representing different components. At the center is "1. Core Framework" in gray, symbolizing the core hydrological modeling framework. Surrounding it is "2. CI/CD Pipeline" in green, representing tools that facilitate rapid development and reliability. The next layer is "3. NGIAB Containerization" in blue, indicating simplified access to modeling tools. The outermost layer is "4. Technologies &amp; Methods" in dark blue, representing supportive tools and practices. Labels on the left of the diagram describe the increasing level of support from the core outward.' class="figure mx-auto d-block"><div class="figcaption">Figure 1: Architecture of the NGIAB,
+highlighting its core modeling foundation, CI/CD pipelines,
+containerized tools and supporting technologies.</div>
+</figure><p>Figure 1 illustrates the layered architecture of NGIAB.</p>
 <ul><li>
 <strong>Layer 1:</strong> At its core (Layer 1) lies a suite of
 integrated hydrological modeling components and hydrofabric (a geopatial
@@ -478,10 +477,9 @@ and contribution.</li>
 NextGen-related tools like <a href="/site/docs/data-preparation.html">Data Preprocess</a>, <a href="/site/docs/evaluation.html">Tools for Exploratory Evaluation in
 Hydrologic Research (TEEHR)</a>, and <a href="/site/docs/visualization.html">Data Visualizer</a> (Figure 2).
 These extensions will be discussed in later episodes.</p>
-<table class="table"><colgroup><col width="100%"></colgroup><thead><tr class="header"><th align="center"><img src="fig/fig1-2.png" alt="Figure 2: Workflow of data acquisition, model execution, evaluation, and results visualization." class="figure"></th>
-</tr></thead><tbody><tr class="odd"><td align="center"><em>Figure 2: Workflow of data acquisition, model
-execution, evaluation, and results visualization.</em></td>
-</tr></tbody></table></section><section><h2 class="section-heading" id="example-applications">Example Applications<a class="anchor" aria-label="anchor" href="#example-applications"></a></h2>
+<figure><img src="fig/fig1-2.png" alt='A flowchart diagram showing the NGIAB model execution process. The central box labeled "NGIAB Model Execution" is connected to three components. To the left is a yellow-green box labeled "Data Preprocess," with three subcomponents listed: "GPKG Sub-setting," "Realization," and "Forcing." To the right, two boxes are connected to the center: a purple box labeled "TEEHR Evaluation" and a green box labeled "Data Visualizer." Dashed arrows indicate the flow of data between preprocessing, model execution, and evaluation/visualization.' class="figure mx-auto d-block"><div class="figcaption">Figure 2: Workflow of data acquisition, model
+execution, evaluation, and results visualization.</div>
+</figure></section><section><h2 class="section-heading" id="example-applications">Example Applications<a class="anchor" aria-label="anchor" href="#example-applications"></a></h2>
 <hr class="half-width"><p>Steps common to all hydrologic modeling frameworks include data
 collection and preparation, framework setup and model execution,
 evaluation, results visualization, and calibration. Researchers can use
@@ -489,25 +487,22 @@ NGIAB to execute model runs for their basins of interest. <em>Note that
 calibration is not yet an integrated capability within NGIAB.</em>
 Figures 3 and 4 show examples of how NGIAB and its extensions have been
 used to simulate streamflow for five years in the Provo River basin.</p>
-<table class="table"><colgroup><col width="100%"></colgroup><thead><tr class="header"><th align="center"><img src="fig/fig1-4.png" alt="Figure 3: Map showing the drainage basin used as our demonstration case, the Provo River near Woodland, UT (Gage-10154200). This view shows the NGIAB interactive preprocessing tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots)." class="figure"></th>
-</tr></thead><tbody><tr class="odd"><td align="center"><em>Figure 3: Map showing the drainage basin used as
+<figure><img src="fig/fig1-4.png" alt="A map view displaying the Provo River network and basin boundaries in the area around Woodland, UT. The map includes the stream network shown in blue, basin boundaries in orange shaded regions, the downstream-most basin in a pink shaded reagion, and black dots representing USGS gage locations." class="figure mx-auto d-block"><div class="figcaption">Figure 3: Map showing the drainage basin used as
 our demonstration case, the Provo River near Woodland, UT
 (Gage-10154200). This view shows the NGIAB interactive preprocessing
 tool. The highlighted region (light orange area; downstream-most basin
 in pink) represents the specific study basin, illustrating the river
 network (blue lines), sub-basins (orange), and surrounding USGS gaging
-stations (black dots).</em></td>
-</tr></tbody></table><table class="table"><colgroup><col width="100%"></colgroup><thead><tr class="header"><th align="center"><img src="fig/fig1-5.png" alt="Figure 4: Map showing the geospatial visualization using the Data Visualizer for a selected outlet point as well as displaying a time series plot between observed (labeled “USGS”; blue line) and simulated (labelled “ngen”; orange line) with the performance metrics (Kling-Gupta Efficiency (KGE), Nash-Sutcliffe Efficiency (NSE), and relative bias). These metrics assess how closely simulated results match observed data. The Visualizer can also show the performance of the NWM 3.0 compared to the observed time series." class="figure"></th>
-</tr></thead><tbody><tr class="odd"><td align="center"><em>Figure 4: Map showing the geospatial
+stations (black dots).</div>
+</figure><figure><img src="fig/fig1-5.png" alt='A screenshot of the NextGen in a Box Visualizer web interface. The left panel contains a "Time Series Menu" where the user can select a Nexus ID, variable (e.g., flow), and TEEHR data source. A map in the center displays a stream reach with a highlighted section representing the drainage basin and a blue point, indicating the selected nexus location. Below the map, a time series plot compares USGS (blue line) and Ngen (orange line) streamflow data from 2017 to 2023. On the lower left, a table labeled "Teehr Metrics" presents performance metrics (e.g., Kling-Gupta Efficiency, Nash-Sutcliffe Efficiency, and Relative Bias) for the selected model versus reference data.' class="figure mx-auto d-block"><div class="figcaption">Figure 4: Map showing the geospatial
 visualization using the Data Visualizer for a selected outlet point as
 well as displaying a time series plot between observed (labeled “USGS”;
-blue line) and simulated (labelled “ngen”; orange line) with the
+blue line) and simulated (labeled “ngen”; orange line) with the
 performance metrics (Kling-Gupta Efficiency (KGE), Nash-Sutcliffe
 Efficiency (NSE), and relative bias). These metrics assess how closely
 simulated results match observed data. The Visualizer can also show the
-performance of the NWM 3.0 compared to the observed time
-series.</em></td>
-</tr></tbody></table></section><section><h2 class="section-heading" id="why-should-i-use-ngiab">Why should I use NGIAB?<a class="anchor" aria-label="anchor" href="#why-should-i-use-ngiab"></a></h2>
+performance of the NWM 3.0 compared to the observed time series.</div>
+</figure></section><section><h2 class="section-heading" id="why-should-i-use-ngiab">Why should I use NGIAB?<a class="anchor" aria-label="anchor" href="#why-should-i-use-ngiab"></a></h2>
 <hr class="half-width"><p>NGIAB makes <strong>community contribution</strong> possible in
 research settings by simplifying setup and providing demos, allowing
 hydrologists and researchers to configure and modify localized water
@@ -607,14 +602,14 @@ any links that you are not going to use.
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
-  "keywords": "NextGen Framework, National WAter Model (NWM), Hydrologic Modeling, Community Modeling",
+  "keywords": "NextGen Framework, National Water Model (NWM), Hydrologic Modeling, Community Modeling",
   "name": "Introduction",
   "creativeWorkStatus": "active",
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/introduction.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/introduction.html",
-  "dateCreated": "2025-04-22",
-  "dateModified": "2025-04-22",
-  "datePublished": "2025-04-22"
+  "dateCreated": "2025-04-25",
+  "dateModified": "2025-04-25",
+  "datePublished": "2025-04-25"
 }
 
   </script><script>

@@ -337,7 +337,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Preparation</h1>
-        <p>Last updated on 2025-04-22 |
+        <p>Last updated on 2025-04-25 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/data-preparation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -387,19 +387,83 @@ flexibility in specific applications <a href="https://github.com/CIROH-UA/NGIAB_
 <div class="section level3">
 <h3 id="installing-and-using-the-data-preprocess-tool">Installing and Using the Data Preprocess Tool<a class="anchor" aria-label="anchor" href="#installing-and-using-the-data-preprocess-tool"></a></h3>
 <p>The Data Preprocess tool (like all of our software) is constantly
-being updated and refined. To install and use the Data Preprocess tool,
-follow the latest instructions on the <a href="https://github.com/CIROH-UA/NGIAB_data_preprocess" class="external-link">Data Preprocess
-GitHub page</a>.</p>
-<table class="table"><colgroup><col width="100%"></colgroup><thead><tr class="header"><th align="center"><img src="fig/fig3-1.png" alt="Figure 1: Map showing an example drainage basin. View from the USGS National Map." class="figure"></th>
-</tr></thead><tbody><tr class="odd"><td align="center"><em>Figure 1: Map showing an example drainage basin.
-View from the USGS National Map.</em></td>
-</tr></tbody></table><table class="table"><colgroup><col width="100%"></colgroup><thead><tr class="header"><th align="center"><img src="fig/fig1-4.png" alt="Figure 2: Map showing an example drainage basin. View from the Data Preprocess tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots)." class="figure"></th>
-</tr></thead><tbody><tr class="odd"><td align="center"><em>Figure 2: Map showing an example drainage basin.
+being updated and refined. As of the time of writing (see last updated
+date above), there are two ways to run the tool. Instructions for
+installation, environment management, and the GUI/CLI are found on the
+<a href="https://github.com/CIROH-UA/NGIAB_data_preprocess" class="external-link">Data
+Preprocess GitHub page</a>. We will cover some examples of the CLI
+usage, but full documentation is on the GitHub page.</p>
+<div class="section level4">
+<h4 id="example-1">Example 1<a class="anchor" aria-label="anchor" href="#example-1"></a></h4>
+<p>This command produces forcings and a NextGen realization file for the
+catchments upstream of gage-10155000 for the time period 2022-08-13 to
+2022-08-23 after installing the Data Preprocess tool. The forcing data
+source defaults to the NetCDF files in the <a href="https://aws.amazon.com/marketplace/pp/prodview-g6lcchc7brshw" class="external-link">NWM
+3.0 retrospective</a>. Using this command requires you to have Astral UV
+(a package installer and environment manager) installed. Instructions
+for installing Astral UV are found in the <a href="https://docs.astral.sh/uv/#highlights" class="external-link">Astral UV
+documentation</a>.</p>
+<p>To install the Data Preprocess tool, follow the latest instructions
+on the <a href="https://github.com/CIROH-UA/NGIAB_data_preprocess" class="external-link">Data
+Preprocess GitHub page</a>.</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">uv</span> run cli <span class="at">-i</span> gage-10155000 <span class="at">-sfr</span> <span class="at">--start</span> 2022-08-13 <span class="at">--end</span> 2022-08-23</span></code></pre>
+</div>
+<p><code>uv run cli</code> indicates that the Data Preprocess CLI within
+your activated Astral UV environment will run. The <code>-i</code> flag
+indicates the <strong>I</strong>D of the feature that is used to subset
+the hydrofabric. The <code>-sfr</code> flags indicate that the Data
+Preprocess tool will <strong>s</strong>ubset the hydrofabric to the
+desired catchments, produce <strong>f</strong>orcings over the desired
+area and time period, and produce a NextGen <strong>r</strong>ealization
+file. The <code>--start</code> and <code>--end</code> flags indicate the
+start and end dates of the desired time period.</p>
+</div>
+<div class="section level4">
+<h4 id="example-2">Example 2<a class="anchor" aria-label="anchor" href="#example-2"></a></h4>
+<p>This command allows you to run the Data Preprocess CLI tool without
+installing it. It produces forcings and a NextGen realization file for
+the catchments upstream of gage-10154200 for the time period 2017-09-01
+to 2018-09-01. Forcing data is sourced from the zarr files in the <a href="https://registry.opendata.aws/noaa-nws-aorc/" class="external-link">Analysis of Record
+for Calibration (AORC) dataset</a>, which allows for a <strong>faster
+processing time</strong>.</p>
+<p>Astral UV is required to run the Data Preprocess tool without
+installing it.</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess cli <span class="at">-i</span> gage-10154200 <span class="at">-sfr</span> <span class="at">--start</span> 2017-09-01 <span class="at">--end</span> 2018-09-01 <span class="at">--source</span> aorc</span></code></pre>
+</div>
+<p><code>uvx --from ngiab_data_preprocess cli</code> indicates that the
+Data Preprocess tool will run without the user installing it. The
+<code>--source</code> flag determines where the Data Preprocess tool
+will pull forcing data from.</p>
+</div>
+<div class="section level4">
+<h4 id="example-3">Example 3<a class="anchor" aria-label="anchor" href="#example-3"></a></h4>
+<p>This command allows you to run the Data Preprocess CLI tool from a
+regular <code>pip install ngiab_data_preprocess</code>. <strong>However,
+using Astral UV is highly recommended for its speed.</strong> This
+command produces forcings for the catchments upstream of cat-7080 for
+the time period 2022-01-01 to 2022-02-28.</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ngiab_data_cli <span class="at">-i</span> cat-7080 <span class="at">-f</span> <span class="at">--start</span> 2022-01-01 <span class="at">--end</span> 2022-02-28</span></code></pre>
+</div>
+<p><code>python -m ngiab_data_cli</code> indicates that the Data
+Preprocess CLI tool will execute.</p>
+<figure><img src="fig/fig3-1.png" alt="A screenshot of the USGS National Map centered on the Provo River network in Utah, showing streamflow and watershed data. A blue map marker identifies a Monitoring Location. A red dot marks an Active Monitoring Location farther downstream. The Upstream Basin is shaded in grey, while Upstream Flowlines and Downstream Flowlines are highlighted in dark and light blue, respectively. A scale bar in the bottom right shows distances of 5 kilometers and 3 miles. A map legend in the lower right corner explains the color codes for flowlines and monitoring locations." class="figure mx-auto d-block"><div class="figcaption">Figure 1: Map showing an example drainage basin.
+View from the USGS National Map.</div>
+</figure><figure><img src="fig/fig1-4.png" alt="A map view displaying the Provo River network and basin boundaries in the area around Woodland, UT. The map includes the stream network shown in blue, basin boundaries in orange shaded regions, the downstream-most basin in a pink shaded reagion, and black dots representing USGS gage locations." class="figure mx-auto d-block"><div class="figcaption">Figure 2: Map showing an example drainage basin.
 View from the Data Preprocess tool. The highlighted region (light orange
 area; downstream-most basin in pink) represents the specific study
 basin, illustrating the river network (blue lines), sub-basins (orange),
-and surrounding USGS gaging stations (black dots).</em></td>
-</tr></tbody></table></div>
+and surrounding USGS gaging stations (black dots).</div>
+</figure></div>
+</div>
 </section><section><h2 class="section-heading" id="nextgen-run-directory-structure-ngen-run">NextGen Run Directory Structure (<code>ngen-run/</code>)<a class="anchor" aria-label="anchor" href="#nextgen-run-directory-structure-ngen-run"></a></h2>
 <hr class="half-width"><p>Running NextGen requires building a standard run directory complete
 with only the necessary files. This is done automatically with the Data
@@ -554,14 +618,14 @@ any links that you are not going to use.
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
-  "keywords": "NextGen Framework, National WAter Model (NWM), Hydrologic Modeling, Community Modeling",
+  "keywords": "NextGen Framework, National Water Model (NWM), Hydrologic Modeling, Community Modeling",
   "name": "Data Preparation",
   "creativeWorkStatus": "active",
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/data-preparation.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/data-preparation.html",
-  "dateCreated": "2025-04-22",
-  "dateModified": "2025-04-22",
-  "datePublished": "2025-04-22"
+  "dateCreated": "2025-04-25",
+  "dateModified": "2025-04-25",
+  "datePublished": "2025-04-25"
 }
 
   </script><script>

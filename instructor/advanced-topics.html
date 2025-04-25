@@ -335,7 +335,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Advanced Topics</h1>
-        <p>Last updated on 2025-04-22 |
+        <p>Last updated on 2025-04-25 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/advanced-topics.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -382,33 +382,10 @@ system?</li>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  Building NGIAB locally
-  </h3>
-</button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
-<div class="accordion-body">
-<p>If you would like to build the NGIAB image locally instead of pulling
-the latest image from the Docker remote registry, use the following
-commands:</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">cd</span> docker</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-f</span> Dockerfile <span class="at">-t</span> awiciroh/ciroh-ngen-image:latest . <span class="at">--no-cache</span></span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Using NGIAB on High-Performance Computing (HPC) Environments: General Info
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>The most up-to-date information on installing NGIAB on an HPC can be
 found on <a href="https://github.com/CIROH-UA/NGIAB-HPCInfra" class="external-link">CIROH’S
@@ -440,15 +417,15 @@ directly.</li>
 </div>
 </div>
 </div>
-<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
-  <h3 class="accordion-header" id="headingSpoiler3">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Run NGIAB on Pantarhei HPC (Singularity Version)
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>This section explains how to run <strong>NextGen In A Box
 (NGIAB)</strong> using <strong>Singularity</strong> on the
@@ -458,10 +435,10 @@ DocuHub page</a>.</p>
 <hr><div class="section level3">
 <h3 id="log-into-pantarhei">1. Log Into Pantarhei<a class="anchor" aria-label="anchor" href="#log-into-pantarhei"></a></h3>
 <p>Open a terminal and connect to the login node:</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>@pantarhei.ua.edu</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>@pantarhei.ua.edu</span></code></pre>
 </div>
 <p>Replace <code>&lt;USERNAME&gt;</code> with your actual Pantarhei
 username.</p>
@@ -469,30 +446,30 @@ username.</p>
 <div class="section level3">
 <h3 id="request-a-compute-node-do-not-run-on-login-node">2. Request a Compute Node (Do NOT run on login node)<a class="anchor" aria-label="anchor" href="#request-a-compute-node-do-not-run-on-login-node"></a></h3>
 <p>On the login node, request an interactive session:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--partition</span><span class="op">=</span>normal <span class="at">--nodes</span><span class="op">=</span>1 <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--time</span><span class="op">=</span>02:00:00 <span class="at">--pty</span> bash</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--partition</span><span class="op">=</span>normal <span class="at">--nodes</span><span class="op">=</span>1 <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--time</span><span class="op">=</span>02:00:00 <span class="at">--pty</span> bash</span></code></pre>
 </div>
 <p>Use the <code>normal</code> partition unless you require more time or
 special resources.</p>
 <hr></div>
 <div class="section level3">
 <h3 id="verify-that-singularity-is-available">3. Verify that Singularity is available:<a class="anchor" aria-label="anchor" href="#verify-that-singularity-is-available"></a></h3>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">singularity</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">singularity</span> <span class="at">--version</span></span></code></pre>
 </div>
 <hr></div>
 <div class="section level3">
 <h3 id="prepare-project-directory">4. Prepare Project Directory<a class="anchor" aria-label="anchor" href="#prepare-project-directory"></a></h3>
 <p>Create the directory and move into it:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/NextGen/ngen-data</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="bu">cd</span> ~/NextGen/ngen-data</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/NextGen/ngen-data</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="bu">cd</span> ~/NextGen/ngen-data</span></code></pre>
 </div>
 <hr></div>
 <div class="section level3">
@@ -500,11 +477,11 @@ special resources.</p>
 <p>Pick one of the sample datasets to download and extract:</p>
 <div class="section level6">
 <h6 id="option-1-awi-009-provo-river-ut">Option 1: AWI-009 (Provo River, UT)<a class="anchor" aria-label="anchor" href="#option-1-awi-009-provo-river-ut"></a></h6>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
 </div>
 <p>Other options: AWI-007 or AWI-008 can be used similarly, see the <a href="../site/docs/installation.html#step-2-download-sample-data">Installation
 and Setup episode</a>.</p>
@@ -512,12 +489,12 @@ and Setup episode</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="clone-the-ngiab-hpcinfra-repository">6. Clone the NGIAB-HPCInfra Repository<a class="anchor" aria-label="anchor" href="#clone-the-ngiab-hpcinfra-repository"></a></h3>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="bu">cd</span> ~/NextGen</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-HPCInfra.git</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="bu">cd</span> NGIAB-HPCInfra</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="bu">cd</span> ~/NextGen</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-HPCInfra.git</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="bu">cd</span> NGIAB-HPCInfra</span></code></pre>
 </div>
 <blockquote>
 <p>✅ <strong>Note:</strong> Always run <code>guide.sh</code> from
@@ -528,26 +505,26 @@ inside the <code>NGIAB-HPCInfra</code> folder.</p>
 <h3 id="run-guide-sh">7. Run <code>guide.sh</code>
 <a class="anchor" aria-label="anchor" href="#run-guide-sh"></a></h3>
 <p>Make the script executable if needed:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">chmod</span> +x guide.sh</span></code></pre>
+</div>
+<p>Then run it:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">chmod</span> +x guide.sh</span></code></pre>
-</div>
-<p>Then run it:</p>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
 </div>
 <p>Follow the prompts:</p>
 <ul><li><p>When asked <strong>“Do you want to use the same path?”</strong>,
 type <code>n</code></p></li>
 <li><p>Then enter the <strong>full absolute path</strong> to your
 extracted dataset folder. Example:</p></li>
-</ul><div class="codewrapper sourceCode" id="cb10">
+</ul><div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">/home/</span><span class="op">&lt;</span>username<span class="op">&gt;</span>/NextGen/ngen-data/AWI_16_10154200_009</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">/home/</span><span class="op">&lt;</span>username<span class="op">&gt;</span>/NextGen/ngen-data/AWI_16_10154200_009</span></code></pre>
 </div>
 <p>This folder must contain:</p>
 <pre><code>forcings/
@@ -579,25 +556,25 @@ manually before running.</p></li>
 </div>
 </div>
 </div>
-<div id="accordionSpoiler4" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler4" aria-expanded="false" aria-controls="collapseSpoiler4">
-  <h3 class="accordion-header" id="headingSpoiler4">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
+  <h3 class="accordion-header" id="headingSpoiler3">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Using NGIAB through an SSH connection
   </h3>
 </button>
-<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <p>NGIAB’s core functions work through an SSH connection without port
 forwarding. However, to use the Data Visualizer, you will have to set up
 port forwarding to view visualization results on your local machine’s
 browser.</p>
 <p>To do so, run the following command on your local machine:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 80:localhost:80 username@remote_host</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 80:localhost:80 username@remote_host</span></code></pre>
 </div>
 <p>Replace <code>username@remote_host</code> with your credentials.</p>
 <p>Now, you should be able to run NGIAB as usual through your SSH
@@ -606,15 +583,15 @@ tunnel, and access Data Visualizer results in your local browser.</p>
 </div>
 </div>
 </div>
-<div id="accordionSpoiler5" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler4" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler5" aria-expanded="false" aria-controls="collapseSpoiler5">
-  <h3 class="accordion-header" id="headingSpoiler5">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler4" aria-expanded="false" aria-controls="collapseSpoiler4">
+  <h3 class="accordion-header" id="headingSpoiler4">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Community Contributions to NGIAB/NextGen
   </h3>
 </button>
-<div id="collapseSpoiler5" class="accordion-collapse collapse" aria-labelledby="headingSpoiler5" data-bs-parent="#accordionSpoiler5">
+<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
 <div class="accordion-body">
 <p>The most up-to-date guidelines on community contributions for each
 repository can be found on its respective GitHub page.</p>
@@ -719,14 +696,14 @@ any links that you are not going to use.
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
-  "keywords": "NextGen Framework, National WAter Model (NWM), Hydrologic Modeling, Community Modeling",
+  "keywords": "NextGen Framework, National Water Model (NWM), Hydrologic Modeling, Community Modeling",
   "name": "Advanced Topics",
   "creativeWorkStatus": "active",
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/instructor/advanced-topics.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/instructor/advanced-topics.html",
-  "dateCreated": "2025-04-22",
-  "dateModified": "2025-04-22",
-  "datePublished": "2025-04-22"
+  "dateCreated": "2025-04-25",
+  "dateModified": "2025-04-25",
+  "datePublished": "2025-04-25"
 }
 
   </script><script>
