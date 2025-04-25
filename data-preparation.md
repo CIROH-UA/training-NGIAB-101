@@ -25,15 +25,46 @@ exercises: 45
 
 ### Installing and Using the Data Preprocess Tool
 
-The Data Preprocess tool (like all of our software) is constantly being updated and refined. To install and use the Data Preprocess tool, follow the latest instructions on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess). 
+The Data Preprocess tool (like all of our software) is constantly being updated and refined. As of the time of writing (see last updated date above), there are two ways to run the tool. Instructions for installation, environment management, and the GUI/CLI are found on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess). We will cover some examples of the CLI usage, but full documentation is on the GitHub page.
 
-| ![Figure 1: Map showing an example drainage basin. View from the USGS National Map.](fig/fig3-1.png) |
-| :--: |
-| *Figure 1: Map showing an example drainage basin. View from the USGS National Map.* |
+#### Example 1
 
-| ![Figure 2: Map showing an example drainage basin. View from the Data Preprocess tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots).](fig/fig1-4.png) |
-| :--: |
-| *Figure 2: Map showing an example drainage basin. View from the Data Preprocess tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots).* |
+This command produces forcings and a NextGen realization file for the catchments upstream of gage-10155000 for the time period 2022-08-13 to 2022-08-23 after installing the Data Preprocess tool. The forcing data source defaults to the NetCDF files in the [NWM 3.0 retrospective](https://aws.amazon.com/marketplace/pp/prodview-g6lcchc7brshw). Using this command requires you to have Astral UV (a package installer and environment manager) installed. Instructions for installing Astral UV are found in the [Astral UV documentation](https://docs.astral.sh/uv/#highlights).
+
+To install the Data Preprocess tool, follow the latest instructions on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess). 
+
+```bash
+uv run cli -i gage-10155000 -sfr --start 2022-08-13 --end 2022-08-23
+```
+
+`uv run cli` indicates that the Data Preprocess CLI within your activated Astral UV environment will run. The `-i` flag indicates the **I**D of the feature that is used to subset the hydrofabric. The `-sfr` flags indicate that the Data Preprocess tool will **s**ubset the hydrofabric to the desired catchments, produce **f**orcings over the desired area and time period, and produce a NextGen **r**ealization file. The `--start` and `--end` flags indicate the start and end dates of the desired time period.
+
+#### Example 2
+
+This command allows you to run the Data Preprocess CLI tool without installing it. It produces forcings and a NextGen realization file for the catchments upstream of gage-10154200 for the time period 2017-09-01 to 2018-09-01. Forcing data is sourced from the zarr files in the [Analysis of Record for Calibration (AORC) dataset](https://registry.opendata.aws/noaa-nws-aorc/), which allows for a **faster processing time**. 
+
+Astral UV is required to run the Data Preprocess tool without installing it.
+
+```bash
+uvx --from ngiab_data_preprocess cli -i gage-10154200 -sfr --start 2017-09-01 --end 2018-09-01 --source aorc
+```
+
+`uvx --from ngiab_data_preprocess cli` indicates that the Data Preprocess tool will run without the user installing it. The `--source` flag determines where the Data Preprocess tool will pull forcing data from.
+
+#### Example 3
+
+This command allows you to run the Data Preprocess CLI tool from a regular `pip install ngiab_data_preprocess`. **However, using Astral UV is highly recommended for its speed.** This command produces forcings for the catchments upstream of cat-7080 for the time period 2022-01-01 to 2022-02-28.
+
+```bash
+python -m ngiab_data_cli -i cat-7080 -f --start 2022-01-01 --end 2022-02-28
+```
+
+`python -m ngiab_data_cli` indicates that the Data Preprocess CLI tool will execute. 
+
+![Figure 1: Map showing an example drainage basin. View from the USGS National Map.](fig/fig3-1.png){alt='A screenshot of the USGS National Map centered on the Provo River network in Utah, showing streamflow and watershed data. A blue map marker identifies a Monitoring Location. A red dot marks an Active Monitoring Location farther downstream. The Upstream Basin is shaded in grey, while Upstream Flowlines and Downstream Flowlines are highlighted in dark and light blue, respectively. A scale bar in the bottom right shows distances of 5 kilometers and 3 miles. A map legend in the lower right corner explains the color codes for flowlines and monitoring locations.'}
+
+
+![Figure 2: Map showing an example drainage basin. View from the Data Preprocess tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots).](fig/fig1-4.png){alt='A map view displaying the Provo River network and basin boundaries in the area around Woodland, UT. The map includes the stream network shown in blue, basin boundaries in orange shaded regions, the downstream-most basin in a pink shaded reagion, and black dots representing USGS gage locations.'}
 
 ## NextGen Run Directory Structure (`ngen-run/`)
 

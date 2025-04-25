@@ -23,16 +23,6 @@ exercises: 60
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::: spoiler
-## Building NGIAB locally
-
-If you would like to build the NGIAB image locally instead of pulling the latest image from the Docker remote registry, use the following commands:
-``` bash
-cd docker
-docker build -f Dockerfile -t awiciroh/ciroh-ngen-image:latest . --no-cache
-```
-:::::::::::::::::::::::::
-
-:::::::::::::::: spoiler
 ## Using NGIAB on High-Performance Computing (HPC) Environments: General Info
 
 The most up-to-date information on installing NGIAB on an HPC can be found on [CIROH'S NGIAB HPC GitHub page](https://github.com/CIROH-UA/NGIAB-HPCInfra). Other than a different installation process and the use of Singularity instead of Docker, the workflow is the same to execute a NextGen run in NGIAB. Tools like the Data Preprocessor, TEEHR, and the Data Visualizer are still available. The NGIAB-HPCInfra contains its own interactive `guide.sh` script, which allows users to specify input data pathways and run configurations (serial or parallel), as well as trigger the execution of TEEHR and the Data Visualizer.
