@@ -25,6 +25,15 @@ This episode can be a standalone tutorial for those who want a quick introductio
 
 This lesson guides you through installing and setting up NGIAB, a containerized solution designed to simplify running the NextGen modeling framework locally. NGIAB leverages Docker containers to ensure consistent and reproducible runs.
 
+::::::::::::::::::::::::::::::::::::: callout
+
+## Are you using an HPC?
+
+Instead of following these instructions, follow the guidance in the HPC sections in [Advanced Topics](/site/docs/advanced-topics.html).
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 ## System Requirements
 
 Before installing NGIAB, ensure you have:
