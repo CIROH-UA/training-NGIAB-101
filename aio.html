@@ -122,8 +122,8 @@
             More <i data-feather="chevron-down"></i>
           </button>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-<li><a class="dropdown-item" href="reference.html">Reference</a></li>
 <li><a class="dropdown-item" href="troubleshooting.html">DevCon 2025 Troubleshooting</a></li>
+<li><a class="dropdown-item" href="devcon25js.html">DevCon 2025 Jetstream Instructions</a></li>
           </ul>
 </li>
       </ul>
@@ -349,8 +349,8 @@
                       <li>
                         <a href="profiles.html">Learner Profiles</a>
                       </li>
-                      <li><a href="reference.html">Reference</a></li>
-<li><a href="troubleshooting.html">DevCon 2025 Troubleshooting</a></li>
+                      <li><a href="troubleshooting.html">DevCon 2025 Troubleshooting</a></li>
+<li><a href="devcon25js.html">DevCon 2025 Jetstream Instructions</a></li>
                     </ul>
 </div>
                 </div>
@@ -616,7 +616,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-installation"><p>Content from <a href="installation.html">Installation and Setup</a></p>
 <hr>
-<p>Last updated on 2025-04-25 |
+<p>Last updated on 2025-04-29 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/installation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -662,6 +662,19 @@ other episodes in this module.</p>
 containerized solution designed to simplify running the NextGen modeling
 framework locally. NGIAB leverages Docker containers to ensure
 consistent and reproducible runs.</p>
+<div id="are-you-using-an-hpc" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="are-you-using-an-hpc" class="callout-inner">
+<h3 class="callout-title">Are you using an HPC?</h3>
+<div class="callout-content">
+<p>Instead of following these instructions, follow the guidance in the
+HPC sections in <a href="/site/docs/advanced-topics.html">Advanced
+Topics</a>.</p>
+</div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="system-requirements">System Requirements<a class="anchor" aria-label="anchor" href="#system-requirements"></a>
 </h2>
 <hr class="half-width">
@@ -1707,7 +1720,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-advanced-topics"><p>Content from <a href="advanced-topics.html">Advanced Topics</a></p>
 <hr>
-<p>Last updated on 2025-04-25 |
+<p>Last updated on 2025-04-29 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/advanced-topics.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1721,7 +1734,6 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>How can I build NGIAB locally?</li>
 <li>How do I use NGIAB on an high-performance computing (HPC)
 system?</li>
 <li>How do I use the Data Visualizer through an SSH connection?</li>
@@ -1735,7 +1747,6 @@ system?</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Build a development version of NGIAB locally</li>
 <li>Install and use NGIAB on an HPC</li>
 <li>Use port forwarding to view NGIAB results</li>
 <li>Explain the NGIAB community contribution process</li>
@@ -2022,7 +2033,6 @@ incorporated</li>
 <p>Based on your own interests and use cases, try out some of these
 options:</p>
 <ul>
-<li>Build a development version of NGIAB locally</li>
 <li>Install and use NGIAB on your HPC environment</li>
 <li>Use NGIAB through an SSH connection</li>
 <li>Contribute to NGIAB/NextGen!</li>
@@ -2035,8 +2045,6 @@ options:</p>
 <h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul>
-<li>NGIAB can be built locally using Docker, allowing for development
-without pulling from the remote registry.</li>
 <li>NGIAB supports HPC environments through Singularity, not Docker, but
 the workflow mirrors the local Docker use.</li>
 <li>Port forwarding is required to use the Data Visualizer through an
