@@ -69,7 +69,7 @@ The architecture emphasizes four key aspects:
 
 ## Extensions of NGIAB
 
-Several extensions of NGIAB are already integrated with NextGen-related tools like [Data Preprocess](/site/docs/data-preparation.html), [Tools for Exploratory Evaluation in Hydrologic Research (TEEHR)](/site/docs/evaluation.html), and [Data Visualizer](/site/docs/visualization.html) (Figure 2). These extensions will be discussed in later episodes.
+Several extensions of NGIAB are already integrated with NextGen-related tools like [Data Preprocess](/data-preparation.html), [Tools for Exploratory Evaluation in Hydrologic Research (TEEHR)](/evaluation.html), and [Data Visualizer](/visualization.html) (Figure 2). These extensions will be discussed in later episodes.
 
 ![Figure 2: Workflow of data acquisition, model execution, evaluation, and results visualization.](fig/fig1-2.png){alt='A flowchart diagram showing the NGIAB model execution process. The central box labeled "NGIAB Model Execution" is connected to three components. To the left is a yellow-green box labeled "Data Preprocess," with three subcomponents listed: "GPKG Sub-setting," "Realization," and "Forcing." To the right, two boxes are connected to the center: a purple box labeled "TEEHR Evaluation" and a green box labeled "Data Visualizer." Dashed arrows indicate the flow of data between preprocessing, model execution, and evaluation/visualization.'}
 
