@@ -324,7 +324,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>DevCon 2025 Troubleshooting</h1>
-        <p>Last updated on 2025-04-22 |
+        <p>Last updated on 2025-05-01 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/learners/troubleshooting.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -336,22 +336,21 @@
 
         
 <div class="section level1">
-<h1 id="ngiab-cloudinfra-devcon-2025-workshop-setup-guide">💧 NGIAB-CloudInfra – DevCon 2025 Workshop Setup Guide<a class="anchor" aria-label="anchor" href="#ngiab-cloudinfra-devcon-2025-workshop-setup-guide"></a></h1>
+<h1 id="ngiab-cloudinfra-devcon-2025-workshop-setup-guide">NGIAB-CloudInfra – DevCon 2025 Workshop Setup Guide<a class="anchor" aria-label="anchor" href="#ngiab-cloudinfra-devcon-2025-workshop-setup-guide"></a></h1>
 <p>Welcome to the NGIAB Workshop!<br>
-This guide will help you install everything, run the model, and
-troubleshoot problems — <strong>no technical background
-required</strong>.</p>
+This guide will help you troubleshoot problems — <strong>no technical
+background required</strong>.</p>
 <blockquote>
-<p>📦 NGIAB stands for <strong>NextGen In A Box</strong> – a simplified
-way to run the NextGen National Water Model on your local computer using
+<p>NGIAB stands for <strong>NextGen In A Box</strong> – a simplified way
+to run the NextGen National Water Model on your local computer using
 Docker.</p>
 </blockquote>
 <p>Organized and supported by <strong>Arpita Patel</strong> and the
 NGIAB team.</p>
 <hr><div class="section level2">
-<h2 id="pre-setup-requirements">💻 1. Pre-Setup Requirements<a class="anchor" aria-label="anchor" href="#pre-setup-requirements"></a></h2>
+<h2 id="pre-setup-requirements">Pre-Setup Requirements<a class="anchor" aria-label="anchor" href="#pre-setup-requirements"></a></h2>
 <blockquote>
-<p>✉️ <strong>Note:</strong> You will be provided with a cloud instance
+<p><strong>Note:</strong> You will be provided with a cloud instance
 (Jetstream or 2i2c) that already includes all the required tools
 (Docker, WSL, libraries). You do <strong>not</strong> need to install
 anything on your personal computer.</p>
@@ -364,72 +363,26 @@ anything on your personal computer.</p>
 below.</p>
 <hr></div>
 <div class="section level2">
-<h2 id="wi-fi-access-university">🌐 Wi-Fi Access @ University<a class="anchor" aria-label="anchor" href="#wi-fi-access-university"></a></h2>
+<h2 id="wi-fi-access-university">Wi-Fi Access @ University<a class="anchor" aria-label="anchor" href="#wi-fi-access-university"></a></h2>
 <p><em>Instructions for connecting to university Wi-Fi will be added
 here.</em></p>
 <hr></div>
 <div class="section level2">
-<h2 id="login-instructions">🔑 Login Instructions<a class="anchor" aria-label="anchor" href="#login-instructions"></a></h2>
-<p><em>Login instructions for accessing Jetstream or 2i2c instances will
-be added here.</em></p>
+<h2 id="login-instructions">Login Instructions<a class="anchor" aria-label="anchor" href="#login-instructions"></a></h2>
+<p><em>Login instructions for accessing Jetstream instances will be
+added here.</em></p>
 <hr></div>
 <div class="section level2">
-<h2 id="set-up-project-folder">📂 2. Set Up Project Folder<a class="anchor" aria-label="anchor" href="#set-up-project-folder"></a></h2>
-<p>Once logged into your instance, open your terminal and run the
-following:</p>
-<pre><code>mkdir -p ~/NextGen/ngen-data
-cd ~/NextGen/ngen-data</code></pre>
-<hr></div>
-<div class="section level2">
-<h2 id="download-input-data">🌐 3. Download Input Data<a class="anchor" aria-label="anchor" href="#download-input-data"></a></h2>
-<p>Pick <strong>one</strong> dataset to work with.</p>
+<h2 id="troubleshooting-checklist">Troubleshooting Checklist<a class="anchor" aria-label="anchor" href="#troubleshooting-checklist"></a></h2>
+<p>If you didn’t get the expected output, check these:</p>
 <div class="section level3">
-<h3 id="option-1-provo-river-recommended">Option 1: Provo River (Recommended)<a class="anchor" aria-label="anchor" href="#option-1-provo-river-recommended"></a></h3>
-<pre><code>wget https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz
-tar -xf AWI_16_10154200_009.tar.gz</code></pre>
-<hr></div>
-</div>
-<div class="section level2">
-<h2 id="clone-ngiab-and-run">🧱 4. Clone NGIAB and Run<a class="anchor" aria-label="anchor" href="#clone-ngiab-and-run"></a></h2>
-<p>Now go <strong>up one folder</strong> and clone the repo:</p>
-<pre><code>cd ~/NextGen
-git clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git
-cd NGIAB-CloudInfra</code></pre>
-<p>Then, make the script executable and run it:</p>
-<pre><code>chmod +x guide.sh
-./guide.sh</code></pre>
-<hr></div>
-<div class="section level2">
-<h2 id="expected-output-structure">🗂 Expected Output Structure<a class="anchor" aria-label="anchor" href="#expected-output-structure"></a></h2>
-<p>After running, you’ll have:</p>
-<pre><code>ngen-run/
-├── config/
-├── forcings/
-├── outputs/
-├── lakeout/
-├── metadata/
-├── restart/</code></pre>
-<p>This is your simulation folder — the model reads from it and writes
-results here.</p>
-<hr></div>
-<div class="section level2">
-<h2 id="optional-visualize-the-output">👀 (Optional) Visualize the Output<a class="anchor" aria-label="anchor" href="#optional-visualize-the-output"></a></h2>
-<pre><code>chmod +x viewOnTethys.sh
-./viewOnTethys.sh</code></pre>
-<p>This will launch a web-based interface to explore the output.</p>
-<hr></div>
-<div class="section level2">
-<h2 id="only-if-youre-stuck-troubleshooting-checklist">⚡ Only If You’re Stuck: Troubleshooting Checklist<a class="anchor" aria-label="anchor" href="#only-if-youre-stuck-troubleshooting-checklist"></a></h2>
-<p>If you did everything above but didn’t get the expected output, check
-these:</p>
-<div class="section level3">
-<h3 id="are-you-on-the-cloud-instance-or-local-machine">🧭 Are You on the Cloud Instance or Local Machine?<a class="anchor" aria-label="anchor" href="#are-you-on-the-cloud-instance-or-local-machine"></a></h3>
+<h3 id="are-you-on-the-cloud-instance-or-local-machine">Are You on the Cloud Instance or Local Machine?<a class="anchor" aria-label="anchor" href="#are-you-on-the-cloud-instance-or-local-machine"></a></h3>
 <p>Sometimes people accidentally run commands on their local machine
 instead of the cloud instance. Here’s how to check:</p>
 <pre><code><span><span class="va">whoami</span></span></code></pre>
-<p>✅ If you’re on the ** 2i2c cloud instance**, you’ll see something
-like:</p>
-<pre><code><span><span class="va">jovyan</span> </span></code></pre>
+<p>✅ If you’re on the ** Jetstream cloud instance**, you’ll see
+this:</p>
+<pre><code><span><span class="va">exouser</span></span></code></pre>
 <p>❌ If it says something like <code>DESKTOP-ABC123</code>,
 <code>MacBook-Pro.local</code>, or anything else personal —
 <strong>you’re on your own computer</strong>.</p>
@@ -438,45 +391,19 @@ provided earlier to connect to your assigned instance before
 proceeding.</p>
 </div>
 <div class="section level3">
-<h3 id="are-you-in-the-right-directory">📅 Are You in the Right Directory?<a class="anchor" aria-label="anchor" href="#are-you-in-the-right-directory"></a></h3>
+<h3 id="are-you-in-the-right-directory">Are You in the Right Directory?<a class="anchor" aria-label="anchor" href="#are-you-in-the-right-directory"></a></h3>
 <p>Before running any script, always check your current folder:</p>
 <pre><code><span><span class="va">pwd</span></span></code></pre>
 <p>You <strong>should see something like</strong>:</p>
-<pre><code>/home/yourname/NextGen/NGIAB-CloudInfra</code></pre>
+<pre><code>/home/exouser/NGIAB-CloudInfra</code></pre>
 <p>If not, move into the folder:</p>
-<pre><code>cd ~/NextGen/NGIAB-CloudInfra</code></pre>
-<p>✅ Done! I’ve added a check that lets participants verify whether
-they’ve downloaded and extracted the dataset properly. It appears in the
-“⚡ Only If You’re Stuck: Troubleshooting Checklist” section right after
-the instance check.</p>
-<p>Here’s the new part I added to your <strong>Canvas
-document</strong>:</p>
-<hr></div>
-<div class="section level3">
-<h3 id="check-did-you-download-the-dataset">📦 Check: Did You Download the Dataset?<a class="anchor" aria-label="anchor" href="#check-did-you-download-the-dataset"></a></h3>
-<p>Run this command:</p>
-<div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">ls</span> ~/NextGen/ngen-data</span></code></pre>
-</div>
-<p>You should see a folder like:</p>
-<pre><code><span><span class="va">AWI_16_10154200_009</span></span></code></pre>
-<p>✅ If you see it, your dataset was downloaded and extracted
-correctly.<br>
-❌ If you see nothing or just the <code>.tar.gz</code> file, run the
-following again:</p>
-<div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
-</div>
+<pre><code>cd ~/NGIAB-CloudInfra</code></pre>
 <hr></div>
 </div>
 <div class="section level2">
-<h2 id="need-help">🙋 Need Help?<a class="anchor" aria-label="anchor" href="#need-help"></a></h2>
+<h2 id="need-help">Need Help?<a class="anchor" aria-label="anchor" href="#need-help"></a></h2>
 <ul><li>Ask a facilitator during the session</li>
-</ul><hr><!--
+</ul><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  --></div>
@@ -541,8 +468,8 @@ any links that you are not going to use.
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/troubleshooting.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/troubleshooting.html",
   "dateCreated": "2025-04-25",
-  "dateModified": "2025-04-22",
-  "datePublished": "2025-04-29"
+  "dateModified": "2025-05-01",
+  "datePublished": "2025-05-01"
 }
 
   </script><script>
