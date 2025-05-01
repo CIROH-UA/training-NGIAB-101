@@ -101,7 +101,7 @@ tar -xf AWI_16_10154200_009.tar.gz
 
 ```
 
-Other options: AWI-007 or AWI-008 can be used similarly, see the [Installation and Setup episode](/site/docs/installation.html#step-2-download-sample-data).
+Other options: AWI-007 or AWI-008 can be used similarly, see the [Installation and Setup episode](/installation.html#step-2-download-sample-data).
 
 ----------
 
