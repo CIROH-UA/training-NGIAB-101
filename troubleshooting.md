@@ -48,7 +48,7 @@ If you didn’t get the expected output, check these:
 
 Sometimes people accidentally run commands on their local machine instead of the cloud instance. Here's how to check:
 
-```
+```bash
 whoami
 ```
 
@@ -66,7 +66,7 @@ exouser
 
 Before running any script, always check your current folder:
 
-```
+```bash
 pwd
 ```
 
@@ -78,7 +78,7 @@ You **should see something like**:
 
 If not, move into the folder:
 
-```
+```bash
 cd ~/NGIAB-CloudInfra
 ```
 
