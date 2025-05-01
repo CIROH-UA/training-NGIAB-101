@@ -14,5 +14,5 @@
 "instructors/instructor-notes.md" "dc4762e24d0db9944476464daf35d379" "site/built/instructor-notes.md" "2025-05-01"
 "learners/setup.md" "2221399bf97c55f962bcdfe38789bbf1" "site/built/setup.md" "2025-05-01"
 "learners/troubleshooting.md" "97f978369fa835a646adcc861fa94a2b" "site/built/troubleshooting.md" "2025-05-01"
-"learners/devcon25js.md" "3eb8278911661ca0a4d0d3618a23d81f" "site/built/devcon25js.md" "2025-05-01"
+"learners/devcon25js.md" "b8b84e8f092d0335b2a9a74f9a24bb2c" "site/built/devcon25js.md" "2025-05-01"
 "profiles/learner-profiles.md" "f44dc7d688e7968a573f9f818b26f525" "site/built/learner-profiles.md" "2025-05-01"
