@@ -5,7 +5,7 @@ title: DevCon 2025 Jetstream Instructions
 # Running NGIAB on Jetstream 
 
 1. Access the Jetstream images page at: https://jetstream2.exosphere.app/exosphere/projects/e146e8611a874f4f8550a78f9303ae95/regions/IU/images 
-2. Search for “Devcon2025-NGIAB” and select “Create an instance”. 
+2. Search for “Devcon2025-NGIAB-1” and select “Create an instance”. 
 3. Configure your instance: 
     - Give an instance name. 
     - For instance size, select “m3.large” 
