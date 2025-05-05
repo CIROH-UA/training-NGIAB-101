@@ -1,7 +1,15 @@
 ---
 title: Setup
 ---
-Welcome to the NGIAB 101 training module!
+Welcome to the NGIAB 101 training module! 
+
+::::::::::::::::::::::::::::::::::::: callout
+
+## Source Code
+
+The source code for NGIAB is found at [our GitHub repository](https://github.com/CIROH-UA/NGIAB-CloudInfra).
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 To dive right into NextGen in a Box (NGIAB) as quickly as possible, follow the quick start guide on our [GitHub repository](https://github.com/CIROH-UA/NGIAB-CloudInfra), or head straight to our second episode, Installation. If you are interested in taking your time and learning in-depth about the features of NGIAB, follow the episodes in this module. 
 
