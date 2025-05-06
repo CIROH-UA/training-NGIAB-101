@@ -55,7 +55,7 @@ NGIAB is designed as a multi-layered containerized tool that encapsulates the Ne
 
 Figure 1 illustrates the layered architecture of NGIAB. 
 
-- **Layer 1:** At its core (Layer 1) lies a suite of integrated hydrological modeling components and hydrofabric (a geopatial dataset representing hydrologic features like rivers, basins, and connections), designed to work together within the NextGen framework. 
+- **Layer 1:** At its core (Layer 1) lies a suite of integrated hydrological modeling components and hydrofabric (a geopatial dataset representing hydrologic features like rivers, basins, and connections), designed to work together within the NextGen framework. Hydrologic models in NGIAB are Basic Model Interface (BMI) compliant, meaning that they follow a standard structure and can be swapped in and out for one another. 
 - **Layer 2:** Layer 1 is wrapped by the Continuous Integration/Continuous Deployment (CI/CD) Pipeline layer (Layer 2). CI/CD are tools and practices that automate code testing and updates. NGIAB leverages GitHub Actions to ensure automated testing, integration, and deployment capabilities for reproducible workflows. 
 - **Layer 3:** The NGIAB Containerization layer (Layer 3) provides the containerized environment and essential configuration tools. 
 - **Layer 4:** The outermost layer (Layer 4), Technologies & Methods, provides broader infrastructure, best practices, and support for deployment across different computing environments (local, cloud, HPC), and facilitates community engagement and contribution. 
@@ -84,7 +84,7 @@ Steps common to all hydrologic modeling frameworks include data collection and p
 
 ## Why should I use NGIAB?
 
-NGIAB makes **community contribution** possible in research settings by simplifying setup and providing demos, allowing hydrologists and researchers to configure and modify localized water models. Its open-source framework allows hydrologists and stakeholders to inspect, compare, and refine model predictions. Its lightweight container size also empowers hydrologists to execute large-scale runs efficiently and reduce computational bottlenecks. By strengthening collaboration across research teams, NGIAB will help drive the evolution of community-scale water modeling and accelerate the transition from academic innovation to real-world operational use.
+NGIAB makes **community contribution** possible in research settings by simplifying setup and providing demos, allowing hydrologists and researchers to configure and modify localized water models. Built on open-source code and the `ngen`/BMI foundation, NGIAB allows integration of a hydrology process model into a larger hydrologic simulation framework, allowing a researcher to focus on their area of specific modeling expertise. Its lightweight container size also empowers hydrologists to execute large-scale runs efficiently and reduce computational bottlenecks. By strengthening collaboration across research teams, NGIAB will help drive the evolution of community-scale water modeling and accelerate the transition from academic innovation to real-world operational use.
 
 ## Your Turn
 
