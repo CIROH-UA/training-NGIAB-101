@@ -21,7 +21,7 @@ carpentry_description: 'Cooperative Institute for Research to Operations in Hydr
 title: 'NGIAB 101' # FIXME
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: 2025-04-25 # FIXME
+created: 2025-05-07 # FIXME
 
 # Comma-separated list of keywords for the lesson
 keywords: 'NextGen Framework, National Water Model (NWM), Hydrologic Modeling, Community Modeling' # FIXME
@@ -76,4 +76,4 @@ profiles:
 # This space below is where custom yaml items (e.g. pinning
 # sandpaper and varnish versions) should live
 
-varnish: 'quinnylee/varnish'
+varnish: 'CIROH-UA/varnish'
