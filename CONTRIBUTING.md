@@ -104,7 +104,7 @@ email][contact].
 
 [repo]: https://github.com/CIROH-UA/training-NGIAB-101
 [repo-issues]: https://github.com/CIROH-UA/training-NGIAB-101/issues
-[contact]: mailto:team@carpentries.org
+[contact]: mailto:ciroh-it-support@ua.edu
 [cp-site]: https://carpentries.org/
 [dc-issues]: https://github.com/issues?q=user%3Adatacarpentry
 [dc-lessons]: https://datacarpentry.org/lessons/

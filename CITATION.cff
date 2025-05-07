@@ -1,22 +1,40 @@
-# This template CITATION.cff file was generated with cffinit.
-# Visit https://bit.ly/cffinit to replace its contents
-# with information about your lesson.
-# Remember to update this file periodically, 
-# ensuring that the author list and other fields remain accurate.
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: FIXME
+title: NGIAB 101
 message: >-
-  Please cite this lesson using the information in this file
-  when you refer to it in publications, and/or if you
-  re-use, adapt, or expand on the content in your own
-  training material.
+  If you use this dataset, please cite it using the metadata
+  from this file.
 type: dataset
 authors:
-  - given-names: FIXME
-    family-names: FIXME
+  - given-names: Arpita
+    family-names: Patel
+    affiliation: University of Alabama
+  - given-names: Quinn
+    family-names: Lee
+    affiliation: University of Alabama
+  - given-names: Hari Teja
+    family-names: Jajula
+    affiliation: University of Alabama
+repository-code: 'https://github.com/CIROH-UA/training-NGIAB-101'
+url: 'https://docs.ciroh.org/training-NGIAB-101/'
+repository: 'https://github.com/CIROH-UA/NGIAB-CloudInfra'
 abstract: >-
-  FIXME Replace this with a short abstract describing the
-  lesson, e.g. its target audience and main intended
-  learning objectives.
+  The NGIAB 101 training module, developed by the
+  Cooperative Institute for Research to Operations in
+  Hydrology (CIROH), offers an introductory, hands-on
+  learning experience with NextGen In A Box (NGIAB)—a
+  modular, open-source hydrologic modeling framework. This
+  module guides users through the complete modeling
+  workflow, including installation, data preparation, model
+  execution, evaluation, and visualization. It also provides
+  optional advanced topics for high-performance computing
+  (HPC) environments.
+keywords:
+  - NextGen Framework
+  - National Water Model (NWM)
+  - Hydrologic Modeling
+  - Community Modeling
 license: CC-BY-4.0
+date-released: '2025-05-07'
