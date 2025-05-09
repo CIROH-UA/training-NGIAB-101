@@ -324,7 +324,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>DevCon 2025 Jetstream Instructions</h1>
-        <p>Last updated on 2025-05-01 |
+        <p>Last updated on 2025-05-09 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/learners/devcon25js.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -336,50 +336,84 @@
 
         
 <div class="section level1">
-<h1 id="running-ngiab-on-jetstream">Running NGIAB on Jetstream<a class="anchor" aria-label="anchor" href="#running-ngiab-on-jetstream"></a></h1>
-<ol style="list-style-type: decimal"><li>Access the Jetstream images page at: <a href="https://jetstream2.exosphere.app/exosphere/projects/e146e8611a874f4f8550a78f9303ae95/regions/IU/images" class="external-link uri">https://jetstream2.exosphere.app/exosphere/projects/e146e8611a874f4f8550a78f9303ae95/regions/IU/images</a>
-</li>
-<li>Search for “Devcon2025-NGIAB-1” and select “Create an
-instance”.</li>
-<li>Configure your instance:
-<ul><li>Give an instance name.</li>
-<li>For instance size, select “m3.large”</li>
-<li>Enable web desktop by selecting “Yes”.</li>
-<li>Keep all other configurations default. -Select “Create” to
-finalize.</li>
-</ul></li>
-<li>Once your instance is ready, you will see an instance
-dashboard.</li>
-<li>Click on “Web Shell” under the Interactions section. This will open
-a new terminal window logged into your instance.</li>
-<li>Run the following command to preprocess data:</li>
-</ol><div class="codewrapper sourceCode" id="cb1">
+<h1 id="running-ngiab-on-jetstream-for-devcon-2025">Running NGIAB on Jetstream for DevCon 2025<a class="anchor" aria-label="anchor" href="#running-ngiab-on-jetstream-for-devcon-2025"></a></h1>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Callout</h3>
+<div class="callout-content">
+<p>Before continuing, you will need the SSH credentials for your
+instance. These have been emailed to you.</p>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="setting-up-an-ssh-session-with-ssh-tunneling">Setting up an SSH session with SSH tunneling<a class="anchor" aria-label="anchor" href="#setting-up-an-ssh-session-with-ssh-tunneling"></a></h2>
+<p>Input the following command into your Unix terminal or Windows
+command prompt:</p>
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess cli <span class="at">-i</span> gage-10154200 <span class="at">-sfr</span> <span class="at">--start</span> 2017-09-01 <span class="at">--end</span> 2018-09-01 <span class="at">--source</span> aorc </span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">ssh</span>  <span class="at">-L</span> <span class="pp">[</span><span class="ss">port</span><span class="pp">]</span>:localhost:<span class="pp">[</span><span class="ss">port</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">username</span><span class="pp">]</span>@<span class="pp">[</span><span class="ss">ip.address</span><span class="pp">]</span></span></code></pre>
 </div>
-<ol start="7" style="list-style-type: decimal"><li>Run the following commands to clone the NGIAB-CloudInfra repo and
-run guide script:</li>
+<p>The -L flag is used to initiate SSH tunneling, which is necessary to
+view the NGIAB visualizer.</p>
+<p>Your selected port in the above command will differ depending on how
+you’d prefer to connect to the visualizer. - [Recommended] To open the
+visualizer directly in your web browser, use a port such as
+<code>80</code> or <code>8080</code>. - You may receive a message such
+as “Could not request local forwarding.” If this happens, you will need
+to select a different port. - If you would like to open the visualizer
+via a VNC client, user port <code>5906</code>. - This approach requires
+a VNC client to be installed on your computer. <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">RealVNC</a>
+and <a href="https://tigervnc.org/" class="external-link">TigerVNC</a> are common choices.</p>
+<p>When logging in for the first time, you may be asked whether you’d
+like to trust the host. Type ‘yes’ to do so.</p>
+<p>After that, simply type in your password to gain access to your
+instance’s terminal.</p>
+</div>
+<div class="section level2">
+<h2 id="running-ngiab">Running NGIAB<a class="anchor" aria-label="anchor" href="#running-ngiab"></a></h2>
+<ol style="list-style-type: decimal"><li>Run the following command to preprocess data:</li>
 </ol><div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git </span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="bu">cd</span> NGIAB-CloudInfra </span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="ex">./guide.sh</span> </span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess cli <span class="at">-i</span> gage-10154200 <span class="at">-sfr</span> <span class="at">--start</span> 2017-09-01 <span class="at">--end</span> 2018-09-01 <span class="at">--source</span> aorc </span></code></pre>
 </div>
-<ol start="8" style="list-style-type: decimal"><li>When prompted, enter the following input data directory path:</li>
+<ol start="2" style="list-style-type: decimal"><li>Run the following commands to clone the NGIAB-CloudInfra repo and
+run guide script:</li>
+</ol><div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git </span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="bu">cd</span> NGIAB-CloudInfra </span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="ex">./guide.sh</span> </span></code></pre>
+</div>
+<ol start="3" style="list-style-type: decimal"><li>When prompted, enter the following input data directory path:</li>
 </ol><pre><code>/home/exouser/ngiab_preprocess_output/gage-10154200 </code></pre>
-<ol start="9" style="list-style-type: decimal"><li>Follow the prompts. Choose between serial or parallel mode. After
-the run is completed, run the TEEHR evaluation when prompted. Finally,
-run the visualizer when prompted (or you can run visualizer manually
-using <code>./viewonTethys</code>).</li>
-<li>Go to instance dashboard and select “Web Desktop” under the
-Interactions section. Open a browser and go to: <a href="http://localhost/apps/ngiab" class="external-link uri">http://localhost/apps/ngiab</a>. Enter the login credentials
-to access NGIAB visualizer.</li>
+<ol start="4" style="list-style-type: decimal"><li>Follow the prompts. Choose between serial or parallel mode. After
+the run is completed, run the TEEHR evaluation when prompted.</li>
+<li>Open the visualizer when prompted (or you can run visualizer
+manually using <code>./viewonTethys</code>).
+<ul><li>If you are opening the visualizer in your web browser, open the
+Tethys server on the same port that you chose to tunnel with.</li>
+<li>If you are opening the visualizer in a VNC client, open the Tethys
+server on port <code>80</code>.</li>
+</ul></li>
+<li>Open the visualizer!
+<ul><li>If you are opening the visualizer in your web browser, simply enter
+the link provided by the console output.</li>
+<li>If you are opening the visualizer in a VNC client, first connect to
+<code>localhost:5906</code>. Then, open the link provided by the console
+output in the remote desktop’s web browser.</li>
+</ul></li>
 </ol><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  --></div>
+</div>
 
 
       </div> <!-- / div.lesson-content -->
@@ -440,8 +474,8 @@ any links that you are not going to use.
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/devcon25js.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/devcon25js.html",
   "dateCreated": "2025-05-07",
-  "dateModified": "2025-05-01",
-  "datePublished": "2025-05-08"
+  "dateModified": "2025-05-09",
+  "datePublished": "2025-05-09"
 }
 
   </script><script>
