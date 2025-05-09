@@ -362,15 +362,21 @@ command prompt:</p>
 <p>The -L flag is used to initiate SSH tunneling, which is necessary to
 view the NGIAB visualizer.</p>
 <p>Your selected port in the above command will differ depending on how
-you’d prefer to connect to the visualizer. - [Recommended] To open the
-visualizer directly in your web browser, use a port such as
-<code>80</code> or <code>8080</code>. - You may receive a message such
-as “Could not request local forwarding.” If this happens, you will need
-to select a different port. - If you would like to open the visualizer
-via a VNC client, user port <code>5906</code>. - This approach requires
-a VNC client to be installed on your computer. <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">RealVNC</a>
-and <a href="https://tigervnc.org/" class="external-link">TigerVNC</a> are common choices.</p>
-<p>When logging in for the first time, you may be asked whether you’d
+you’d prefer to connect to the visualizer.</p>
+<ul><li>[Recommended] To open the visualizer directly in your web browser,
+use a port such as <code>80</code> or <code>8080</code>.
+<ul><li>You may receive a message such as “Could not request local
+forwarding.” If this happens, you will need to select a different
+port.</li>
+</ul></li>
+<li>If you would like to open the visualizer via a VNC client, user port
+<code>5906</code>.
+<ul><li>This approach requires a VNC client to be installed on your
+computer. <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">RealVNC</a>
+and <a href="https://tigervnc.org/" class="external-link">TigerVNC</a> are common
+choices.</li>
+</ul></li>
+</ul><p>When logging in for the first time, you may be asked whether you’d
 like to trust the host. Type ‘yes’ to do so.</p>
 <p>After that, simply type in your password to gain access to your
 instance’s terminal.</p>
@@ -396,9 +402,15 @@ run guide script:</li>
 </div>
 <ol start="3" style="list-style-type: decimal"><li>When prompted, enter the following input data directory path:</li>
 </ol><pre><code>/home/exouser/ngiab_preprocess_output/gage-10154200 </code></pre>
-<ol start="4" style="list-style-type: decimal"><li>Follow the prompts. Choose between serial or parallel mode. After
-the run is completed, run the TEEHR evaluation when prompted.</li>
-<li>Open the visualizer when prompted.
+<ol start="4" style="list-style-type: decimal"><li>Follow the prompts. Choose between serial or parallel mode. Serial
+will run NextGen on one process, whereas parallel will run NextGen on
+multiple processes at once.</li>
+<li>When prompted to redirect command output to <code>/dev/null</code>,
+select yes. This keeps your output logs clean.</li>
+<li>After the run is completed, run the TEEHR evaluation when prompted.
+Choose Option 1 (use existing Docker image).</li>
+<li>Open the Tethys visualizer when prompted. Choose Option 1 (use
+existing Docker image).
 <ul><li>If you are opening the visualizer in your web browser, open the
 Tethys server on the same port that you chose to tunnel with.</li>
 <li>If you are opening the visualizer in a VNC client, open the Tethys
@@ -418,7 +430,12 @@ output in the remote desktop’s web browser.</li>
 <ol style="list-style-type: decimal"><li>Use the Data Preprocess tool’s graphical user interface (map app) to
 select your favorite catchments and time period that you would like to
 perform a NextGen run on.</li>
-</ol><div class="codewrapper sourceCode" id="cb5">
+</ol><figure><img src="fig/fig1-4.png" alt="A map view displaying the Provo River network and basin boundaries in the area around Woodland, UT. The map includes the stream network shown in blue, basin boundaries in orange shaded regions, the downstream-most basin in a pink shaded reagion, and black dots representing USGS gage locations." class="figure mx-auto d-block"><div class="figcaption">Figure 1: Example view from the Data Preprocess
+tool. The highlighted region (light orange area; downstream-most basin
+in pink) represents the specific study basin, illustrating the river
+network (blue lines), sub-basins (orange), and surrounding USGS gaging
+stations (black dots).</div>
+</figure><div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess map_app</span></code></pre>
@@ -442,7 +459,8 @@ separately in order to use TEEHR and the Data Visualizer.</li>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
 </div>
-<ol start="4" style="list-style-type: decimal"><li>Experiment as much as you’d like! <!--
+<ol start="4" style="list-style-type: decimal"><li>Experiment with different basins or options as much as you’d like!
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
