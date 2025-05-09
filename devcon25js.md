@@ -2,31 +2,52 @@
 title: DevCon 2025 Jetstream Instructions
 ---
 
-# Running NGIAB on Jetstream 
+# Running NGIAB on Jetstream for DevCon 2025
 
-1. Access the Jetstream images page at: https://jetstream2.exosphere.app/exosphere/projects/e146e8611a874f4f8550a78f9303ae95/regions/IU/images 
-2. Search for “Devcon2025-NGIAB-1” and select “Create an instance”. 
-3. Configure your instance: 
-    - Give an instance name. 
-    - For instance size, select “m3.large” 
-    - Enable web desktop by selecting “Yes”. 
-    - Keep all other configurations default. 
-    -Select “Create” to finalize. 
-4. Once your instance is ready, you will see an instance dashboard. 
-5. Click on “Web Shell” under the Interactions section. This will open a new terminal window logged into your instance. 
-6. Run the following command to preprocess data:
+::::::::::::::::::::::::::::::::::::: callout
+
+Before continuing, you will need the SSH credentials for your instance. These have been emailed to you.
+
+:::::::::::::::::::::::::::::::::::::::::::::
+
+## Setting up an SSH session with SSH tunneling
+
+Input the following command into your Unix terminal or Windows command prompt:
+```bash 
+ssh  -L [port]:localhost:[port] [username]@[ip.address]
+```
+
+The -L flag is used to initiate SSH tunneling, which is necessary to view the NGIAB visualizer.
+
+Your selected port in the above command will differ depending on how you'd prefer to connect to the visualizer.
+- [Recommended] To open the visualizer directly in your web browser, use a port such as `80` or `8080`.
+    - You may receive a message such as "Could not request local forwarding." If this happens, you will need to select a different port.
+- If you would like to open the visualizer via a VNC client, user port `5906`.
+    - This approach requires a VNC client to be installed on your computer. [RealVNC](https://www.realvnc.com/en/connect/download/viewer/) and [TigerVNC](https://tigervnc.org/) are common choices.
+
+When logging in for the first time, you may be asked whether you'd like to trust the host. Type 'yes' to do so.
+
+After that, simply type in your password to gain access to your instance's terminal.
+
+## Running NGIAB
+1. Run the following command to preprocess data:
 ```bash 
 uvx --from ngiab_data_preprocess cli -i gage-10154200 -sfr --start 2017-09-01 --end 2018-09-01 --source aorc 
 ```
-7. Run the following commands to clone the NGIAB-CloudInfra repo and run guide script: 
+2. Run the following commands to clone the NGIAB-CloudInfra repo and run guide script: 
 ```bash
 git clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git 
 cd NGIAB-CloudInfra 
 ./guide.sh 
 ```
-8. When prompted, enter the following input data directory path: 
+3. When prompted, enter the following input data directory path: 
 ```
 /home/exouser/ngiab_preprocess_output/gage-10154200 
 ```
-9. Follow the prompts. Choose between serial or parallel mode. After the run is completed, run the TEEHR evaluation when prompted. Finally, run the visualizer when prompted (or you can run visualizer manually using `./viewonTethys`). 
-10. Go to instance dashboard and select “Web Desktop” under the Interactions section. Open a browser and go to: http://localhost/apps/ngiab. Enter the login credentials to access NGIAB visualizer. 
+4. Follow the prompts. Choose between serial or parallel mode. After the run is completed, run the TEEHR evaluation when prompted.
+5. Open the visualizer when prompted (or you can run visualizer manually using `./viewonTethys`).
+    - If you are opening the visualizer in your web browser, open the Tethys server on the same port that you chose to tunnel with.
+    - If you are opening the visualizer in a VNC client, open the Tethys server on port `80`.
+6. Open the visualizer!
+    - If you are opening the visualizer in your web browser, simply enter the link provided by the console output.
+    - If you are opening the visualizer in a VNC client, first connect to `localhost:5906`. Then, open the link provided by the console output in the remote desktop's web browser.
