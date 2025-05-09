@@ -29,18 +29,6 @@ The Data Preprocess tool (like all of our software) is constantly being updated 
 
 #### Example 1
 
-This command produces forcings and a NextGen realization file for the catchments upstream of gage-10155000 for the time period 2022-08-13 to 2022-08-23 after installing the Data Preprocess tool. The forcing data source defaults to the NetCDF files in the [NWM 3.0 retrospective](https://aws.amazon.com/marketplace/pp/prodview-g6lcchc7brshw). Using this command requires you to have Astral UV (a package installer and environment manager) installed. Instructions for installing Astral UV are found in the [Astral UV documentation](https://docs.astral.sh/uv/#highlights).
-
-To install the Data Preprocess tool, follow the latest instructions on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess). 
-
-```bash
-uv run cli -i gage-10155000 -sfr --start 2022-08-13 --end 2022-08-23
-```
-
-`uv run cli` indicates that the Data Preprocess CLI within your activated Astral UV environment will run. The `-i` flag indicates the **I**D of the feature that is used to subset the hydrofabric. The `-sfr` flags indicate that the Data Preprocess tool will **s**ubset the hydrofabric to the desired catchments, produce **f**orcings over the desired area and time period, and produce a NextGen **r**ealization file. The `--start` and `--end` flags indicate the start and end dates of the desired time period.
-
-#### Example 2
-
 This command allows you to run the Data Preprocess CLI tool without installing it. It produces forcings and a NextGen realization file for the catchments upstream of gage-10154200 for the time period 2017-09-01 to 2018-09-01. Forcing data is sourced from the zarr files in the [Analysis of Record for Calibration (AORC) dataset](https://registry.opendata.aws/noaa-nws-aorc/), which allows for a **faster processing time**. 
 
 Astral UV is required to run the Data Preprocess tool without installing it.
@@ -50,6 +38,18 @@ uvx --from ngiab_data_preprocess cli -i gage-10154200 -sfr --start 2017-09-01 --
 ```
 
 `uvx --from ngiab_data_preprocess cli` indicates that the Data Preprocess tool will run without the user installing it. The `--source` flag determines where the Data Preprocess tool will pull forcing data from.
+
+#### Example 2
+
+This command produces forcings and a NextGen realization file for the catchments upstream of gage-10155000 for the time period 2022-08-13 to 2022-08-23 after installing the Data Preprocess tool. The forcing data source defaults to the NetCDF files in the [NWM 3.0 retrospective](https://aws.amazon.com/marketplace/pp/prodview-g6lcchc7brshw). Using this command requires you to have Astral UV (a package installer and environment manager) installed. Instructions for installing Astral UV are found in the [Astral UV documentation](https://docs.astral.sh/uv/#highlights).
+
+To install the Data Preprocess tool, follow the latest instructions on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess). 
+
+```bash
+uv run cli -i gage-10155000 -sfr --start 2022-08-13 --end 2022-08-23
+```
+
+`uv run cli` indicates that the Data Preprocess CLI within your activated Astral UV environment will run. The `-i` flag indicates the **I**D of the feature that is used to subset the hydrofabric. The `-sfr` flags indicate that the Data Preprocess tool will **s**ubset the hydrofabric to the desired catchments, produce **f**orcings over the desired area and time period, and produce a NextGen **r**ealization file. The `--start` and `--end` flags indicate the start and end dates of the desired time period.
 
 #### Example 3
 

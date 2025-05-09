@@ -29,13 +29,15 @@ When logging in for the first time, you may be asked whether you'd like to trust
 
 After that, simply type in your password to gain access to your instance's terminal.
 
-## Running NGIAB
+## Task 1: Running NGIAB With Prepared Data
 1. Run the following command to preprocess data:
 ```bash 
 uvx --from ngiab_data_preprocess cli -i gage-10154200 -sfr --start 2017-09-01 --end 2018-09-01 --source aorc 
 ```
 2. Run the following commands to clone the NGIAB-CloudInfra repo and run guide script: 
 ```bash
+mkdir NGIAB_demo
+cd NGIAB_demo
 git clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git 
 cd NGIAB-CloudInfra 
 ./guide.sh 
@@ -45,9 +47,27 @@ cd NGIAB-CloudInfra
 /home/exouser/ngiab_preprocess_output/gage-10154200 
 ```
 4. Follow the prompts. Choose between serial or parallel mode. After the run is completed, run the TEEHR evaluation when prompted.
-5. Open the visualizer when prompted (or you can run visualizer manually using `./viewonTethys`).
+5. Open the visualizer when prompted.
     - If you are opening the visualizer in your web browser, open the Tethys server on the same port that you chose to tunnel with.
     - If you are opening the visualizer in a VNC client, open the Tethys server on port `80`.
 6. Open the visualizer!
     - If you are opening the visualizer in your web browser, simply enter the link provided by the console output.
     - If you are opening the visualizer in a VNC client, first connect to `localhost:5906`. Then, open the link provided by the console output in the remote desktop's web browser.
+
+# Task 2: Running NGIAB with Your Own Data
+
+1. Use the Data Preprocess tool's graphical user interface (map app) to select your favorite catchments and time period that you would like to perform a NextGen run on.
+```bash
+uvx --from ngiab_data_preprocess map_app
+```
+2. Copy the given command and run it to preprocess data. If you include the `--run` tag, the Data Preprocessor will automatically execute a NextGen run.
+3. If you included the `--run` tag, you will need to run the `runTeehr.sh` and `viewOnTethys.sh` scripts separately in order to use TEEHR and the Data Visualizer.
+```bash
+./runTeehr.sh
+./viewOnTethys.sh
+```
+If you did not include the `--run` tag, you can run `guide.sh` as described in Task 1.
+```bash
+./guide.sh
+```
+4. Experiment as much as you'd like!

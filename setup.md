@@ -5,9 +5,9 @@ Welcome to the NextGen In A Box (NGIAB) 101 training module!
 
 ::::::::::::::::::::::::::::::::::::: callout
 
-## Source Code
+## Source Code and Documentation
 
-The source code for NextGen In A Box (NGIAB) is found at [our GitHub repository](https://github.com/CIROH-UA/NGIAB-CloudInfra).
+The source code for NextGen In A Box (NGIAB) is found at [our GitHub repository](https://github.com/CIROH-UA/NGIAB-CloudInfra). The documentation for NGIAB and its extensions are found on the [CIROH docs](https://docs.ciroh.org/docs/products/Community%20Hydrologic%20Modeling%20Framework/).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
