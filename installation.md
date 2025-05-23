@@ -58,7 +58,7 @@ To use the Data Visualizer through an Secure Shell (SSH) connection, you will ha
 Note: Users who already have Docker installed will still need to install a separate WSL distro and set it as their default, if they have not already.
 
 1. Install Windows Subsystem for Linux (WSL):
-   ``` bash
+   ``` PowerShell
    wsl --install
 	```
 
@@ -73,6 +73,15 @@ Note: Users who already have Docker installed will still need to install a separ
     
     ```
     This should generate a message that shows that your installation is working.
+
+5. Install Astral UV:
+
+    ```bash
+    # Install UV
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    # Alternatively, install via pip if the above fails
+    pip install uv
+    ```
 
 ::::::::::::::::::::::::::::::::::::: caution
 
@@ -107,6 +116,15 @@ wsl --setdefault Ubuntu
     ```
     This should generate a message that shows that your installation is working.
 
+4. Install Astral UV.
+
+    ```bash
+    # Install UV
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    # It can be installed via pip if that fails
+    # pip install uv
+    ```
+
 ::::::::::::::::::::::::
 
 :::::::::::::::: spoiler
@@ -123,6 +141,15 @@ wsl --setdefault Ubuntu
     
     ```
     This should generate a message that shows that your installation is working.
+
+3. Install Astral UV.
+
+    ```bash
+    # Install UV
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    # It can be installed via pip if that fails
+    # pip install uv
+    ```
 
 ::::::::::::::::::::::::
 
@@ -231,24 +258,31 @@ tar  -xf  AWI_16_10154200_009.tar.gz
 
 ### Step 3: Clone and Run NGIAB
 
+::::::::::::::::::::::::::::::::::::: caution
+
+### CAUTION: For Windows users: pulling with LFs
+
+Before cloning the repository, please ensure that Git is configured to pull with LF line breaks instead of CRLFs. If CRLFs are used, then the carriage return characters will prevent the shell scripts from running properly. 
+
+There are a couple options to configure this.
+
+1. Visual Studio Code can be used to manually toggle between line breaks. 
+
+2. Git can be configured from the command line.
+
+```bash
+git config --global core.autocrlf false
+```
+
+3. Download, extract, and run [this interactive `.bat` script](data/ngiab-newline-fixer.zip)
+:::::::::::::::::::::::::::::::::::::::::::::
+
 ```bash
 cd ../  # back to NextGen folder
 git clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git
 cd NGIAB-CloudInfra
 
 ```
-
-::::::::::::::::::::::::::::::::::::: caution
-
-### CAUTION: For Windows users: pulling with LFs
-
-Before cloning the repository, please ensure that Git is configured to pull with LF line breaks instead of CRLFs. If CRLFs are used, then the carriage return characters will prevent the shell scripts from running properly.
-
-```bash
-git config --global core.autocrlf false
-```
-
-:::::::::::::::::::::::::::::::::::::::::::::
 
 ## ✅ Ready to Go!
 

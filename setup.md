@@ -46,7 +46,7 @@ The Installation episode will walk you through the steps to install Windows Subs
 
 ### Windows
 
-- **Software:** Docker, Git, WSL
+- **Software:** Docker, Git, WSL, Astral UV
 - **Recommended Minimum RAM:** 8 GB
 
 ::::::::::::::::::::::::
@@ -55,7 +55,7 @@ The Installation episode will walk you through the steps to install Windows Subs
 
 ### MacOS
 
-- **Software:** Docker, Git  
+- **Software:** Docker, Git, Astral UV
 - **Recommended Minimum RAM:** 8 GB
 
 ::::::::::::::::::::::::
@@ -65,7 +65,7 @@ The Installation episode will walk you through the steps to install Windows Subs
 
 ### Linux
 
-- **Software:** Docker, Git  
+- **Software:** Docker, Git, Astral UV  
 - **Recommended Minimum RAM:** 8 GB
 
 ::::::::::::::::::::::::
