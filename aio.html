@@ -34,13 +34,13 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-8">
       <div class="large-logo">
-        <img id="ciroh-logo" alt="Cooperative Institute for Research to Operations in Hydrology" src="assets/images/ciroh-logo.svg"><span class="badge text-bg-danger">
-          <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
+        <img id="ciroh-logo" alt="Cooperative Institute for Research to Operations in Hydrology" src="assets/images/ciroh-logo.svg"><span class="badge text-bg-warning">
+          <abbr title="This lesson is in the alpha phase, which means that it has been taught once and lesson authors are iterating on feedback.">
             <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
-              <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
-              Pre-Alpha
+              <i aria-hidden="true" class="icon" data-feather="alert-triangle" style="border-radius: 5px"></i>
+              Alpha
             </a>
-            <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+            <span class="visually-hidden">This lesson is in the alpha phase, which means that it has been taught once and lesson authors are iterating on feedback.</span>
           </abbr>
         </span>
 
@@ -620,7 +620,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-installation"><p>Content from <a href="installation.html">Installation and Setup</a></p>
 <hr>
-<p>Last updated on 2025-05-01 |
+<p>Last updated on 2025-05-23 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/installation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -720,7 +720,7 @@ episode</a> in this training module.</p>
   Windows (WSL)
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Note: Users who already have Docker installed will still need to
 install a separate WSL distro and set it as their default, if they have
@@ -729,9 +729,9 @@ not already.</p>
 <li>
 <p>Install Windows Subsystem for Linux (WSL):</p>
 <div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">POWERSHELL<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--install</span></span></code></pre>
+<pre class="sourceCode powershell" tabindex="0"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>wsl <span class="op">--</span>install</span></code></pre>
 </div>
 </li>
 <li><p>Install Docker Desktop from <a href="https://docs.docker.com/desktop/setup/install/windows-install/" class="external-link">Docker’s
@@ -748,6 +748,17 @@ administrator.</p></li>
 <p>This should generate a message that shows that your installation is
 working.</p>
 </li>
+<li>
+<p>Install Astral UV:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Install UV</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># Alternatively, install via pip if the above fails</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="ex">pip</span> install uv</span></code></pre>
+</div>
+</li>
 </ol>
 <div id="caution-wsl-distributions" class="callout caution">
 <div class="callout-square">
@@ -761,11 +772,11 @@ distribution. If you installed Docker before WSL, you will likely need
 to install a new WSL distribution and set it as your default.</p>
 <p>For example, Ubuntu can be installed and set as the default
 distribution with the following commands:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--install</span> <span class="at">-d</span> Ubuntu</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--setdefault</span> Ubuntu</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--install</span> <span class="at">-d</span> Ubuntu</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--setdefault</span> Ubuntu</span></code></pre>
 </div>
 </div>
 </div>
@@ -782,7 +793,7 @@ distribution with the following commands:</p>
   macOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Install Docker Desktop from <a href="https://docs.docker.com/desktop/setup/install/mac-install/" class="external-link">Docker’s
@@ -790,13 +801,24 @@ official Mac installer</a>.</p></li>
 <li><p>Launch Docker Desktop.</p></li>
 <li>
 <p>Verify Docker installation:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
 </div>
 <p>This should generate a message that shows that your installation is
 working.</p>
+</li>
+<li>
+<p>Install Astral UV.</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Install UV</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># It can be installed via pip if that fails</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># pip install uv</span></span></code></pre>
+</div>
 </li>
 </ol>
 </div>
@@ -811,21 +833,32 @@ working.</p>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Install Docker by following the <a href="https://docs.docker.com/desktop/setup/install/linux/" class="external-link">official
 Docker guide</a>.</p></li>
 <li>
 <p>Start Docker service and verify:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">sudo</span> systemctl start docker</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">sudo</span> systemctl start docker</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
 </div>
 <p>This should generate a message that shows that your installation is
 working.</p>
+</li>
+<li>
+<p>Install Astral UV.</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Install UV</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># It can be installed via pip if that fails</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># pip install uv</span></span></code></pre>
+</div>
 </li>
 </ol>
 </div>
@@ -840,10 +873,10 @@ working.</p>
 <h3 class="callout-title">Verify Docker</h3>
 <div class="callout-content">
 <p>Run the command below:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-a</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-a</span></span></code></pre>
 </div>
 <p>Confirm it executes without errors. If errors occur, revisit Docker
 installation steps.</p>
@@ -857,14 +890,14 @@ installation steps.</p>
   Troubleshooting
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>If <code>docker ps -a</code> fails, ensure Docker Desktop is running,
 or Docker service is active on Linux:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">sudo</span> systemctl start docker</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">sudo</span> systemctl start docker</span></code></pre>
 </div>
 </div>
 </div>
@@ -879,11 +912,11 @@ file is a scenario using a specific model on a specific region.</p>
 <div class="section level3">
 <h3 id="step-1-create-project-directory">Step 1: Create Project Directory<a class="anchor" aria-label="anchor" href="#step-1-create-project-directory"></a>
 </h3>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> NextGen/ngen-data</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="bu">cd</span> NextGen/ngen-data</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> NextGen/ngen-data</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="bu">cd</span> NextGen/ngen-data</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -898,11 +931,11 @@ for your interests, available disk space, and network speed.</p>
 <p>Models: SLOTH (dummy model), NoahOWP (land surface model), CFE
 (conceptual rainfall-runoff model, functionally equivalent to NWM)</p>
 <p>Compressed file size: 249 MB | Extracted file size: 1.77 GB</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
 </div>
 </div>
 <div class="section level4">
@@ -910,11 +943,11 @@ for your interests, available disk space, and network speed.</p>
 </h4>
 <p>Models: SLOTH, NoahOWP, CFE</p>
 <p>Compressed file size: 1.87 MB | Extracted file size: 5.53 MB</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-007/AWI_16_2863657_007.tar.gz</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_2863657_007.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-007/AWI_16_2863657_007.tar.gz</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_2863657_007.tar.gz</span></code></pre>
 </div>
 </div>
 <div class="section level4">
@@ -923,11 +956,11 @@ for your interests, available disk space, and network speed.</p>
 <p>Models: SLOTH, LSTM (long short-term memory, recurrent neural
 network)</p>
 <p>Compressed file size: 1.50 MB | Extracted file size: 5.46 MB</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-008/AWI_16_2863806_008.tar.gz</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_2863806_008.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-008/AWI_16_2863806_008.tar.gz</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_2863806_008.tar.gz</span></code></pre>
 </div>
 <div id="check-did-you-download-the-dataset" class="callout challenge">
 <div class="callout-square">
@@ -937,10 +970,10 @@ network)</p>
 <h3 class="callout-title">Check: Did You Download the Dataset?</h3>
 <div class="callout-content">
 <p>Run this command:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">ls</span>  ~/NextGen/ngen-data</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">ls</span>  ~/NextGen/ngen-data</span></code></pre>
 </div>
 </div>
 </div>
@@ -952,7 +985,7 @@ network)</p>
   Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You should see a folder like:</p>
 <pre><code><span><span class="va">AWI_16_10154200_009</span></span></code></pre>
@@ -960,10 +993,10 @@ network)</p>
 correctly.</p>
 <p>If you see nothing or just the <code>.tar.gz</code> file, run the
 following again:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">tar</span>  <span class="at">-xf</span>  AWI_16_10154200_009.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">tar</span>  <span class="at">-xf</span>  AWI_16_10154200_009.tar.gz</span></code></pre>
 </div>
 </div>
 </div>
@@ -974,13 +1007,6 @@ following again:</p>
 <div class="section level3">
 <h3 id="step-3-clone-and-run-ngiab">Step 3: Clone and Run NGIAB<a class="anchor" aria-label="anchor" href="#step-3-clone-and-run-ngiab"></a>
 </h3>
-<div class="codewrapper sourceCode" id="cb15">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="bu">cd</span> ../  <span class="co"># back to NextGen folder</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="bu">cd</span> NGIAB-CloudInfra</span></code></pre>
-</div>
 <div id="caution-for-windows-users-pulling-with-lfs" class="callout caution">
 <div class="callout-square">
 <i class="callout-icon" data-feather="alert-triangle"></i>
@@ -992,13 +1018,31 @@ following again:</p>
 to pull with LF line breaks instead of CRLFs. If CRLFs are used, then
 the carriage return characters will prevent the shell scripts from
 running properly.</p>
-<div class="codewrapper sourceCode" id="cb16">
+<p>There are a couple options to configure this.</p>
+<ol style="list-style-type: decimal">
+<li><p>Visual Studio Code can be used to manually toggle between line
+breaks.</p></li>
+<li><p>Git can be configured from the command line.</p></li>
+</ol>
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf false</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf false</span></code></pre>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>Download, extract, and run <a href="data/ngiab-newline-fixer.zip">this interactive <code>.bat</code>
+script</a>
+</li>
+</ol>
 </div>
 </div>
 </div>
+<div class="codewrapper sourceCode" id="cb19">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="bu">cd</span> ../  <span class="co"># back to NextGen folder</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="bu">cd</span> NGIAB-CloudInfra</span></code></pre>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="ready-to-go">✅ Ready to Go!<a class="anchor" aria-label="anchor" href="#ready-to-go"></a>
@@ -1008,10 +1052,10 @@ running properly.</p>
 working directory, you are ready to run the interactive guide script
 <code>guide.sh</code>. It will prompt you to select input data,
 processing modes, and will initiate your run.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
 </div>
 <p>This will walk you through the NGIAB setup and launch your first
 run.</p>
@@ -1049,11 +1093,11 @@ redirect the output.</li>
 <li><p>For permission errors on Linux, run Docker commands with
 <code>sudo</code> or add your user to the Docker group:</p></li>
 </ul>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">${USER}</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="ex">newgrp</span> docker</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">${USER}</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="ex">newgrp</span> docker</span></code></pre>
 </div>
 <div id="are-you-in-the-right-directory" class="callout">
 <div class="callout-square">
@@ -1063,18 +1107,18 @@ redirect the output.</li>
 <h3 class="callout-title">Are You in the Right Directory?</h3>
 <div class="callout-content">
 <p>Before running any script, always check your current folder:</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
 </div>
 <p>You <strong>should see something like</strong>:</p>
 <pre><code>/home/yourname/NextGen/NGIAB-CloudInfra</code></pre>
 <p>If not, move into the folder:</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="bu">cd</span> ~/NextGen/NGIAB-CloudInfra</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="bu">cd</span> ~/NextGen/NGIAB-CloudInfra</span></code></pre>
 </div>
 </div>
 </div>
@@ -2109,9 +2153,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/aio.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/aio.html",
-  "dateCreated": "2025-05-07",
-  "dateModified": "2025-05-20",
-  "datePublished": "2025-05-20"
+  "dateCreated": "2025-05-19",
+  "dateModified": "2025-05-23",
+  "datePublished": "2025-05-23"
 }
 
   </script><script>

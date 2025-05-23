@@ -21,14 +21,14 @@ carpentry_description: 'Cooperative Institute for Research to Operations in Hydr
 title: 'NGIAB 101' # FIXME
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: 2025-05-07 # FIXME
+created: 2025-05-19 # FIXME
 
 # Comma-separated list of keywords for the lesson
 keywords: 'NextGen Framework, National Water Model (NWM), Hydrologic Modeling, Community Modeling' # FIXME
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
-life_cycle: 'pre-alpha' # FIXME
+life_cycle: 'alpha' # FIXME
 
 # License of the lesson
 license: 'CC-BY 4.0'

@@ -18,13 +18,13 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-8">
       <div class="large-logo">
-        <img id="ciroh-logo" alt="Cooperative Institute for Research to Operations in Hydrology" src="assets/images/ciroh-logo.svg"><span class="badge text-bg-danger">
-          <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
+        <img id="ciroh-logo" alt="Cooperative Institute for Research to Operations in Hydrology" src="assets/images/ciroh-logo.svg"><span class="badge text-bg-warning">
+          <abbr title="This lesson is in the alpha phase, which means that it has been taught once and lesson authors are iterating on feedback.">
             <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
-              <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
-              Pre-Alpha
+              <i aria-hidden="true" class="icon" data-feather="alert-triangle" style="border-radius: 5px"></i>
+              Alpha
             </a>
-            <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+            <span class="visually-hidden">This lesson is in the alpha phase, which means that it has been taught once and lesson authors are iterating on feedback.</span>
           </abbr>
         </span>
 
@@ -324,7 +324,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>DevCon2025 Jetstream VM Instructions</h1>
-        <p>Last updated on 2025-05-09 |
+        <p>Last updated on 2025-05-23 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/learners/devcon25js.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -369,19 +369,18 @@ view the NGIAB visualizer.</p>
 <p>Your selected port in the above command will differ depending on how
 you’d prefer to connect to the visualizer.</p>
 <ul><li>
-<strong>[Recommended]</strong> To open the visualizer directly in
-your web browser, use a port such as <code>80</code> or
-<code>8080</code>.
-<ul><li>You may receive a message such as “Could not request local
-forwarding.” If this happens, you will need to select a different
-port.</li>
-</ul></li>
-<li>If you would like to open the visualizer via a VNC client, user port
-<code>5906</code>.
+<strong>[Recommended]</strong> To open the visualizer via a Virtual
+Network Computing (VNC) client, use port <code>5906</code>.
 <ul><li>This approach requires a VNC client to be installed on your
 computer. <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">RealVNC</a>
 and <a href="https://tigervnc.org/" class="external-link">TigerVNC</a> are common
 choices.</li>
+</ul></li>
+<li>To open the visualizer directly in your web browser, use a port such
+as <code>80</code> or <code>8080</code>.
+<ul><li>You may receive a message such as “Could not request local
+forwarding.” If this happens, you will need to select a different
+port.</li>
 </ul></li>
 </ul><p>When logging in for the first time, you may be asked whether you’d
 like to trust the host. Type ‘yes’ to do so.</p>
@@ -397,6 +396,7 @@ instance’s terminal.</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess cli <span class="at">-i</span> gage-10154200 <span class="at">-sfr</span> <span class="at">--start</span> 2017-09-01 <span class="at">--end</span> 2018-09-01 <span class="at">--source</span> aorc </span></code></pre>
 </div>
+<p>Use the default output folder given.</p>
 </li>
 <li>
 <p>Run the following commands to clone the NGIAB-CloudInfra repo and
@@ -411,41 +411,43 @@ run guide script:</p>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="ex">./guide.sh</span> </span></code></pre>
 </div>
 </li>
-<li>
-<p>When prompted, enter the following input data directory path:</p>
-<pre><code>/home/exouser/ngiab_preprocess_output/gage-10154200 </code></pre>
-</li>
-<li><p>Follow the prompts. Choose between serial or parallel mode.
-Serial will run NextGen on one process, whereas parallel will run
-NextGen on multiple processes at once.</p></li>
-<li><p>When prompted to redirect command output to
-<code>/dev/null</code>, select yes. This keeps your output logs
-clean.</p></li>
-<li><p>After the run is completed, run the TEEHR evaluation when
-prompted. Choose Option 1 (use existing Docker image).</p></li>
-<li>
-<p>Open the Tethys visualizer when prompted. Choose Option 1 (use
-existing Docker image).</p>
-<ul><li>If you are opening the visualizer in your web browser, open the
-Tethys server on the same port that you chose to tunnel with.</li>
-<li>If you are opening the visualizer in a VNC client, open the Tethys
-server on port <code>80</code>.</li>
+<li><p>When prompted, enter the following input data directory
+path:</p></li>
+</ol><pre><code>/home/exouser/ngiab_preprocess_output/gage-10154200 </code></pre>
+<ol start="4" style="list-style-type: decimal"><li>When prompted about which Docker image to use, select Option 1 (use
+existing Docker image).</li>
+<li>When prompted about which run option to use, select Option 2 (run
+NextGen in parallel mode).</li>
+<li>When prompted to redirect command output to <code>/dev/null</code>,
+select no. This allows you to see details about your NextGen run.</li>
+<li>After the NextGen run is complete, you will be asked “Would you like
+to continue?”. Select Option 2 (exit), which will allow you to progress
+to the TEEHR evaluation.</li>
+<li>Run the TEEHR evaluation when prompted. When given the option to
+select an image tag, choose <code>x86</code>, and choose option 1 (use
+existing TEEHR image).</li>
+<li>After the TEEHR evaluation is complete, run the Tethys visualizer
+when prompted. When asked about the image, choose the default latest
+image. Note: the visualizer may take a while to load. When asked which
+port to use, use the default port (80).
+<ul><li>If you are opening the visualizer in a VNC client, first connect to
+<code>localhost:5906</code> using the password emailed to you. Then,
+open the link provided by the console output in the remote desktop’s web
+browser.</li>
+<li>If you are opening the visualizer in your local web browser, simply
+enter the link provided by the console output.</li>
 </ul></li>
-<li>
-<p>Open the visualizer!</p>
-<ul><li>If you are opening the visualizer in your web browser, simply enter
-the link provided by the console output.</li>
-<li>If you are opening the visualizer in a VNC client, first connect to
-<code>localhost:5906</code>. Then, open the link provided by the console
-output in the remote desktop’s web browser.</li>
-</ul></li>
+<li>Enter <code>Ctrl+C</code> in the terminal to stop the visualizer
+when you are done.</li>
 </ol></div>
 <div class="section level2">
 <h2 id="task-2-running-ngiab-with-your-own-data">Task 2: Running NGIAB with Your Own Data<a class="anchor" aria-label="anchor" href="#task-2-running-ngiab-with-your-own-data"></a></h2>
 <ol style="list-style-type: decimal"><li>
 <p>Use the Data Preprocess tool’s graphical user interface (map app)
 to select your favorite catchments and time period that you would like
-to perform a NextGen run on.</p>
+to perform a NextGen run on. To be able to use TEEHR, you must select a
+region that contains USGS gages. You can show or hide USGS gages in the
+map app by toggling the “Show/Hide gages” button in the upper left.</p>
 <figure><img src="fig/fig1-4.png" alt="A map view displaying the Provo River network and basin boundaries in the area around Woodland, UT. The map includes the stream network shown in blue, basin boundaries in orange shaded regions, the downstream-most basin in a pink shaded reagion, and black dots representing USGS gage locations." class="figure mx-auto d-block"><div class="figcaption">Figure 1: Example view from the Data Preprocess
 tool. The highlighted region (light orange area; downstream-most basin
 in pink) represents the specific study basin, illustrating the river
@@ -457,32 +459,42 @@ stations (black dots).</div>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess map_app</span></code></pre>
 </div>
 </li>
-<li><p>Copy the given command and run it to preprocess data. If you
-include the <code>--run</code> tag, the Data Preprocessor will
-automatically execute a NextGen run.</p></li>
-<li>
-<p>If you included the <code>--run</code> tag, you will need to run
+</ol><p>To view the map app in your VNC viewer or your local web browser, use
+one of the IP addresses listed after the map app is started.</p>
+<ol start="2" style="list-style-type: decimal"><li><p>Copy the given command. Exit out of the Data Preprocess tool in
+the terminal using <code>Ctrl+C</code> and run the copied command to
+preprocess data. If you include the <code>--run</code> tag, the Data
+Preprocessor will automatically execute a NextGen run.</p></li>
+<li><p>If you included the <code>--run</code> tag, you will need to run
 the <code>runTeehr.sh</code> and <code>viewOnTethys.sh</code> scripts
-separately in order to use TEEHR and the Data Visualizer.</p>
-<div class="codewrapper sourceCode" id="cb7">
+separately in order to use TEEHR and the Data Visualizer.</p></li>
+</ol><div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">./runTeehr.sh</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">./viewOnTethys.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">chmod</span> +x runTeehr.sh viewOnTethys.sh</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">./runTeehr.sh</span></span></code></pre>
 </div>
-<p>If you did not include the <code>--run</code> tag, you can run
-<code>guide.sh</code> as described in Task 1.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">./viewOnTethys.sh</span></span></code></pre>
 </div>
-</li>
-<li><p>Experiment with different basins or options as much as you’d
-like! <!--
+<p>When you run <code>viewOnTethys.sh</code>, make sure to select a
+different port (we like 8081). Use your VNC viewer to access the
+visualization at the given link.</p>
+<p>If you did not include the <code>--run</code> tag, you can run
+<code>guide.sh</code> as described in Task 1.</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+</div>
+<ol start="4" style="list-style-type: decimal"><li>Experiment with different basins or options as much as you’d like!
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- --></p></li>
+ -->
+</li>
 </ol></div>
 </div>
 
@@ -544,9 +556,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/devcon25js.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/devcon25js.html",
-  "dateCreated": "2025-05-07",
-  "dateModified": "2025-05-09",
-  "datePublished": "2025-05-20"
+  "dateCreated": "2025-05-19",
+  "dateModified": "2025-05-23",
+  "datePublished": "2025-05-23"
 }
 
   </script><script>

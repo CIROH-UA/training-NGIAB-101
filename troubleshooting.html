@@ -18,13 +18,13 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-8">
       <div class="large-logo">
-        <img id="ciroh-logo" alt="Cooperative Institute for Research to Operations in Hydrology" src="assets/images/ciroh-logo.svg"><span class="badge text-bg-danger">
-          <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
+        <img id="ciroh-logo" alt="Cooperative Institute for Research to Operations in Hydrology" src="assets/images/ciroh-logo.svg"><span class="badge text-bg-warning">
+          <abbr title="This lesson is in the alpha phase, which means that it has been taught once and lesson authors are iterating on feedback.">
             <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
-              <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
-              Pre-Alpha
+              <i aria-hidden="true" class="icon" data-feather="alert-triangle" style="border-radius: 5px"></i>
+              Alpha
             </a>
-            <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+            <span class="visually-hidden">This lesson is in the alpha phase, which means that it has been taught once and lesson authors are iterating on feedback.</span>
           </abbr>
         </span>
 
@@ -324,7 +324,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>DevCon 2025 Troubleshooting</h1>
-        <p>Last updated on 2025-05-01 |
+        <p>Last updated on 2025-05-23 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/learners/troubleshooting.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -338,54 +338,60 @@
 <div class="section level1">
 <h1 id="ngiab-cloudinfra-devcon-2025-workshop-setup-guide">NGIAB-CloudInfra – DevCon 2025 Workshop Setup Guide<a class="anchor" aria-label="anchor" href="#ngiab-cloudinfra-devcon-2025-workshop-setup-guide"></a></h1>
 <p>Welcome to the NGIAB Workshop!<br>
-This guide will help you troubleshoot problems — <strong>no technical
-background required</strong>.</p>
-<blockquote>
-<p>NGIAB stands for <strong>NextGen In A Box</strong> – a simplified way
-to run the NextGen National Water Model on your local computer using
-Docker.</p>
-</blockquote>
-<p>Organized and supported by <strong>Arpita Patel</strong> and the
-NGIAB team.</p>
+This guide will help you troubleshoot problems.</p>
 <hr><div class="section level2">
 <h2 id="pre-setup-requirements">Pre-Setup Requirements<a class="anchor" aria-label="anchor" href="#pre-setup-requirements"></a></h2>
-<blockquote>
-<p><strong>Note:</strong> You will be provided with a cloud instance
-(Jetstream or 2i2c) that already includes all the required tools
-(Docker, WSL, libraries). You do <strong>not</strong> need to install
-anything on your personal computer.</p>
-</blockquote>
-<p>We will provide:</p>
-<ul><li><p>Pre-configured <strong>Jetstream</strong> and
-<strong>2i2c</strong> instances</p></li>
-<li><p>Docker and required dependencies already installed</p></li>
-</ul><p>You will only need to connect and log in. Instructions for that are
-below.</p>
+<p>You will be provided with a cloud instance (Jetstream) that already
+includes all the required tools (Docker and libraries). You will need
+the login credentials emailed to you before the workshop and a Virtual
+Network Computing (VNC) client installed.</p>
 <hr></div>
 <div class="section level2">
-<h2 id="wi-fi-access-university">Wi-Fi Access @ University<a class="anchor" aria-label="anchor" href="#wi-fi-access-university"></a></h2>
-<p><em>Instructions for connecting to university Wi-Fi will be added
-here.</em></p>
-<hr></div>
-<div class="section level2">
-<h2 id="login-instructions">Login Instructions<a class="anchor" aria-label="anchor" href="#login-instructions"></a></h2>
-<p><em>Login instructions for accessing Jetstream instances will be
-added here.</em></p>
+<h2 id="wi-fi-access">Wi-Fi Access<a class="anchor" aria-label="anchor" href="#wi-fi-access"></a></h2>
+<p>Instructions for connecting to UVM’s Guest Wi-Fi are found on the <a href="https://www.uvm.edu/it/catalog/service/guest-access-guestnet" class="external-link">UVM
+IT page</a>.</p>
 <hr></div>
 <div class="section level2">
 <h2 id="troubleshooting-checklist">Troubleshooting Checklist<a class="anchor" aria-label="anchor" href="#troubleshooting-checklist"></a></h2>
 <p>If you didn’t get the expected output, check these:</p>
 <div class="section level3">
-<h3 id="are-you-on-the-cloud-instance-or-local-machine">Are You on the Cloud Instance or Local Machine?<a class="anchor" aria-label="anchor" href="#are-you-on-the-cloud-instance-or-local-machine"></a></h3>
-<p>Sometimes people accidentally run commands on their local machine
-instead of the cloud instance. Here’s how to check:</p>
+<h3 id="issues-with-vnc-client-or-port-forwarding">Issues with VNC Client or Port Forwarding<a class="anchor" aria-label="anchor" href="#issues-with-vnc-client-or-port-forwarding"></a></h3>
+<p>If you are having issues with your VNC client, try using a different
+service, or port forward to your local web browser. Try both <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">RealVNC</a>
+and <a href="https://tigervnc.org/" class="external-link">TigerVNC</a>. Try entering
+<code>localhost:5906</code>, and if that doesn’t work, enter
+<code>5906</code>. Lastly, try port forwarding.</p>
+<p>If you continue to have problems, make sure that the port you are
+using in your <code>ssh</code> command is not being used on your local
+machine. You can use the <code>netstat</code> command on all platforms
+to check which ports are being used.</p>
+</div>
+<div class="section level3">
+<h3 id="no-browser-on-web-desktop">No Browser on Web Desktop<a class="anchor" aria-label="anchor" href="#no-browser-on-web-desktop"></a></h3>
+<p>If Firefox is not installed on the Jetstream image’s web desktop, run
+this command:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">whoami</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">sudo</span> apt install firefox</span></code></pre>
 </div>
-<p>✅ If you’re on the ** Jetstream cloud instance**, you’ll see
-this:</p>
+</div>
+<div class="section level3">
+<h3 id="invalid-data-preprocess-command">Invalid Data Preprocess Command<a class="anchor" aria-label="anchor" href="#invalid-data-preprocess-command"></a></h3>
+<p>Make sure that you are copying the command as one line, without any
+newline characters.</p>
+</div>
+<div class="section level3">
+<h3 id="are-you-on-the-cloud-instance-or-local-machine">Are You on the Cloud Instance or Local Machine?<a class="anchor" aria-label="anchor" href="#are-you-on-the-cloud-instance-or-local-machine"></a></h3>
+<p>Sometimes people accidentally run commands on their local machine
+instead of the cloud instance. Here’s how to check:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">whoami</span></span></code></pre>
+</div>
+<p>✅ If you’re on the <strong>Jetstream cloud instance</strong>, you’ll
+see this:</p>
 <pre><code><span><span class="va">exouser</span></span></code></pre>
 <p>❌ If it says something like <code>DESKTOP-ABC123</code>,
 <code>MacBook-Pro.local</code>, or anything else personal —
@@ -397,18 +403,18 @@ proceeding.</p>
 <div class="section level3">
 <h3 id="are-you-in-the-right-directory">Are You in the Right Directory?<a class="anchor" aria-label="anchor" href="#are-you-in-the-right-directory"></a></h3>
 <p>Before running any script, always check your current folder:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
 </div>
 <p>You <strong>should see something like</strong>:</p>
-<pre><code>/home/exouser/NGIAB-CloudInfra</code></pre>
+<pre><code>/home/exouser/NGIAB_demo/NGIAB-CloudInfra</code></pre>
 <p>If not, move into the folder:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="bu">cd</span> ~/NGIAB-CloudInfra</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="bu">cd</span> ~/NGIAB_demo/NGIAB-CloudInfra</span></code></pre>
 </div>
 <hr></div>
 </div>
@@ -479,9 +485,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/troubleshooting.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/troubleshooting.html",
-  "dateCreated": "2025-05-07",
-  "dateModified": "2025-05-01",
-  "datePublished": "2025-05-20"
+  "dateCreated": "2025-05-19",
+  "dateModified": "2025-05-23",
+  "datePublished": "2025-05-23"
 }
 
   </script><script>
