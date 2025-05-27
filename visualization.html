@@ -262,6 +262,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#data-visualizer">Data Visualizer</a></li>
+<li><a href="#using-the-data-visualizer-with-ngiab">Using the Data Visualizer with NGIAB</a></li>
 <li><a href="#your-turn">Your Turn</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -336,7 +337,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Visualization</h1>
-        <p>Last updated on 2025-05-01 |
+        <p>Last updated on 2025-05-27 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/visualization.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -381,8 +382,13 @@ can explore hydrological data in a spatiotemporal context <a href="https://githu
 addition to standard map-based displays, this component also
 <strong>supports the visualization of the TEEHR output</strong>,
 including tabular metrics and interactive time series plots.</p>
-<div class="section level3">
-<h3 id="using-the-data-visualizer-with-ngiab">Using the Data Visualizer with NGIAB<a class="anchor" aria-label="anchor" href="#using-the-data-visualizer-with-ngiab"></a></h3>
+<figure><img src="fig/fig6-1.png" alt="A screenshot of the NGIAB and DataStream Visualizer web interface. The map displays a the Provo River basin network near Woodland, UT. The gray shaded area represents the basin, dark gray lines represent catchment boundaries, black lines represent major streams, and blue circles with numbers in the middle represent the number of nexus points near that circle." class="figure mx-auto d-block"><div class="figcaption">Figure 1: A map showing the geospatial
+visualization using the Data Visualizer within the Tethys framework for
+an entire study area (Provo River near Woodland, UT).</div>
+</figure></section><section><h2 class="section-heading" id="using-the-data-visualizer-with-ngiab">Using the Data Visualizer with NGIAB<a class="anchor" aria-label="anchor" href="#using-the-data-visualizer-with-ngiab"></a></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="viewontethys-script">
+<code>ViewOnTethys</code> Script<a class="anchor" aria-label="anchor" href="#viewontethys-script"></a></h3>
 <p>Like TEEHR, the Data Visualizer can be activated upon execution of
 the main NGIAB guide script, <code>guide.sh</code>. A separate
 <code>viewOnTethys.sh</code> script is also available in the
@@ -393,20 +399,196 @@ outputs can be displayed within the Data Visualizer, this tool is
 primarily designed to provide a broad overview of model results. Users
 seeking TEEHR’s more advanced analysis features can still access them
 outside the Data Visualizer.</p>
-<p>Figures 1 and 2 demonstrate several ways the Data Visualizer can be
-used to visualize model outputs, including geopatial visualization for
-nexus points, catchment-based visualization, and TEEHR time series
-representation (hydrographs).</p>
-<figure><img src="fig/fig6-1.png" alt="A screenshot of the NextGen in a Box Visualizer web interface. The map displays a the Provo River basin network near Woodland, UT. The gray shaded area represents the basin, dark gray lines represent catchment boundaries, black lines represent major streams, and blue circles with numbers in the middle represent the number of nexus points near that circle." class="figure mx-auto d-block"><div class="figcaption">Figure 1: A map showing the geospatial
-visualization using the Data Visualizer within the Tethys framework for
-an entire study area (Provo River near Woodland, UT).</div>
-</figure><figure><img src="fig/fig1-5.png" alt='A screenshot of the NextGen in a Box Visualizer web interface. The left panel contains a "Time Series Menu" where the user can select a Nexus ID, variable (e.g., flow), and TEEHR data source. A map in the center displays a stream reach with a highlighted section representing the drainage basin and a blue point, indicating the selected nexus location. Below the map, a time series plot compares USGS (blue line) and Ngen (orange line) streamflow data from 2017 to 2023. On the lower left, a table labeled "Teehr Metrics" presents performance metrics (e.g., Kling-Gupta Efficiency, Nash-Sutcliffe Efficiency, and Relative Bias) for the selected model versus reference data.' class="figure mx-auto d-block"><div class="figcaption">Figure 2: A map showing the geospatial
+<p>One of the advantages of the <code>viewOnTethys.sh</code> script is
+that it allows the user to keep multiple outputs for the same
+hydrofabric. It prompts the user if they want to use the same output
+directory by renaming it and adding it to the collection of outputs or
+if they want to overwrite it.</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  <span class="ex">⚠</span> ~/ngiab_visualizer is not empty.</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="ex">→</span> Keep <span class="er">(</span><span class="ex">K</span><span class="kw">)</span> <span class="ex">or</span> Fresh start <span class="er">(</span><span class="ex">F</span><span class="kw">)</span><span class="ex">?</span> <span class="pp">[</span><span class="ss">K/F</span><span class="pp">]</span>: k</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="ex">ℹ</span> Reclaiming ownership of ~/ngiab_visualizer  <span class="er">(</span><span class="fu">sudo</span> may prompt<span class="kw">)</span><span class="ex">…</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="ex">⚠</span> Directory exists: ~/ngiab_visualizer/gage-10154200</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="ex">→</span> Overwrite <span class="er">(</span><span class="ex">O</span><span class="kw">)</span> <span class="ex">or</span> Duplicate <span class="er">(</span><span class="ex">D</span><span class="kw">)</span><span class="ex">?</span> <span class="pp">[</span><span class="ss">O/D</span><span class="pp">]</span>: o</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  <span class="ex">✓</span> Overwritten ➜ ~/ngiab_visualizer/gage-10154200</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="ex">Checking</span> for ~/ngiab_visualizer/ngiab_visualizer.json...</span></code></pre>
+</div>
+<p>You should be able to see multiple outputs through the UI:</p>
+<figure><img src="fig/fig6-2.png" alt="A screenshot of the NGIAB and DataStream Visualizer web interface. The map displays the ability of the visualizer to use multiple outputs" class="figure mx-auto d-block"><div class="figcaption">Figure 2: NGIAB Visualizer dropdown for multiple
+outputs</div>
+</figure></div>
+<div class="section level3">
+<h3 id="visualizer-directory-organization">Visualizer Directory Organization<a class="anchor" aria-label="anchor" href="#visualizer-directory-organization"></a></h3>
+<p>The Visualizer organizes data using a directory named
+<code>ngiab_visualizer</code>. This directory stores all the outputs
+generated by the user and includes a file called
+<code>ngiab_visualizer.json</code>. This file contains metadata that
+allows the Visualizer to locate and manage the outputs from different
+runs executed via the <code>./guide.sh</code> script. The metadata,
+specific to the Visualizer, is structured as a simple JSON file. It
+lists the outputs with details such as a label, the data path, and a
+unique identifier. The <code>./ViewOnTethys.sh</code> script handles the
+creation and management of this metadata.</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">JSON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode json" tabindex="0"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="dt">"model_runs"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-10154200"</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_preprocess_output/gage-10154200"</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:13:51:51"</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"61026834-4235-4d39-8a8e-f076a8854148"</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-20454200"</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_visualizer/gage-20454200"</span><span class="fu">,</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:17:00:34"</span><span class="fu">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"68f6cf78-188c-4e86-b797-6c40ea36e0e6"</span><span class="fu">,</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-35054600"</span><span class="fu">,</span></span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_visualizer/gage-35054600"</span><span class="fu">,</span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:17:01:10"</span><span class="fu">,</span></span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"6d0cb736-2dac-4ea0-a3a3-ad26cd45ef36"</span><span class="fu">,</span></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a><span class="fu">}</span></span></code></pre>
+</div>
+<p>The path <code>/var/lib/tethys_persist/</code> belongs to the
+<code>$HOME</code> env variable of the container running the visualizer.
+When the user runs the <code>./ViewOnTethys.sh</code>, it mounts the
+directory from the host at <code>~/ngiab_visualizer</code> to
+<code>/var/lib/tethys_persist/ngiab_visualizer</code>.</p>
+<p>However, if the user wants more control, the user can copy their data
+directory to <code>~/ngiab_visualizer</code> on the host(not the
+container) while the container is <strong>stop</strong>,</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">chown</span> <span class="at">-R</span> <span class="va">$USER</span>: ~/ngiab_visualizer</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-R</span> your/data/path ~/ngiab_visualizer</span></code></pre>
+</div>
+<p>finally the user can open the
+<code>~/ngiab_visualizer/ngiab_visualizer.json</code> on the host(not
+the container), and add the specific run to the visualizer:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">JSON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode json" tabindex="0"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="er">....</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-35054600"</span><span class="fu">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_visualizer&lt;MY_SPECIFIC_OUTPUT_DIRECTORY_NAME&gt;"</span><span class="fu">,</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:17:01:10"</span><span class="fu">,</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"6d0cb736-2dac-4ea0-a3a3-ad26cd45ef36"</span><span class="fu">,</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>    <span class="fu">}</span></span></code></pre>
+</div>
+<p>The user can then run <code>./ViewOnTethys.sh</code> script to spin
+again the container or if the user wants more control and just define
+the env variables and running the container</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="bu">export</span> <span class="va">CONFIG_FILE</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/.host_data_path.conf"</span>          <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>       <span class="va">TETHYS_CONTAINER_NAME</span><span class="op">=</span><span class="st">"tethys-ngen-portal"</span>        <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>       <span class="va">TETHYS_REPO</span><span class="op">=</span><span class="st">"awiciroh/tethys-ngiab"</span>               <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>       <span class="va">TETHYS_TAG</span><span class="op">=</span><span class="st">"latest"</span>                               <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>       <span class="va">NGINX_PORT</span><span class="op">=</span>80                                     <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>       <span class="va">MODELS_RUNS_DIRECTORY</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/ngiab_visualizer"</span>    <span class="dt">\</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>       <span class="va">DATASTREAM_DIRECTORY</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/.datastream_ngiab"</span>    <span class="dt">\</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>       <span class="va">VISUALIZER_CONF</span><span class="op">=</span><span class="st">"</span><span class="va">$MODELS_RUNS_DIRECTORY</span><span class="st">/ngiab_visualizer.json"</span> <span class="dt">\</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>       <span class="va">TETHYS_PERSIST_PATH</span><span class="op">=</span><span class="st">"/var/lib/tethys_persist"</span>     <span class="dt">\</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>       <span class="va">SKIP_DB_SETUP</span><span class="op">=</span>false                               <span class="dt">\</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>       <span class="va">CSRF_TRUSTED_ORIGINS</span><span class="op">=</span><span class="st">"[</span><span class="dt">\"</span><span class="st">http://localhost:</span><span class="va">${NGINX_PORT}</span><span class="dt">\"</span><span class="st">,</span><span class="dt">\"</span><span class="st">http://127.0.0.1:</span><span class="va">${NGINX_PORT}</span><span class="dt">\"</span><span class="st">]"</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$MODELS_RUNS_DIRECTORY</span><span class="st">:</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/ngiab_visualizer"</span> <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$DATASTREAM_DIRECTORY</span><span class="st">:</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/.datastream_ngiab"</span> <span class="dt">\</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="at">-p</span> <span class="st">"</span><span class="va">$NGINX_PORT</span><span class="st">:</span><span class="va">$NGINX_PORT</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="at">--name</span> <span class="st">"</span><span class="va">$TETHYS_CONTAINER_NAME</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="at">-e</span> MEDIA_ROOT=<span class="st">"</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/media"</span> <span class="dt">\</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="at">-e</span> MEDIA_URL=<span class="st">"/media/"</span> <span class="dt">\</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  <span class="at">-e</span> SKIP_DB_SETUP=<span class="st">"</span><span class="va">$SKIP_DB_SETUP</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  <span class="at">-e</span> DATASTREAM_CONF=<span class="st">"</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/.datastream_ngiab"</span> <span class="dt">\</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>  <span class="at">-e</span> VISUALIZER_CONF=<span class="st">"</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/ngiab_visualizer/ngiab_visualizer.json"</span> <span class="dt">\</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>  <span class="at">-e</span> NGINX_PORT=<span class="st">"</span><span class="va">$NGINX_PORT</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  <span class="at">-e</span> CSRF_TRUSTED_ORIGINS=<span class="st">"</span><span class="va">$CSRF_TRUSTED_ORIGINS</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>  <span class="st">"</span><span class="va">${TETHYS_REPO}</span><span class="st">:</span><span class="va">${TETHYS_TAG}</span><span class="st">"</span></span></code></pre>
+</div>
+<p>You should see something like this using <code>docker ps</code></p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">docker</span> ps</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="ex">CONTAINER</span> ID   IMAGE                          COMMAND                  CREATED          STATUS                             PORTS                                 NAMES</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="ex">b1818a03de9b</span>   awiciroh/tethys-ngiab:latest   <span class="st">"/usr/local/bin/_ent…"</span>   25 seconds ago   Up 24 seconds <span class="er">(</span><span class="ex">health:</span> starting<span class="kw">)</span>   <span class="ex">0.0.0.0:80-</span><span class="op">&gt;</span>80/tcp, <span class="pp">[</span><span class="ss">::</span><span class="pp">]</span>:80-<span class="op">&gt;</span>80/tcp   tethys-ngen-portal</span></code></pre>
+</div>
+<p>Once it’s healthy, you can access the visualizer at:</p>
+<p><code>http://localhost:${NGINX_PORT}</code></p>
+<p>The <code>ViewOnTethys.sh</code> script automates updating
+<code>ngiab_visualizer.json</code> and copying your model output into
+<code>~/ngiab_visualizer</code>.</p>
+</div>
+<div class="section level3 callout-keypoints">
+<h3 id="key-points">Key points<a class="anchor" aria-label="anchor" href="#key-points"></a></h3>
+<ul><li>
+<code>ViewOnTethys.sh</code> automates adding model outputs to
+<code>ngiab_visualizer.json</code> and syncing data to
+<code>~/ngiab_visualizer</code>.</li>
+<li>To customize your setup, set environment variables and run the
+<code>awiciroh/tethys-ngiab</code> Docker image manually.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="ngiab-visualizer-ui">NGIAB Visualizer UI<a class="anchor" aria-label="anchor" href="#ngiab-visualizer-ui"></a></h3>
+<p>The following figures demonstrate several ways the Data Visualizer
+can be used to visualize model outputs, including geospatial
+visualization for nexus points, catchment-based visualization, and TEEHR
+time series representation (hydrographs).</p>
+<p><strong>Nexus</strong> points can be visualized when the user selects
+the output that wants to visualize. Time series can be retrieved by
+clicking on any of the <strong>Nexus</strong> points, or by changing the
+select dropdown assigned to the Nexus.</p>
+<figure><img src="fig/fig6-3.png" alt="A screenshot of the NGIAB and DataStream Visualizer web interface. The map displays the ability of the visualizer to retrieve time series from Nexus points" class="figure mx-auto d-block"><div class="figcaption">Figure 3: NGIAB Visualizer time series
+visualization from Nexus points</div>
+</figure><p><strong>Troute</strong> variables time series can also be displayed
+using the <strong>Troute</strong> select dropdown.</p>
+<figure><img src="fig/fig6-4.png" alt="A screenshot of the NGIAB and DataStream Visualizer web interface. The map displays the ability of the visualizer to retrieve time series from Troute variables" class="figure mx-auto d-block"><div class="figcaption">Figure 4: NGIAB Visualizer time series
+visualization from Troute variables</div>
+</figure><p><strong>Catchments</strong> time series can be retrieved by clicking
+on any of the <strong>Catchments</strong> polygons, or by changing the
+select dropdown assigned to the Catchments.</p>
+<figure><img src="fig/fig6-5.png" alt="A screenshot of the NGIAB and DataStream Visualizer web interface. The map displays the ability of the visualizer to retrieve time series from Catchments variables" class="figure mx-auto d-block"><div class="figcaption">Figure 5: NGIAB Visualizer time series
+visualization for Catchments</div>
+</figure><p><strong>TEEHR</strong> evaluation can be visualized when the user
+hits a point that contains <strong>TEEHR</strong> evaluation output, the
+user can also look at a <strong>Nexus</strong> point on the dropdown
+assigned and enter the id of the <strong>Nexus</strong> points that
+contains <strong>TEEHR</strong> evaluation output.</p>
+<figure><img src="fig/fig6-6.png" alt='A screenshot of the NGIAB and DataStream Visualizer web interface. The left panel contains a "Time Series Menu" where the user can select a Nexus ID, variable (e.g., flow), and TEEHR data source. A map in the center displays a stream reach with a highlighted section representing the drainage basin and a blue point, indicating the selected nexus location. Below the map, a time series plot compares USGS (blue line) and Ngen (orange line) streamflow data from 2017 to 2023.' class="figure mx-auto d-block"><div class="figcaption">Figure 6: A map showing the geospatial
 visualization using the Data Visualizer within the Tethys framework for
 a selected outlet nexus point as well as displaying a time series plot
 between observed (labeled “USGS”; blue line) and simulated (labeled
-“ngen”; orange line) with the performance metrics (KGE, NSE, and
-relative bias). The Visualizer can also show the performance of the NWM
-3.0 compared to the observed time series.</div>
+“ngen”; orange line)</div>
+</figure><p>Similarly, a <strong>TEEHR</strong> evaluation metric can be
+visualized by going to the metrics tab</p>
+<figure><img src="fig/fig6-7.png" alt='A screenshot of the NGIAB and DataStream Visualizer web interface. The map displays the ability of the visualizer to retrieve the TEEHR metrics on a table."Teehr Metrics" presents performance metrics (e.g., Kling-Gupta Efficiency, Nash-Sutcliffe Efficiency, and Relative Bias) for the selected model versus reference data.' class="figure mx-auto d-block"><div class="figcaption">Figure 7: NGIAB Visualizer performance metrics
+(KGE, NSE, and relative bias). The Visualizer can also show the
+performance of the NWM 3.0 compared to the observed time series.</div>
 </figure><div id="using-data-visualizer-with-ssh" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -424,10 +606,64 @@ episode</a> in this training module.</p>
 </div>
 </div>
 </div>
+<div class="section level3">
+<h3 id="ngiab-datastream-ui">NGIAB DataStream UI<a class="anchor" aria-label="anchor" href="#ngiab-datastream-ui"></a></h3>
+<p>The Visualizer also allows the user to download data as well from an
+<a href="https://datastream.ciroh.org/index.html" class="external-link">S3 bucket</a>
+containing the output of the <a href="https://github.com/CIROH-UA/ngen-datastream" class="external-link">NextGen
+DataStream</a>. The <code>ViewOnTethys.sh</code> script will create a
+<code>~/.datastream_ngiab</code> directory in which it saves all the
+different outputs downloaded by the visualizer. It will also create a
+<code>~/.datastream_ngiab/datastream_ngiab.json</code> in which metadata
+will be saved to locate the downloaded output directories. It serves as
+a cache, so it allows the user to look first at the
+<code>~/.datastream_ngiab</code> before trying to download the data</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">ℹ</span> Reclaiming ownership of /home/aquagio/.datastream_ngiab  <span class="er">(</span><span class="fu">sudo</span> may prompt<span class="kw">)</span><span class="ex">…</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="ex">ℹ</span> No existing Datastream cache found – a fresh download will be used.</span></code></pre>
+</div>
+<p>The <code>.datastream_ngiab.json</code> appends the different
+downloads with metadata that allows the user to know the file being
+downloaded. The <code>prefix</code> belongs to the path on the s3
+bucket. The <code>label</code> is created with the following format:
+<code>ngen.&lt;date&gt;_&lt;forecast_type&gt;_&lt;cycle&gt;_&lt;VPU&gt;</code></p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">JSON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode json" tabindex="0"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>    <span class="dt">"datastream"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>            <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"ngen.20250522_medium_range_06_VPU_02"</span><span class="fu">,</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>            <span class="dt">"bucket"</span><span class="fu">:</span> <span class="st">"ciroh-community-ngen-datastream"</span><span class="fu">,</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>            <span class="dt">"prefix"</span><span class="fu">:</span> <span class="st">"v2.2/ngen.20250522/medium_range/06/VPU_02/ngen-run.tar.gz"</span><span class="fu">,</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>            <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/.datastream_ngiab/ngen.20250522_medium_range_06_VPU_02"</span><span class="fu">,</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>            <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2021-01-01:00:00:00"</span><span class="fu">,</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>            <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"15145d327f19426b890e4465160f963a"</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="fu">}</span></span></code></pre>
+</div>
+<p><strong>Note</strong> assuming only the first ensemble. If we are
+specific it will look like this:
+<code>ngen.&lt;date&gt;_&lt;forecast_type&gt;_&lt;cycle&gt;_&lt;ensemble&gt;_&lt;VPU&gt;</code></p>
+<p>This functionality allows the user to be able to quicklu search the
+data they want from the <a href="https://datastream.ciroh.org/index.html" class="external-link">S3 bucket</a> containing
+the output of the <a href="https://github.com/CIROH-UA/ngen-datastream" class="external-link">NextGen
+DataStream</a>. They can explore and download as needed.</p>
+<figure><img src="fig/fig6-8.png" alt="A screenshot of the NGIAB and DataStream Visualizer web interface displaying the hydrofabric for DataStream output" class="figure mx-auto d-block"><div class="figcaption">Figure 8: NGIAB Visualizer Visualization of
+DataStream Data</div>
+</figure></div>
 </section><section><h2 class="section-heading" id="your-turn">Your Turn<a class="anchor" aria-label="anchor" href="#your-turn"></a></h2>
-<hr class="half-width"><p>Go ahead and run the Data Visualizer in the guide script, open it in
-your browser, and explore the visualization of your NextGen run in
-NGIAB.</p>
+<hr class="half-width"><p>Use the <code>ViewOnTethys.sh</code> script to launch the Data
+Visualizer in Docker, then open
+<code>http://localhost:${NGINX_PORT}</code> in your browser. Explore at
+least three different visualization modes—such as Nexus time series,
+catchment hydrographs, and TEEHR performance metrics. Next, edit
+<code>~/ngiab_visualizer/ngiab_visualizer.json</code> to add a new model
+run (define its label and path), restart the visualizer, and confirm it
+appears in the dropdown menu.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -435,14 +671,15 @@ NGIAB.</p>
 <div class="callout-inner">
 <h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
-<ul><li>The Data Visualizer, built on the Tethys Platform, provides
-interactive geospatial and time series visualization for NextGen model
+<ul><li>The Data Visualizer (built on the Tethys Platform) provides
+interactive geospatial maps and time series plots for NextGen model
 outputs in NGIAB.</li>
-<li>It complements NGIAB by offering a web-based environment to explore
-catchments, nexus points, temporal patterns, and TEEHR outputs in your
-run results.</li>
-<li>The Data Visualizer runs automatically with the
-<code>guide.sh</code> script.</li>
+<li>It integrates seamlessly with NGIAB via <code>guide.sh</code> or
+<code>ViewOnTethys.sh</code>.</li>
+<li>Model outputs reside under <code>~/ngiab_visualizer</code>, with
+metadata stored in <code>ngiab_visualizer.json</code>.</li>
+<li>You can visualize Nexus points, catchment summaries, Troute
+variables, and TEEHR hydrographs and performance metrics.</li>
 </ul></div>
 </div>
 </div>
@@ -508,7 +745,7 @@ any links that you are not going to use.
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/visualization.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/visualization.html",
   "dateCreated": "2025-05-19",
-  "dateModified": "2025-05-01",
+  "dateModified": "2025-05-27",
   "datePublished": "2025-05-27"
 }
 
