@@ -20,6 +20,9 @@ authors:
   - given-names: Nia 
     family-names: Minor
     affiliation: University of Alabama
+  - given-names: Gio
+    family-names: Romero
+    affiliation: Aquaveo
 repository-code: 'https://github.com/CIROH-UA/training-NGIAB-101'
 url: 'https://docs.ciroh.org/training-NGIAB-101/'
 repository: 'https://github.com/CIROH-UA/NGIAB-CloudInfra'
