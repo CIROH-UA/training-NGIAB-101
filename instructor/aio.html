@@ -317,7 +317,19 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="advanced-topics.html">7. Advanced Topics</a>
+        <a href="calibration.html">7. Calibration</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="advanced-topics.html">8. Advanced Topics</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -724,7 +736,7 @@ episode</a> in this training module.</p>
   Windows (WSL)
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Note: Users who already have Docker installed will still need to
 install a separate WSL distro and set it as their default, if they have
@@ -797,7 +809,7 @@ distribution with the following commands:</p>
   macOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Install Docker Desktop from <a href="https://docs.docker.com/desktop/setup/install/mac-install/" class="external-link">Docker’s
@@ -837,7 +849,7 @@ working.</p>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Install Docker by following the <a href="https://docs.docker.com/desktop/setup/install/linux/" class="external-link">official
@@ -894,7 +906,7 @@ installation steps.</p>
   Troubleshooting
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>If <code>docker ps -a</code> fails, ensure Docker Desktop is running,
 or Docker service is active on Linux:</p>
@@ -989,7 +1001,7 @@ network)</p>
   Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You should see a folder like:</p>
 <pre><code><span><span class="va">AWI_16_10154200_009</span></span></code></pre>
@@ -2011,6 +2023,154 @@ outputs in NGIAB.</li>
 metadata stored in <code>ngiab_visualizer.json</code>.</li>
 <li>You can visualize Nexus points, catchment summaries, Troute
 variables, and TEEHR hydrographs and performance metrics.</li>
+</ul>
+</div>
+</div>
+</div>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</section></section><section id="aio-calibration"><p>Content from <a href="calibration.html">Calibration</a></p>
+<hr>
+<p>Last updated on 2025-06-10 |
+
+        <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/calibration.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 25 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How do I calibrate parameters for a NextGen run?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Create calibration configurations for a NextGen run</li>
+<li>Run the <code>ngiab-cal</code> package</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="parameter-calibration-using-ngiab-cal">Parameter Calibration using <code>ngiab-cal</code>
+<a class="anchor" aria-label="anchor" href="#parameter-calibration-using-ngiab-cal"></a>
+</h2>
+<hr class="half-width">
+<p><code>ngiab-cal</code> is a Python package that creates calibration
+configurations and copies calibrated parameters to a NextGen model
+configuration. It works with the NGIAB folder structure to ensure
+compatibility with the other suite of NGIAB tools.</p>
+<p>The modeled time period is split into three periods: warmup,
+calibration, and validation. After the warmup period, the model
+parameters are adjusted to match observations in the calibration period,
+and the validation period is used to test the calibrated parameters.</p>
+</section><section><h2 class="section-heading" id="using-ngiab-cal">Using <code>ngiab-cal</code>
+<a class="anchor" aria-label="anchor" href="#using-ngiab-cal"></a>
+</h2>
+<hr class="half-width">
+<p>To use <code>ngiab-cal</code> without installation:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Run directly without installation</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">uvx</span> ngiab-cal <span class="at">--help</span></span></code></pre>
+</div>
+<p>To install <code>ngiab-cal</code> as a package:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Or install as a tool</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">uv</span> tool install ngiab-cal</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="ex">ngiab-cal</span> <span class="at">--help</span></span></code></pre>
+</div>
+<p>A configuration file at <code>calibration/ngen_cal_conf.yaml</code>
+controls the calibration process. Users can edit the configuration file
+to meet their needs and preferences, such as number of iterations,
+acceptable parameter ranges, and time periods. The layout of the
+configuration file is as follows:</p>
+<pre><code>general:
+  strategy:
+    type: estimation
+    algorithm: dds         # Uses Dynamically Dimensioned Search algorithm
+  name: calib              # Don't modify this
+  log: true               # Enable logging
+  workdir: /ngen/ngen/data/calibration  # Don't modify this working directory in the Docker container
+  yaml_file: /ngen/ngen/data/calibration/ngen_cal_conf.yaml # Don't modify this either
+  iterations: 100         # Number of calibration iterations (customizable with -i flag)
+  restart: 0              # Start from beginning (0) or resume from iteration
+# Model configurations
+CFE:
+  - name: b               # CFE parameter name
+    min: 2.0              # Minimum allowed value
+    max: 15.0             # Maximum allowed value
+    init: 4.05            # Initial value
+  - name: satpsi
+    min: 0.03
+    max: 0.955
+    init: 0.355
+  # Additional parameters...
+eval_params:
+  objective: kge           # Kling-Gupta Efficiency as objective function
+  evaluation_start: "..."  # Start time for calibration period
+  evaluation_stop: "..."   # End time for calibration period
+  valid_start_time: "..."  # Start time including warmup
+  valid_end_time: "..."    # End time of simulation
+  # Additional time parameters...
+  basinID: 01646500        # USGS gage ID
+  site_name: "USGS 01646500: "  # Label for plots</code></pre>
+<p>Calibrating and saving parameters requires the three following
+commands, where <code>/path/to/ngiab/data/folder</code> is replaced with
+the appropriate filepath, and <code>USGS_GAGE_ID</code> is replaced with
+an appropriate USGS gage within your study area.</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Create calibration configuration</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">ngiab-cal</span> /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># Create and run calibration (200 iterations)</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="ex">ngiab-cal</span> /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID <span class="at">--run</span> <span class="at">-i</span> 200</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co"># Force recreation of calibration configuration</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="ex">ngiab-cal</span> /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID <span class="at">-f</span></span></code></pre>
+</div>
+<p>More details about usage of <code>ngiab-cal</code> can be found on <a href="https://github.com/CIROH-UA/ngiab-cal" class="external-link">its GitHub page</a>.</p>
+</section><section><h2 class="section-heading" id="your-turn">Your Turn<a class="anchor" aria-label="anchor" href="#your-turn"></a>
+</h2>
+<hr class="half-width">
+<p>Use the <code>ngiab-cal</code> package to calibrate parameters for
+the input data that you used for your latest run.</p>
+<p>Extra Credit: execute a NextGen run again, and compare the
+performance between calibrated parameters and uncalibrated
+parameters.</p>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Key Points</h3>
+<div class="callout-content">
+<ul>
+<li>The <code>ngiab-cal</code> package is used to calibrate parameters
+for a NextGen model run.</li>
+<li>
+<code>ngiab-cal</code> is a command-line tool controlled via a YAML
+configuration file that determines parameter ranges, time periods, and
+evaluation metrics.</li>
 </ul>
 </div>
 </div>
