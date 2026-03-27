@@ -1,12 +1,9 @@
-name: Deploy static content to composite target
-run-name: Deploy ${{ github.ref_name }} to composite target
+name: Deploy branch gh-pages to composite target
+run-name: Deploy branch gh-pages to composite target
 
 on:
-  # Runs on pushes targeting the GitHub pages branch
-  push:
-    branches: ["gh-pages"]
-
-  # Allows you to run this workflow manually from the Actions tab
+  repository_dispatch:
+    types: [deployment-pushed]
   workflow_dispatch:
 
 env:
