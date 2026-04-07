@@ -297,6 +297,9 @@ This will walk you through the NGIAB setup and launch your first run.
 ## Troubleshooting
 
 -   Ensure Docker is running before executing `guide.sh`.
+    ```bash
+    docker run hello-world
+    ```
 
 -   For permission errors on Linux, run Docker commands with `sudo` or add your user to the Docker group:
 
