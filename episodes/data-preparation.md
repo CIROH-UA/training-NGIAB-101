@@ -4,7 +4,7 @@ teaching: 5
 exercises: 45
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions 
+:::::::::::::::::::::::::::::::::::::: questions
 
 - How should I prepare my run directory?
 - What is the Data Preprocess tool?
@@ -15,7 +15,7 @@ exercises: 45
 
 - Identify the required data structure of a NextGen run in NGIAB
 - Explain how the Data Preprocess tool interacts with NGIAB
-- Prepare data for an NextGen run in NGIAB
+- Prepare data for a NextGen run in NGIAB
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -29,7 +29,7 @@ The Data Preprocess tool (like all of our software) is constantly being updated 
 
 #### Example 1
 
-This command allows you to run the Data Preprocess CLI tool without installing it. It produces forcings and a NextGen realization file for the catchments upstream of gage-10154200 for the time period 2017-09-01 to 2018-09-01. Forcing data is sourced from the zarr files in the [Analysis of Record for Calibration (AORC) dataset](https://registry.opendata.aws/noaa-nws-aorc/), which allows for a **faster processing time**. 
+This command allows you to run the Data Preprocess CLI tool without installing it. It produces forcings and a NextGen realization file for the catchments upstream of gage-10154200 for the time period 2017-09-01 to 2018-09-01. Forcing data is sourced from the zarr files in the [Analysis of Record for Calibration (AORC) dataset](https://registry.opendata.aws/noaa-nws-aorc/), which allows for a **faster processing time**.
 
 Astral UV is required to run the Data Preprocess tool without installing it.
 
@@ -43,7 +43,7 @@ uvx --from ngiab_data_preprocess cli -i gage-10154200 -sfr --start 2017-09-01 --
 
 This command produces forcings and a NextGen realization file for the catchments upstream of gage-10155000 for the time period 2022-08-13 to 2022-08-23 after installing the Data Preprocess tool. The forcing data source defaults to the NetCDF files in the [NWM 3.0 retrospective](https://aws.amazon.com/marketplace/pp/prodview-g6lcchc7brshw). Using this command requires you to have Astral UV (a package installer and environment manager) installed. Instructions for installing Astral UV are found in the [Astral UV documentation](https://docs.astral.sh/uv/#highlights).
 
-To install the Data Preprocess tool, follow the latest instructions on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess). 
+To install the Data Preprocess tool, follow the latest instructions on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess).
 
 ```bash
 uv run cli -i gage-10155000 -sfr --start 2022-08-13 --end 2022-08-23
@@ -59,7 +59,7 @@ This command allows you to run the Data Preprocess CLI tool from a regular `pip 
 python -m ngiab_data_cli -i cat-7080 -f --start 2022-01-01 --end 2022-02-28
 ```
 
-`python -m ngiab_data_cli` indicates that the Data Preprocess CLI tool will execute. 
+`python -m ngiab_data_cli` indicates that the Data Preprocess CLI tool will execute.
 
 ![Figure 1: Map showing an example drainage basin. View from the USGS National Map.](fig/fig3-1.png){alt='A screenshot of the USGS National Map centered on the Provo River network in Utah, showing streamflow and watershed data. A blue map marker identifies a Monitoring Location. A red dot marks an Active Monitoring Location farther downstream. The Upstream Basin is shaded in grey, while Upstream Flowlines and Downstream Flowlines are highlighted in dark and light blue, respectively. A scale bar in the bottom right shows distances of 5 kilometers and 3 miles. A map legend in the lower right corner explains the color codes for flowlines and monitoring locations.'}
 
@@ -94,7 +94,7 @@ ngen-run/
 │
 ├── restart/
 ```
- 
+
 ### Configuration directory `ngen-run/config/`
 This folder contains the NextGen realization file, which serves as the primary model configuration for the ngen framework. This file specifies which models to run (such as NoahOWP/CFE, LSTM, etc), run parameters like date and time, and hydrofabric specifications (like location, gage, catchment).
 
@@ -120,13 +120,13 @@ ngen-run/
 |   |   ├──NOAH-OWP-M/
 ```
 
-NextGen requires a single geopackage file. This file is the [hydrofabric (Johnson, 2022)](https://mikejohnson51.github.io/hyAggregate/) (spatial data). An example geopackage can be found on [Lynker-Spatial's website](https://www.lynker-spatial.com/data?path=hydrofabric%2Fv2.2%2F). Tools to subset a geopackage into a smaller domain can be found at [Lynker's hfsubset](https://github.com/LynkerIntel/hfsubset). 
+NextGen requires a single geopackage file. This file is the [hydrofabric (Johnson, 2022)](https://mikejohnson51.github.io/hyAggregate/) (spatial data). An example geopackage can be found on [Lynker Spatial's website](https://www.lynker-spatial.com/data?path=hydrofabric%2Fv2.2%2F) (note: creating an account is required to view Lynker Spatial data). Tools to subset a geopackage into a smaller domain can be found at [Lynker's hfsubset](https://github.com/LynkerIntel/hfsubset).
 
 ## Your Turn
 
 Using the Data Preprocess tool, you should be able to create a run directory for your desired catchment that can be used with NGIAB. Try out both the GUI and the CLI, and experiment with different arguments and selection tools!
 
-::::::::::::::::::::::::::::::::::::: keypoints 
+::::::::::::::::::::::::::::::::::::: keypoints
 
 - `ngen-run/` is the standard NextGen run directory, containing the realization files that define models, parameters, and run settings; forcing data; outputs; as well as the spatial hydrofabric.
 - The Data Preprocess tool simplifies preparing data for NextGen by offering a GUI and CLI for selecting catchments and date ranges, subsetting hydrofabric data, generating forcing files, and creating realization files.
