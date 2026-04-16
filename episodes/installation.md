@@ -4,9 +4,9 @@ teaching: 10
 exercises: 2
 ---
 
-This episode can be a standalone tutorial for those who want a quick introduction to NGIAB. This tutorial follows the case study from our [CloudInfra repository](https://github.com/CIROH-UA/NGIAB-CloudInfra). Users who wish to learn more about NGIAB can explore our other episodes in this module. 
+This episode can be a standalone tutorial for those who want a quick introduction to NGIAB. This tutorial follows the case study from our [CloudInfra repository](https://github.com/CIROH-UA/NGIAB-CloudInfra). Users who wish to learn more about NGIAB can explore our other episodes in this module.
 
-:::::::::::::::::::::::::::::::::::::: questions 
+:::::::::::::::::::::::::::::::::::::: questions
 
 - How do I install and set up NGIAB?
 - What are the prerequisites for running NGIAB?
@@ -23,7 +23,7 @@ This episode can be a standalone tutorial for those who want a quick introductio
 
 ## Introduction
 
-This lesson guides you through installing and setting up NGIAB, a containerized solution designed to simplify running the NextGen modeling framework locally. NGIAB leverages Docker containers to ensure consistent and reproducible runs.
+This lesson guides you through installing and setting up NGIAB, a containerized solution designed to simplify running the NextGen modeling framework locally. It will also walk you through running pre-configured input data packages. NGIAB leverages Docker containers to ensure consistent and reproducible runs.
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -38,15 +38,15 @@ Instead of following these instructions, follow the guidance in the HPC sections
 
 Before installing NGIAB, ensure you have:
 
-- **Operating System:** Windows (with WSL), macOS, or Linux  
-- **Software:** Docker, Git  
+- **Operating System:** Windows (with WSL), macOS, or Linux
+- **Software:** Docker, Git
 - **Recommended Minimum RAM:** 8 GB
 
 ::::::::::::::::::::::::::::::::::::: callout
 
 ## Connecting to a remote machine through SSH?
 
-To use the Data Visualizer through an Secure Shell (SSH) connection, you will have to set up port forwarding when connecting to the remote machine. Port forwarding will allow you to access a remotely hosted browser session on your local machine. See the instructions under "Using NGIAB through an SSH connection" in the [Advanced Topics episode](/training-NGIAB-101/advanced-topics.html) in this training module. 
+To use the Data Visualizer through a Secure Shell (SSH) connection, you will have to set up port forwarding when connecting to the remote machine. Port forwarding will allow you to access a remotely hosted browser session on your local machine. See the instructions under "Using NGIAB through an SSH connection" in the [Advanced Topics episode](/training-NGIAB-101/advanced-topics.html) in this training module.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -63,14 +63,14 @@ Note: Users who already have Docker installed will still need to install a separ
 	```
 
 2.  Install Docker Desktop from [Docker's official website](https://docs.docker.com/desktop/setup/install/windows-install/).
-    
+
 3.  Launch Docker Desktop and open WSL terminal as administrator.
-    
+
 4.  Verify Docker installation:
-    
+
     ```bash
     docker run hello-world
-    
+
     ```
     This should generate a message that shows that your installation is working.
 
@@ -105,14 +105,14 @@ wsl --setdefault Ubuntu
 ### macOS
 
 1.  Install Docker Desktop from [Docker's official Mac installer](https://docs.docker.com/desktop/setup/install/mac-install/).
-    
+
 2.  Launch Docker Desktop.
-    
+
 3.  Verify Docker installation:
-    
+
     ```bash
     docker run hello-world
-    
+
     ```
     This should generate a message that shows that your installation is working.
 
@@ -132,13 +132,13 @@ wsl --setdefault Ubuntu
 ### Linux
 
 1.  Install Docker by following the [official Docker guide](https://docs.docker.com/desktop/setup/install/linux/).
-    
+
 2.  Start Docker service and verify:
-    
+
     ```bash
     sudo systemctl start docker
     docker run hello-world
-    
+
     ```
     This should generate a message that shows that your installation is working.
 
@@ -166,9 +166,9 @@ docker ps -a
 
 Confirm it executes without errors. If errors occur, revisit Docker installation steps.
 
-:::::::::::::::::::::::: solution 
+:::::::::::::::::::::::: solution
 
-## Troubleshooting 
+## Troubleshooting
 
 If `docker ps -a` fails, ensure Docker Desktop is running, or Docker service is active on Linux:
 
@@ -220,18 +220,6 @@ tar -xf AWI_16_2863657_007.tar.gz
 
 ```
 
-#### Option 3: AWI-008
-
-Models: SLOTH, LSTM (long short-term memory, recurrent neural network)
-
-Compressed file size: 1.50 MB | Extracted file size: 5.46 MB
-
-```bash
-wget https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-008/AWI_16_2863806_008.tar.gz
-tar -xf AWI_16_2863806_008.tar.gz
-
-```
-
 ::::::::::::::::::::::::::::::::::::: challenge
 ## Check: Did You Download the Dataset?
 Run this command:
@@ -239,9 +227,9 @@ Run this command:
 ls  ~/NextGen/ngen-data
 ```
 
-:::::::::::::::::::::::: solution 
+:::::::::::::::::::::::: solution
 
-## Output 
+## Output
 
 You should see a folder like:
 ```
@@ -262,11 +250,11 @@ tar  -xf  AWI_16_10154200_009.tar.gz
 
 ### CAUTION: For Windows users: pulling with LFs
 
-Before cloning the repository, please ensure that Git is configured to pull with LF line breaks instead of CRLFs. If CRLFs are used, then the carriage return characters will prevent the shell scripts from running properly. 
+Before cloning the repository, please ensure that Git is configured to pull with LF line breaks instead of CRLFs. If CRLFs are used, then the carriage return characters will prevent the shell scripts from running properly.
 
 There are a couple options to configure this.
 
-1. Visual Studio Code can be used to manually toggle between line breaks. 
+1. Visual Studio Code can be used to manually toggle between line breaks.
 
 2. Git can be configured from the command line.
 
@@ -298,6 +286,7 @@ This will walk you through the NGIAB setup and launch your first run.
 
 ### `guide.sh` Tips
 
+- When prompted to input the filepath to a data directory, make sure the path points to the parent directory of `config`, `forcings`, etc.
 - A series of prompts will appear that ask you if you want to use the existing Docker image or update to the latest image. Updating to the latest image will take longer, so for the purposes of this tutorial, using the existing Docker image is fine.
 - When prompted to run NextGen in serial or parallel mode, either is fine.
 - The option to open a Bash shell (interactive shell) will allow you to explore the data directory without quitting NGIAB.
@@ -308,9 +297,12 @@ This will walk you through the NGIAB setup and launch your first run.
 ## Troubleshooting
 
 -   Ensure Docker is running before executing `guide.sh`.
-    
+    ```bash
+    docker run hello-world
+    ```
+
 -   For permission errors on Linux, run Docker commands with `sudo` or add your user to the Docker group:
-    
+
 
 ```bash
 sudo usermod -aG docker ${USER}
@@ -329,7 +321,7 @@ You **should see something like**:
 /home/yourname/NextGen/NGIAB-CloudInfra
 ```
 If not, move into the folder:
-``` bash 
+``` bash
 cd ~/NextGen/NGIAB-CloudInfra
 ```
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -343,17 +335,17 @@ cd ~/NextGen/NGIAB-CloudInfra
 Are you interested in customizing your run with your own catchments (watersheds) and run configurations? Do you want to explore more functionalities of NGIAB? Check out the following episodes:
 
 -   [Data Preparation - NGIAB Data Preprocessor](/training-NGIAB-101/data-preparation.html)
-    
+
 -   [Evaluation - NGIAB TEEHR Integration](/training-NGIAB-101/evaluation.html)
-    
+
 -   [Visualization - Data Visualizer](/training-NGIAB-101/visualization.html)
 
 -   [Advanced Topics](/training-NGIAB-101/advanced-topics.html)
-    
-::::::::::::::::::::::::::::::::::::: keypoints 
 
--   NGIAB simplifies NextGen framework deployment through Docker.  
--   Use `guide.sh` for interactive configuration and run execution.   
+::::::::::::::::::::::::::::::::::::: keypoints
+
+-   NGIAB simplifies NextGen framework deployment through Docker.
+-   Use `guide.sh` for interactive configuration and run execution.
 -   Always confirm successful setup by executing provided sample runs.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
