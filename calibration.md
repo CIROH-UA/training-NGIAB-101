@@ -4,7 +4,7 @@ teaching: 10
 exercises: 15
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions 
+:::::::::::::::::::::::::::::::::::::: questions
 
 - How do I calibrate parameters for a NextGen run?
 
@@ -25,6 +25,8 @@ The modeled time period is split into three periods: warmup, calibration, and va
 
 ## Using `ngiab-cal`
 
+First, you will need a data package with at least a couple years of data. Follow the instructions from the data preparation episode.
+
 To use `ngiab-cal` without installation:
 ```bash
 # Run directly without installation
@@ -38,7 +40,7 @@ uv tool install ngiab-cal
 ngiab-cal --help
 ```
 
-A configuration file at `calibration/ngen_cal_conf.yaml` controls the calibration process. Users can edit the configuration file to meet their needs and preferences, such as number of iterations, acceptable parameter ranges, and time periods. The layout of the configuration file is as follows:
+A configuration file at `calibration/ngen_cal_conf.yaml` generated each time `ngiab_cal` is run. This file controls the calibration process. Users can edit the configuration file to meet their needs and preferences, such as number of iterations, acceptable parameter ranges, and time periods. The layout of the configuration file is as follows:
 ```
 general:
   strategy:
@@ -72,17 +74,17 @@ eval_params:
   site_name: "USGS 01646500: "  # Label for plots
 ```
 
-Calibrating and saving parameters requires the three following commands, where `/path/to/ngiab/data/folder` is replaced with the appropriate filepath, and `USGS_GAGE_ID` is replaced with an appropriate USGS gage within your study area.
+Calibrating and saving parameters requires the three following commands, where `/path/to/ngiab/data/folder` is replaced with the appropriate filepath to the aforementioned data folder, and `USGS_GAGE_ID` is replaced with an appropriate USGS gage within your study area.
 
 ```bash
 # Create calibration configuration
-ngiab-cal /path/to/ngiab/data/folder -g USGS_GAGE_ID
+[uvx] ngiab-cal /path/to/ngiab/data/folder -g USGS_GAGE_ID
 
-# Create and run calibration (200 iterations)
-ngiab-cal /path/to/ngiab/data/folder -g USGS_GAGE_ID --run -i 200
+# Create and run calibration (2 iterations)
+[uvx] ngiab-cal /path/to/ngiab/data/folder -g USGS_GAGE_ID --run -i 2
 
 # Force recreation of calibration configuration
-ngiab-cal /path/to/ngiab/data/folder -g USGS_GAGE_ID -f
+[uvx] ngiab-cal /path/to/ngiab/data/folder -g USGS_GAGE_ID -f
 ```
 
 More details about usage of `ngiab-cal` can be found on [its GitHub page](https://github.com/CIROH-UA/ngiab-cal).
@@ -93,7 +95,7 @@ Use the `ngiab-cal` package to calibrate parameters for the input data that you 
 
 Extra Credit: execute a NextGen run again, and compare the performance between calibrated parameters and uncalibrated parameters.
 
-::::::::::::::::::::::::::::::::::::: keypoints 
+::::::::::::::::::::::::::::::::::::: keypoints
 
 - The `ngiab-cal` package is used to calibrate parameters for a NextGen model run.
 - `ngiab-cal` is a command-line tool controlled via a YAML configuration file that determines parameter ranges, time periods, and evaluation metrics.

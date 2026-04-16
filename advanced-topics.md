@@ -4,7 +4,7 @@ teaching: 5
 exercises: 60
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions 
+:::::::::::::::::::::::::::::::::::::: questions
 
 - How do I use NGIAB on an high-performance computing (HPC) system?
 - How do I use the Data Visualizer through an SSH connection?
@@ -30,14 +30,14 @@ The most up-to-date information on installing NGIAB on an HPC can be found on [C
 NGIAB uses Singularity as its containerization platform for HPC environments. Singularity enables secure execution of containerized applications on multi-user HPC clusters. Key features of Singularity include:
 
  - Native HPC integration, which allows the execution of containerized applications within existing batch job schedulers such as SLURM (Simple Linux Utility for Resource Management) workload manager, PBS (Portable Batch System) and LSF (Load Sharing Facility)
- - Enforced security – it runs containers as non-root users, reducing security risks; and 
- - Access to host file systems – it enables users to interact with datasets and computational resources without additional configuration directly. 
+ - Enforced security – it runs containers as non-root users, reducing security risks; and
+ - Access to host file systems – it enables users to interact with datasets and computational resources without additional configuration directly.
 ::::::::::::::::::::::::
 
 :::::::::::::::: spoiler
 ## Run NGIAB on Pantarhei HPC (Singularity Version)
 
-This section explains how to run **NextGen In A Box (NGIAB)** using **Singularity** on the **Pantarhei HPC system** at the University of Alabama. To access Pantarhei, please follow the instructions on [CIROH's DocuHub page](https://docs.ciroh.org/docs/services/access/#accessing-on-premises-infrastructure).
+This section explains how to run **NextGen In A Box (NGIAB)** using **Singularity** on the **Pantarhei HPC system** at the University of Alabama. To access Pantarhei, please follow the instructions on [CIROH's Hub page](https://hub.ciroh.org/docs/services/on-prem/Pantarhei/access).
 
 ---
 
@@ -136,10 +136,10 @@ Then run it:
 
 Follow the prompts:
 
--   When asked **“Do you want to use the same path?”**, type `n`
-    
--   Then enter the **full absolute path** to your extracted dataset folder. Example:
-    
+- When asked **“Do you want to use the same path?”**, type `n`
+
+- Then enter the **full absolute path** to your extracted dataset folder. Example:
+
 
 ```bash
 /home/<username>/NextGen/ngen-data/AWI_16_10154200_009
@@ -158,30 +158,30 @@ outputs/
 The script will:
 
 - Detect system architecture
-    
+
 - Pull the correct Singularity image
-    
+
 - Mount your dataset
-    
+
 - Allow running in:
-    
+
     - Serial mode
-        
+
     - Parallel mode
-        
+
     - Interactive container shell
-        
+
 
 ----------
 
 #### Notes
 
 - Do not run the model or load modules on the login node.
-    
+
 - All commands should be executed on a **compute node**.
-    
+
 - If output files do not appear, double-check the input path and folder structure.
-    
+
 - If `outputs/` does not exist, create an empty folder manually before running.
 ::::::::::::::::::::::::
 
@@ -193,7 +193,7 @@ NGIAB's core functions work through an SSH connection without port forwarding. H
 To do so, run the following command on your local machine:
 
 ```bash
-ssh -L 80:localhost:80 username@remote_host
+ssh -L 80:localhost:[local port number] username@remote_host
 
 ```
 Replace `username@remote_host` with your credentials.
@@ -205,7 +205,7 @@ Now, you should be able to run NGIAB as usual through your SSH tunnel, and acces
 :::::::::::::::: spoiler
 ## Community Contributions to NGIAB/NextGen
 
-The most up-to-date guidelines on community contributions for each repository can be found on its respective GitHub page. 
+The most up-to-date guidelines on community contributions for each repository can be found on its respective GitHub page.
 
 ### General contribution guidance
 
@@ -230,7 +230,7 @@ Based on your own interests and use cases, try out some of these options:
 - Use NGIAB through an SSH connection
 - Contribute to NGIAB/NextGen!
 
-::::::::::::::::::::::::::::::::::::: keypoints 
+::::::::::::::::::::::::::::::::::::: keypoints
 
 - NGIAB supports HPC environments through Singularity, not Docker, but the workflow mirrors the local Docker use.
 - Port forwarding is required to use the Data Visualizer through an SSH connection.
