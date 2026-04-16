@@ -393,11 +393,11 @@
         <!-- START: inst/pkgdown/templates/content-extra.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <main id="main-content" class="main-content"><div class="container lesson-content">
-        
+        <h1>All in One View</h1>
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">Introduction</a></p>
 <hr>
-<p>Last updated on 2025-05-06 |
+<p>Last updated on 2026-04-16 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 15 minutes</p>
@@ -572,7 +572,7 @@ stations (black dots).</div>
 </figure><figure><img src="../fig/fig1-5.png" alt='A screenshot of the NextGen in a Box Visualizer web interface. The left panel contains a "Time Series Menu" where the user can select a Nexus ID, variable (e.g., flow), and TEEHR data source. A map in the center displays a stream reach with a highlighted section representing the drainage basin and a blue point, indicating the selected nexus location. Below the map, a time series plot compares USGS (blue line) and Ngen (orange line) streamflow data from 2017 to 2023. On the lower left, a table labeled "Teehr Metrics" presents performance metrics (e.g., Kling-Gupta Efficiency, Nash-Sutcliffe Efficiency, and Relative Bias) for the selected model versus reference data.' class="figure mx-auto d-block"><div class="figcaption">Figure 4: Map showing the geospatial
 visualization using the Data Visualizer for a selected outlet point as
 well as displaying a time series plot between observed (labeled “USGS”;
-blue line) and simulated (labeled “ngen”; orange line) with the
+blue line) and simulated (labeled “Ngen”; orange line) with the
 performance metrics (Kling-Gupta Efficiency (KGE), Nash-Sutcliffe
 Efficiency (NSE), and relative bias). These metrics assess how closely
 simulated results match observed data. The Visualizer can also show the
@@ -637,7 +637,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-installation"><p>Content from <a href="installation.html">Installation and Setup</a></p>
 <hr>
-<p>Last updated on 2025-05-23 |
+<p>Last updated on 2026-04-16 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/installation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -682,7 +682,8 @@ other episodes in this module.</p>
 <hr class="half-width">
 <p>This lesson guides you through installing and setting up NGIAB, a
 containerized solution designed to simplify running the NextGen modeling
-framework locally. NGIAB leverages Docker containers to ensure
+framework locally. It will also walk you through running pre-configured
+input data packages. NGIAB leverages Docker containers to ensure
 consistent and reproducible runs.</p>
 <div id="are-you-using-an-hpc" class="callout">
 <div class="callout-square">
@@ -704,11 +705,9 @@ HPC sections in <a href="../training-NGIAB-101/advanced-topics.html">Advanced To
 <ul>
 <li>
 <strong>Operating System:</strong> Windows (with WSL), macOS, or
-Linux<br>
-</li>
+Linux</li>
 <li>
-<strong>Software:</strong> Docker, Git<br>
-</li>
+<strong>Software:</strong> Docker, Git</li>
 <li>
 <strong>Recommended Minimum RAM:</strong> 8 GB</li>
 </ul>
@@ -721,7 +720,7 @@ Linux<br>
 <h3 class="callout-title">Connecting to a remote machine through
 SSH?</h3>
 <div class="callout-content">
-<p>To use the Data Visualizer through an Secure Shell (SSH) connection,
+<p>To use the Data Visualizer through a Secure Shell (SSH) connection,
 you will have to set up port forwarding when connecting to the remote
 machine. Port forwarding will allow you to access a remotely hosted
 browser session on your local machine. See the instructions under “Using
@@ -752,7 +751,7 @@ not already.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">POWERSHELL<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode powershell" tabindex="0"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>wsl <span class="op">--</span>install</span></code></pre>
+<pre class="sourceCode powershell" tabindex="0"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a>wsl <span class="op">--</span>install</span></code></pre>
 </div>
 </li>
 <li><p>Install Docker Desktop from <a href="https://docs.docker.com/desktop/setup/install/windows-install/" class="external-link">Docker’s
@@ -764,7 +763,7 @@ administrator.</p></li>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
 </div>
 <p>This should generate a message that shows that your installation is
 working.</p>
@@ -774,10 +773,10 @@ working.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Install UV</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># Alternatively, install via pip if the above fails</span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="ex">pip</span> install uv</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="co"># Install UV</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a><span class="co"># Alternatively, install via pip if the above fails</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a><span class="ex">pip</span> install uv</span></code></pre>
 </div>
 </li>
 </ol>
@@ -797,8 +796,8 @@ distribution with the following commands:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--install</span> <span class="at">-d</span> Ubuntu</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--setdefault</span> Ubuntu</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">wsl</span> <span class="at">--install</span> <span class="at">-d</span> Ubuntu</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">wsl</span> <span class="at">--setdefault</span> Ubuntu</span></code></pre>
 </div>
 </div>
 </div>
@@ -826,7 +825,7 @@ official Mac installer</a>.</p></li>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
 </div>
 <p>This should generate a message that shows that your installation is
 working.</p>
@@ -836,10 +835,10 @@ working.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Install UV</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># It can be installed via pip if that fails</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># pip install uv</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="co"># Install UV</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1" aria-label="code-block-6-3"></a><span class="co"># It can be installed via pip if that fails</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1" aria-label="code-block-6-4"></a><span class="co"># pip install uv</span></span></code></pre>
 </div>
 </li>
 </ol>
@@ -865,8 +864,8 @@ Docker guide</a>.</p></li>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">sudo</span> systemctl start docker</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="fu">sudo</span> systemctl start docker</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="ex">docker</span> run hello-world</span></code></pre>
 </div>
 <p>This should generate a message that shows that your installation is
 working.</p>
@@ -876,10 +875,10 @@ working.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Install UV</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># It can be installed via pip if that fails</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># pip install uv</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="co"># Install UV</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a><span class="co"># It can be installed via pip if that fails</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1" aria-label="code-block-8-4"></a><span class="co"># pip install uv</span></span></code></pre>
 </div>
 </li>
 </ol>
@@ -899,7 +898,7 @@ working.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-a</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">docker</span> ps <span class="at">-a</span></span></code></pre>
 </div>
 <p>Confirm it executes without errors. If errors occur, revisit Docker
 installation steps.</p>
@@ -920,7 +919,7 @@ or Docker service is active on Linux:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">sudo</span> systemctl start docker</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="fu">sudo</span> systemctl start docker</span></code></pre>
 </div>
 </div>
 </div>
@@ -938,8 +937,8 @@ file is a scenario using a specific model on a specific region.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> NextGen/ngen-data</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="bu">cd</span> NextGen/ngen-data</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> NextGen/ngen-data</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="bu">cd</span> NextGen/ngen-data</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -957,8 +956,8 @@ for your interests, available disk space, and network speed.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
 </div>
 </div>
 <div class="section level4">
@@ -969,21 +968,8 @@ for your interests, available disk space, and network speed.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-007/AWI_16_2863657_007.tar.gz</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_2863657_007.tar.gz</span></code></pre>
-</div>
-</div>
-<div class="section level4">
-<h4 id="option-3-awi-008">Option 3: AWI-008<a class="anchor" aria-label="anchor" href="#option-3-awi-008"></a>
-</h4>
-<p>Models: SLOTH, LSTM (long short-term memory, recurrent neural
-network)</p>
-<p>Compressed file size: 1.50 MB | Extracted file size: 5.46 MB</p>
-<div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-008/AWI_16_2863806_008.tar.gz</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_2863806_008.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-007/AWI_16_2863657_007.tar.gz</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_2863657_007.tar.gz</span></code></pre>
 </div>
 <div id="check-did-you-download-the-dataset" class="callout challenge">
 <div class="callout-square">
@@ -994,10 +980,10 @@ network)</p>
 <h3 class="callout-title">Check: Did You Download the Dataset?</h3>
 <div class="callout-content">
 <p>Run this command:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">ls</span>  ~/NextGen/ngen-data</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="fu">ls</span>  ~/NextGen/ngen-data</span></code></pre>
 </div>
 </div>
 </div>
@@ -1017,10 +1003,10 @@ network)</p>
 correctly.</p>
 <p>If you see nothing or just the <code>.tar.gz</code> file, run the
 following again:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">tar</span>  <span class="at">-xf</span>  AWI_16_10154200_009.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="fu">tar</span>  <span class="at">-xf</span>  AWI_16_10154200_009.tar.gz</span></code></pre>
 </div>
 </div>
 </div>
@@ -1050,10 +1036,10 @@ running properly.</p>
 breaks.</p></li>
 <li><p>Git can be configured from the command line.</p></li>
 </ol>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf false</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf false</span></code></pre>
 </div>
 <ol start="3" style="list-style-type: decimal">
 <li>Download, extract, and run <a href="../data/ngiab-newline-fixer.zip">this interactive <code>.bat</code>
@@ -1063,12 +1049,12 @@ script</a>
 </div>
 </div>
 </div>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="bu">cd</span> ../  <span class="co"># back to NextGen folder</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="bu">cd</span> NGIAB-CloudInfra</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="bu">cd</span> ../  <span class="co"># back to NextGen folder</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1" aria-label="code-block-18-3"></a><span class="bu">cd</span> NGIAB-CloudInfra</span></code></pre>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="ready-to-go">✅ Ready to Go!<a class="anchor" aria-label="anchor" href="#ready-to-go"></a>
@@ -1078,10 +1064,10 @@ script</a>
 working directory, you are ready to run the interactive guide script
 <code>guide.sh</code>. It will prompt you to select input data,
 processing modes, and will initiate your run.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">./guide.sh</span></span></code></pre>
 </div>
 <p>This will walk you through the NGIAB setup and launch your first
 run.</p>
@@ -1095,6 +1081,9 @@ run.</p>
 <code>guide.sh</code> Tips</h3>
 <div class="callout-content">
 <ul>
+<li>When prompted to input the filepath to a data directory, make sure
+the path points to the parent directory of <code>config</code>,
+<code>forcings</code>, etc.</li>
 <li>A series of prompts will appear that ask you if you want to use the
 existing Docker image or update to the latest image. Updating to the
 latest image will take longer, so for the purposes of this tutorial,
@@ -1115,16 +1104,23 @@ redirect the output.</li>
 </h2>
 <hr class="half-width">
 <ul>
-<li><p>Ensure Docker is running before executing
-<code>guide.sh</code>.</p></li>
+<li>
+<p>Ensure Docker is running before executing
+<code>guide.sh</code>.</p>
+<div class="codewrapper sourceCode" id="cb20">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
+</div>
+</li>
 <li><p>For permission errors on Linux, run Docker commands with
 <code>sudo</code> or add your user to the Docker group:</p></li>
 </ul>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">${USER}</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="ex">newgrp</span> docker</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">${USER}</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a><span class="ex">newgrp</span> docker</span></code></pre>
 </div>
 <div id="are-you-in-the-right-directory" class="callout">
 <div class="callout-square">
@@ -1138,7 +1134,7 @@ redirect the output.</li>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="bu">pwd</span></span></code></pre>
 </div>
 <p>You <strong>should see something like</strong>:</p>
 <pre><code>/home/yourname/NextGen/NGIAB-CloudInfra</code></pre>
@@ -1146,7 +1142,7 @@ redirect the output.</li>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="bu">cd</span> ~/NextGen/NGIAB-CloudInfra</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="bu">cd</span> ~/NextGen/NGIAB-CloudInfra</span></code></pre>
 </div>
 </div>
 </div>
@@ -1179,11 +1175,9 @@ Topics</a></p></li>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>NGIAB simplifies NextGen framework deployment through Docker.<br>
-</li>
+<li>NGIAB simplifies NextGen framework deployment through Docker.</li>
 <li>Use <code>guide.sh</code> for interactive configuration and run
-execution.<br>
-</li>
+execution.</li>
 <li>Always confirm successful setup by executing provided sample
 runs.</li>
 </ul>
@@ -1196,7 +1190,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-data-preparation"><p>Content from <a href="data-preparation.html">Data Preparation</a></p>
 <hr>
-<p>Last updated on 2025-05-09 |
+<p>Last updated on 2026-04-16 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/data-preparation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 50 minutes</p>
@@ -1224,7 +1218,7 @@ any links that you are not going to use.
 <ul>
 <li>Identify the required data structure of a NextGen run in NGIAB</li>
 <li>Explain how the Data Preprocess tool interacts with NGIAB</li>
-<li>Prepare data for an NextGen run in NGIAB</li>
+<li>Prepare data for a NextGen run in NGIAB</li>
 </ul>
 </div>
 </div>
@@ -1268,16 +1262,19 @@ installing it.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess cli <span class="at">-i</span> gage-10154200 <span class="at">-sfr</span> <span class="at">--start</span> 2017-09-01 <span class="at">--end</span> 2018-09-01 <span class="at">--source</span> aorc</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess cli <span class="at">-i</span> gage-10154200 <span class="at">-sfr</span> <span class="at">--start</span> 2017-09-01 <span class="at">--end</span> 2018-09-01 <span class="at">--source</span> aorc</span></code></pre>
 </div>
 <p><code>uvx --from ngiab_data_preprocess cli</code> indicates that the
 Data Preprocess tool will run without the user installing it. The
-<code>--source</code> flag determines where the Data Preprocess tool
-will pull forcing data from.</p>
-</div>
-<div class="section level4">
-<h4 id="example-2">Example 2<a class="anchor" aria-label="anchor" href="#example-2"></a>
-</h4>
+<code>-i</code> flag indicates the <strong>I</strong>D of the feature
+that is used to subset the hydrofabric. The <code>-sfr</code> flags
+indicate that the Data Preprocess tool will <strong>s</strong>ubset the
+hydrofabric to the desired catchments, produce <strong>f</strong>orcings
+over the desired area and time period, and produce a NextGen
+<strong>r</strong>ealization file. The <code>--start</code> and
+<code>--end</code> flags indicate the start and end dates of the desired
+time period. The <code>--source</code> flag determines where the Data
+Preprocess tool will pull forcing data from. #### Example 2</p>
 <p>This command produces forcings and a NextGen realization file for the
 catchments upstream of gage-10155000 for the time period 2022-08-13 to
 2022-08-23 after installing the Data Preprocess tool. The forcing data
@@ -1292,21 +1289,10 @@ Preprocess GitHub page</a>.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">uv</span> run cli <span class="at">-i</span> gage-10155000 <span class="at">-sfr</span> <span class="at">--start</span> 2022-08-13 <span class="at">--end</span> 2022-08-23</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">uv</span> run cli <span class="at">-i</span> gage-10155000 <span class="at">-sfr</span> <span class="at">--start</span> 2022-08-13 <span class="at">--end</span> 2022-08-23</span></code></pre>
 </div>
 <p><code>uv run cli</code> indicates that the Data Preprocess CLI within
-your activated Astral UV environment will run. The <code>-i</code> flag
-indicates the <strong>I</strong>D of the feature that is used to subset
-the hydrofabric. The <code>-sfr</code> flags indicate that the Data
-Preprocess tool will <strong>s</strong>ubset the hydrofabric to the
-desired catchments, produce <strong>f</strong>orcings over the desired
-area and time period, and produce a NextGen <strong>r</strong>ealization
-file. The <code>--start</code> and <code>--end</code> flags indicate the
-start and end dates of the desired time period.</p>
-</div>
-<div class="section level4">
-<h4 id="example-3">Example 3<a class="anchor" aria-label="anchor" href="#example-3"></a>
-</h4>
+your activated Astral UV environment will run. #### Example 3</p>
 <p>This command allows you to run the Data Preprocess CLI tool from a
 regular <code>pip install ngiab_data_preprocess</code>. <strong>However,
 using Astral UV is highly recommended for its speed.</strong> This
@@ -1315,7 +1301,7 @@ the time period 2022-01-01 to 2022-02-28.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ngiab_data_cli <span class="at">-i</span> cat-7080 <span class="at">-f</span> <span class="at">--start</span> 2022-01-01 <span class="at">--end</span> 2022-02-28</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">python</span> <span class="at">-m</span> ngiab_data_cli <span class="at">-i</span> cat-7080 <span class="at">-f</span> <span class="at">--start</span> 2022-01-01 <span class="at">--end</span> 2022-02-28</span></code></pre>
 </div>
 <p><code>python -m ngiab_data_cli</code> indicates that the Data
 Preprocess CLI tool will execute.</p>
@@ -1403,9 +1389,10 @@ convention below.</p>
 |   |   ├──NOAH-OWP-M/</code></pre>
 <p>NextGen requires a single geopackage file. This file is the <a href="https://mikejohnson51.github.io/hyAggregate/" class="external-link">hydrofabric
 (Johnson, 2022)</a> (spatial data). An example geopackage can be found
-on <a href="https://www.lynker-spatial.com/data?path=hydrofabric%2Fv2.2%2F" class="external-link">Lynker-Spatial’s
-website</a>. Tools to subset a geopackage into a smaller domain can be
-found at <a href="https://github.com/LynkerIntel/hfsubset" class="external-link">Lynker’s
+on <a href="https://www.lynker-spatial.com/data?path=hydrofabric%2Fv2.2%2F" class="external-link">Lynker
+Spatial’s website</a> (note: creating an account is required to view
+Lynker Spatial data). Tools to subset a geopackage into a smaller domain
+can be found at <a href="https://github.com/LynkerIntel/hfsubset" class="external-link">Lynker’s
 hfsubset</a>.</p>
 </div>
 </section><section><h2 class="section-heading" id="your-turn">Your Turn<a class="anchor" aria-label="anchor" href="#your-turn"></a>
@@ -1442,7 +1429,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-model-execution"><p>Content from <a href="model-execution.html">Model Execution</a></p>
 <hr>
-<p>Last updated on 2025-05-01 |
+<p>Last updated on 2026-04-16 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/model-execution.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 10 minutes</p>
@@ -1482,14 +1469,17 @@ any links that you are not going to use.
 <p><code>guide.sh</code> is used to execute pre-configured NextGen runs
 in NGIAB. These settings can be configured by users ahead of time using
 the <a href="../training-NGIAB-101/data-preparation.html">Data Preprocess
-tool</a>. Execute the following commands:</p>
+tool</a>. If you haven’t already in Episode 2, execute the following
+commands to install NGIAB, and follow the guide script instructions to
+run a simulation using the data you have preprocessed from the previous
+episode:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">cd</span> NextGen</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">cd</span> NGIAB-CloudInfra</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="bu">cd</span> NextGen</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="bu">cd</span> NGIAB-CloudInfra</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a><span class="ex">./guide.sh</span></span></code></pre>
 </div>
 <p><code>guide.sh</code> will prompt you to enter input data pathways
 and allow you to select a computational mode (serial or parallel
@@ -1533,7 +1523,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-evaluation"><p>Content from <a href="evaluation.html">Evaluation</a></p>
 <hr>
-<p>Last updated on 2025-04-25 |
+<p>Last updated on 2026-04-16 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/evaluation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 15 minutes</p>
@@ -1571,7 +1561,7 @@ any links that you are not going to use.
 (TEEHR) with NGIAB<a class="anchor" aria-label="anchor" href="#using-tools-for-exploratory-evaluation-in-hydrologic-research-teehr-with-ngiab"></a>
 </h2>
 <hr class="half-width">
-<p>A TEEHR evaluation run is executed by default upon execution of
+<p>A TEEHR evaluation run is automatically offered upon execution of
 <code>guide.sh</code>. A separate <code>runTeehr.sh</code> script is
 also available in the NGIAB-CloudInfra repository.</p>
 </section><section><h2 class="section-heading" id="what-is-teehr">What is TEEHR?<a class="anchor" aria-label="anchor" href="#what-is-teehr"></a>
@@ -1638,7 +1628,7 @@ predictions in an open-source environment.</p>
 </h2>
 <hr class="half-width">
 <p>Go ahead and execute the TEEHR run using <code>guide.sh</code> and
-explore your TEEHR folder!</p>
+explore your TEEHR folder (located in your run directory)!</p>
 <div id="guide.sh-tips" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -1663,7 +1653,7 @@ explore your TEEHR folder!</p>
 <div class="callout-content">
 <ul>
 <li>Tools for Exploratory Evaluation in Hydrologic Research (TEEHR) is a
-Python-based backage for hydrologic model evaluation.</li>
+Python-based package for hydrologic model evaluation.</li>
 <li>NGIAB uses TEEHR to assess model performance, comparing predictions
 against USGS streamflow and NWM data and calculating performance
 metrics.</li>
@@ -1679,7 +1669,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-visualization"><p>Content from <a href="visualization.html">Visualization</a></p>
 <hr>
-<p>Last updated on 2025-05-27 |
+<p>Last updated on 2026-04-16 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/visualization.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 15 minutes</p>
@@ -1753,14 +1743,14 @@ if they want to overwrite it.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  <span class="ex">⚠</span> ~/ngiab_visualizer is not empty.</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="ex">→</span> Keep <span class="er">(</span><span class="ex">K</span><span class="kw">)</span> <span class="ex">or</span> Fresh start <span class="er">(</span><span class="ex">F</span><span class="kw">)</span><span class="ex">?</span> <span class="pp">[</span><span class="ss">K/F</span><span class="pp">]</span>: k</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="ex">ℹ</span> Reclaiming ownership of ~/ngiab_visualizer  <span class="er">(</span><span class="fu">sudo</span> may prompt<span class="kw">)</span><span class="ex">…</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="ex">⚠</span> Directory exists: ~/ngiab_visualizer/gage-10154200</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="ex">→</span> Overwrite <span class="er">(</span><span class="ex">O</span><span class="kw">)</span> <span class="ex">or</span> Duplicate <span class="er">(</span><span class="ex">D</span><span class="kw">)</span><span class="ex">?</span> <span class="pp">[</span><span class="ss">O/D</span><span class="pp">]</span>: o</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  <span class="ex">✓</span> Overwritten ➜ ~/ngiab_visualizer/gage-10154200</span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="ex">Checking</span> for ~/ngiab_visualizer/ngiab_visualizer.json...</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a>  <span class="ex">⚠</span> ~/ngiab_visualizer is not empty.</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a>  <span class="ex">→</span> Keep <span class="er">(</span><span class="ex">K</span><span class="kw">)</span> <span class="ex">or</span> Fresh start <span class="er">(</span><span class="ex">F</span><span class="kw">)</span><span class="ex">?</span> <span class="pp">[</span><span class="ss">K/F</span><span class="pp">]</span>: k</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a><span class="ex">ℹ</span> Reclaiming ownership of ~/ngiab_visualizer  <span class="er">(</span><span class="fu">sudo</span> may prompt<span class="kw">)</span><span class="ex">…</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1" aria-label="code-block-1-5"></a>  <span class="ex">⚠</span> Directory exists: ~/ngiab_visualizer/gage-10154200</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1" aria-label="code-block-1-6"></a>  <span class="ex">→</span> Overwrite <span class="er">(</span><span class="ex">O</span><span class="kw">)</span> <span class="ex">or</span> Duplicate <span class="er">(</span><span class="ex">D</span><span class="kw">)</span><span class="ex">?</span> <span class="pp">[</span><span class="ss">O/D</span><span class="pp">]</span>: o</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1" aria-label="code-block-1-7"></a>  <span class="ex">✓</span> Overwritten ➜ ~/ngiab_visualizer/gage-10154200</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1" aria-label="code-block-1-8"></a><span class="ex">Checking</span> for ~/ngiab_visualizer/ngiab_visualizer.json...</span></code></pre>
 </div>
 <p>You should be able to see multiple outputs through the UI:</p>
 <figure><img src="../fig/fig6-2.png" alt="A screenshot of the NGIAB and DataStream Visualizer web interface. The map displays the ability of the visualizer to use multiple outputs" class="figure mx-auto d-block"><div class="figcaption">Figure 2: NGIAB Visualizer dropdown for multiple
@@ -1783,34 +1773,34 @@ creation and management of this metadata.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">JSON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode json" tabindex="0"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="dt">"model_runs"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-10154200"</span><span class="fu">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_preprocess_output/gage-10154200"</span><span class="fu">,</span></span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:13:51:51"</span><span class="fu">,</span></span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"61026834-4235-4d39-8a8e-f076a8854148"</span><span class="fu">,</span></span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-20454200"</span><span class="fu">,</span></span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_visualizer/gage-20454200"</span><span class="fu">,</span></span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:17:00:34"</span><span class="fu">,</span></span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"68f6cf78-188c-4e86-b797-6c40ea36e0e6"</span><span class="fu">,</span></span>
-<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
-<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-35054600"</span><span class="fu">,</span></span>
-<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_visualizer/gage-35054600"</span><span class="fu">,</span></span>
-<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:17:01:10"</span><span class="fu">,</span></span>
-<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"6d0cb736-2dac-4ea0-a3a3-ad26cd45ef36"</span><span class="fu">,</span></span>
-<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
-<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a>  <span class="ot">]</span></span>
-<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a><span class="fu">}</span></span></code></pre>
+<pre class="sourceCode json" tabindex="0"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a>  <span class="dt">"model_runs"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a>    <span class="fu">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1" aria-label="code-block-2-4"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-10154200"</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1" aria-label="code-block-2-5"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_preprocess_output/gage-10154200"</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1" aria-label="code-block-2-6"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:13:51:51"</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1" aria-label="code-block-2-7"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"61026834-4235-4d39-8a8e-f076a8854148"</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1" aria-label="code-block-2-8"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1" aria-label="code-block-2-9"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1" aria-label="code-block-2-10"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1" aria-label="code-block-2-11"></a>    <span class="fu">{</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1" aria-label="code-block-2-12"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-20454200"</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1" aria-label="code-block-2-13"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_visualizer/gage-20454200"</span><span class="fu">,</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1" aria-label="code-block-2-14"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:17:00:34"</span><span class="fu">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1" aria-label="code-block-2-15"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"68f6cf78-188c-4e86-b797-6c40ea36e0e6"</span><span class="fu">,</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1" aria-label="code-block-2-16"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1" aria-label="code-block-2-17"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1" aria-label="code-block-2-18"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1" aria-label="code-block-2-19"></a>    <span class="fu">{</span></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1" aria-label="code-block-2-20"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-35054600"</span><span class="fu">,</span></span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1" aria-label="code-block-2-21"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_visualizer/gage-35054600"</span><span class="fu">,</span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1" aria-label="code-block-2-22"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:17:01:10"</span><span class="fu">,</span></span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1" aria-label="code-block-2-23"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"6d0cb736-2dac-4ea0-a3a3-ad26cd45ef36"</span><span class="fu">,</span></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1" aria-label="code-block-2-24"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1" aria-label="code-block-2-25"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb2-26"><a href="#cb2-26" tabindex="-1" aria-label="code-block-2-26"></a>    <span class="fu">}</span></span>
+<span id="cb2-27"><a href="#cb2-27" tabindex="-1" aria-label="code-block-2-27"></a>  <span class="ot">]</span></span>
+<span id="cb2-28"><a href="#cb2-28" tabindex="-1" aria-label="code-block-2-28"></a><span class="fu">}</span></span></code></pre>
 </div>
 <p>The path <code>/var/lib/tethys_persist/</code> belongs to the
 <code>$HOME</code> env variable of the container running the visualizer.
@@ -1818,73 +1808,73 @@ When the user runs the <code>./ViewOnTethys.sh</code>, it mounts the
 directory from the host at <code>~/ngiab_visualizer</code> to
 <code>/var/lib/tethys_persist/ngiab_visualizer</code>.</p>
 <p>However, if the user wants more control, the user can copy their data
-directory to <code>~/ngiab_visualizer</code> on the host(not the
-container) while the container is <strong>stop</strong>,</p>
+directory to <code>~/ngiab_visualizer</code> on the host (not the
+container) while the container is <strong>stopped</strong>:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">chown</span> <span class="at">-R</span> <span class="va">$USER</span>: ~/ngiab_visualizer</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-R</span> your/data/path ~/ngiab_visualizer</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> <span class="va">$USER</span>: ~/ngiab_visualizer</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="fu">cp</span> <span class="at">-R</span> your/data/path ~/ngiab_visualizer</span></code></pre>
 </div>
-<p>finally the user can open the
-<code>~/ngiab_visualizer/ngiab_visualizer.json</code> on the host(not
+<p>Alternatively, the user can open the
+<code>~/ngiab_visualizer/ngiab_visualizer.json</code> on the host (not
 the container), and add the specific run to the visualizer:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JSON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode json" tabindex="0"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="er">....</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-35054600"</span><span class="fu">,</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_visualizer&lt;MY_SPECIFIC_OUTPUT_DIRECTORY_NAME&gt;"</span><span class="fu">,</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:17:01:10"</span><span class="fu">,</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"6d0cb736-2dac-4ea0-a3a3-ad26cd45ef36"</span><span class="fu">,</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>    <span class="fu">}</span></span></code></pre>
+<pre class="sourceCode json" tabindex="0"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="er">....</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a>    <span class="fu">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"gage-35054600"</span><span class="fu">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/ngiab_visualizer&lt;MY_SPECIFIC_OUTPUT_DIRECTORY_NAME&gt;"</span><span class="fu">,</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a>      <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2025-05-23:17:01:10"</span><span class="fu">,</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"6d0cb736-2dac-4ea0-a3a3-ad26cd45ef36"</span><span class="fu">,</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1" aria-label="code-block-4-7"></a>      <span class="dt">"subset"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1" aria-label="code-block-4-8"></a>      <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1" aria-label="code-block-4-9"></a>    <span class="fu">}</span></span></code></pre>
 </div>
 <p>The user can then run <code>./ViewOnTethys.sh</code> script to spin
-again the container or if the user wants more control and just define
-the env variables and running the container</p>
+up the container again, or if the user wants more control, they can
+export the env variables and run the container.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="bu">export</span> <span class="va">CONFIG_FILE</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/.host_data_path.conf"</span>          <span class="dt">\</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>       <span class="va">TETHYS_CONTAINER_NAME</span><span class="op">=</span><span class="st">"tethys-ngen-portal"</span>        <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>       <span class="va">TETHYS_REPO</span><span class="op">=</span><span class="st">"awiciroh/tethys-ngiab"</span>               <span class="dt">\</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>       <span class="va">TETHYS_TAG</span><span class="op">=</span><span class="st">"latest"</span>                               <span class="dt">\</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>       <span class="va">NGINX_PORT</span><span class="op">=</span>80                                     <span class="dt">\</span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>       <span class="va">MODELS_RUNS_DIRECTORY</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/ngiab_visualizer"</span>    <span class="dt">\</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>       <span class="va">DATASTREAM_DIRECTORY</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/.datastream_ngiab"</span>    <span class="dt">\</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>       <span class="va">VISUALIZER_CONF</span><span class="op">=</span><span class="st">"</span><span class="va">$MODELS_RUNS_DIRECTORY</span><span class="st">/ngiab_visualizer.json"</span> <span class="dt">\</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>       <span class="va">TETHYS_PERSIST_PATH</span><span class="op">=</span><span class="st">"/var/lib/tethys_persist"</span>     <span class="dt">\</span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>       <span class="va">SKIP_DB_SETUP</span><span class="op">=</span>false                               <span class="dt">\</span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>       <span class="va">CSRF_TRUSTED_ORIGINS</span><span class="op">=</span><span class="st">"[</span><span class="dt">\"</span><span class="st">http://localhost:</span><span class="va">${NGINX_PORT}</span><span class="dt">\"</span><span class="st">,</span><span class="dt">\"</span><span class="st">http://127.0.0.1:</span><span class="va">${NGINX_PORT}</span><span class="dt">\"</span><span class="st">]"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="bu">export</span> <span class="va">CONFIG_FILE</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/.host_data_path.conf"</span>          <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a>       <span class="va">TETHYS_CONTAINER_NAME</span><span class="op">=</span><span class="st">"tethys-ngen-portal"</span>        <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1" aria-label="code-block-5-3"></a>       <span class="va">TETHYS_REPO</span><span class="op">=</span><span class="st">"awiciroh/tethys-ngiab"</span>               <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1" aria-label="code-block-5-4"></a>       <span class="va">TETHYS_TAG</span><span class="op">=</span><span class="st">"latest"</span>                               <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1" aria-label="code-block-5-5"></a>       <span class="va">NGINX_PORT</span><span class="op">=</span>80                                     <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1" aria-label="code-block-5-6"></a>       <span class="va">MODELS_RUNS_DIRECTORY</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/ngiab_visualizer"</span>    <span class="dt">\</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1" aria-label="code-block-5-7"></a>       <span class="va">DATASTREAM_DIRECTORY</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/.datastream_ngiab"</span>    <span class="dt">\</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1" aria-label="code-block-5-8"></a>       <span class="va">VISUALIZER_CONF</span><span class="op">=</span><span class="st">"</span><span class="va">$MODELS_RUNS_DIRECTORY</span><span class="st">/ngiab_visualizer.json"</span> <span class="dt">\</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1" aria-label="code-block-5-9"></a>       <span class="va">TETHYS_PERSIST_PATH</span><span class="op">=</span><span class="st">"/var/lib/tethys_persist"</span>     <span class="dt">\</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1" aria-label="code-block-5-10"></a>       <span class="va">SKIP_DB_SETUP</span><span class="op">=</span>false                               <span class="dt">\</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1" aria-label="code-block-5-11"></a>       <span class="va">CSRF_TRUSTED_ORIGINS</span><span class="op">=</span><span class="st">"[</span><span class="dt">\"</span><span class="st">http://localhost:</span><span class="va">${NGINX_PORT}</span><span class="dt">\"</span><span class="st">,</span><span class="dt">\"</span><span class="st">http://127.0.0.1:</span><span class="va">${NGINX_PORT}</span><span class="dt">\"</span><span class="st">]"</span></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="dt">\</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$MODELS_RUNS_DIRECTORY</span><span class="st">:</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/ngiab_visualizer"</span> <span class="dt">\</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$DATASTREAM_DIRECTORY</span><span class="st">:</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/.datastream_ngiab"</span> <span class="dt">\</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="at">-p</span> <span class="st">"</span><span class="va">$NGINX_PORT</span><span class="st">:</span><span class="va">$NGINX_PORT</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="at">--name</span> <span class="st">"</span><span class="va">$TETHYS_CONTAINER_NAME</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="at">-e</span> MEDIA_ROOT=<span class="st">"</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/media"</span> <span class="dt">\</span></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="at">-e</span> MEDIA_URL=<span class="st">"/media/"</span> <span class="dt">\</span></span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  <span class="at">-e</span> SKIP_DB_SETUP=<span class="st">"</span><span class="va">$SKIP_DB_SETUP</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  <span class="at">-e</span> DATASTREAM_CONF=<span class="st">"</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/.datastream_ngiab"</span> <span class="dt">\</span></span>
-<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>  <span class="at">-e</span> VISUALIZER_CONF=<span class="st">"</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/ngiab_visualizer/ngiab_visualizer.json"</span> <span class="dt">\</span></span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>  <span class="at">-e</span> NGINX_PORT=<span class="st">"</span><span class="va">$NGINX_PORT</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  <span class="at">-e</span> CSRF_TRUSTED_ORIGINS=<span class="st">"</span><span class="va">$CSRF_TRUSTED_ORIGINS</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>  <span class="st">"</span><span class="va">${TETHYS_REPO}</span><span class="st">:</span><span class="va">${TETHYS_TAG}</span><span class="st">"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$MODELS_RUNS_DIRECTORY</span><span class="st">:</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/ngiab_visualizer"</span> <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1" aria-label="code-block-6-3"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$DATASTREAM_DIRECTORY</span><span class="st">:</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/.datastream_ngiab"</span> <span class="dt">\</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1" aria-label="code-block-6-4"></a>  <span class="at">-p</span> <span class="st">"</span><span class="va">$NGINX_PORT</span><span class="st">:</span><span class="va">$NGINX_PORT</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1" aria-label="code-block-6-5"></a>  <span class="at">--name</span> <span class="st">"</span><span class="va">$TETHYS_CONTAINER_NAME</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1" aria-label="code-block-6-6"></a>  <span class="at">-e</span> MEDIA_ROOT=<span class="st">"</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/media"</span> <span class="dt">\</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1" aria-label="code-block-6-7"></a>  <span class="at">-e</span> MEDIA_URL=<span class="st">"/media/"</span> <span class="dt">\</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1" aria-label="code-block-6-8"></a>  <span class="at">-e</span> SKIP_DB_SETUP=<span class="st">"</span><span class="va">$SKIP_DB_SETUP</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1" aria-label="code-block-6-9"></a>  <span class="at">-e</span> DATASTREAM_CONF=<span class="st">"</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/.datastream_ngiab"</span> <span class="dt">\</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1" aria-label="code-block-6-10"></a>  <span class="at">-e</span> VISUALIZER_CONF=<span class="st">"</span><span class="va">$TETHYS_PERSIST_PATH</span><span class="st">/ngiab_visualizer/ngiab_visualizer.json"</span> <span class="dt">\</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1" aria-label="code-block-6-11"></a>  <span class="at">-e</span> NGINX_PORT=<span class="st">"</span><span class="va">$NGINX_PORT</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1" aria-label="code-block-6-12"></a>  <span class="at">-e</span> CSRF_TRUSTED_ORIGINS=<span class="st">"</span><span class="va">$CSRF_TRUSTED_ORIGINS</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1" aria-label="code-block-6-13"></a>  <span class="st">"</span><span class="va">${TETHYS_REPO}</span><span class="st">:</span><span class="va">${TETHYS_TAG}</span><span class="st">"</span></span></code></pre>
 </div>
 <p>You should see something like this using <code>docker ps</code></p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">docker</span> ps</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="ex">CONTAINER</span> ID   IMAGE                          COMMAND                  CREATED          STATUS                             PORTS                                 NAMES</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="ex">b1818a03de9b</span>   awiciroh/tethys-ngiab:latest   <span class="st">"/usr/local/bin/_ent…"</span>   25 seconds ago   Up 24 seconds <span class="er">(</span><span class="ex">health:</span> starting<span class="kw">)</span>   <span class="ex">0.0.0.0:80-</span><span class="op">&gt;</span>80/tcp, <span class="pp">[</span><span class="ss">::</span><span class="pp">]</span>:80-<span class="op">&gt;</span>80/tcp   tethys-ngen-portal</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">docker</span> ps</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a><span class="ex">CONTAINER</span> ID   IMAGE                          COMMAND                  CREATED          STATUS                             PORTS                                 NAMES</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1" aria-label="code-block-7-4"></a><span class="ex">b1818a03de9b</span>   awiciroh/tethys-ngiab:latest   <span class="st">"/usr/local/bin/_ent…"</span>   25 seconds ago   Up 24 seconds <span class="er">(</span><span class="ex">health:</span> starting<span class="kw">)</span>   <span class="ex">0.0.0.0:80-</span><span class="op">&gt;</span>80/tcp, <span class="pp">[</span><span class="ss">::</span><span class="pp">]</span>:80-<span class="op">&gt;</span>80/tcp   tethys-ngen-portal</span></code></pre>
 </div>
 <p>Once it’s healthy, you can access the visualizer at:</p>
 <p><code>http://localhost:${NGINX_PORT}</code></p>
@@ -1926,8 +1916,8 @@ on any of the <strong>Catchments</strong> polygons, or by changing the
 select dropdown assigned to the Catchments.</p>
 <figure><img src="../fig/fig6-5.png" alt="A screenshot of the NGIAB and DataStream Visualizer web interface. The map displays the ability of the visualizer to retrieve time series from Catchments variables" class="figure mx-auto d-block"><div class="figcaption">Figure 5: NGIAB Visualizer time series
 visualization for Catchments</div>
-</figure><p><strong>TEEHR</strong> evaluation can be visualized when the user
-hits a point that contains <strong>TEEHR</strong> evaluation output, the
+</figure><p>The <strong>TEEHR</strong> evaluation can be visualized when the user
+hits a point that contains <strong>TEEHR</strong> evaluation output. The
 user can also look at a <strong>Nexus</strong> point on the dropdown
 assigned and enter the id of the <strong>Nexus</strong> points that
 contains <strong>TEEHR</strong> evaluation output.</p>
@@ -1949,7 +1939,7 @@ performance of the NWM 3.0 compared to the observed time series.</div>
 <div id="using-data-visualizer-with-ssh" class="callout-inner">
 <h3 class="callout-title">Using Data Visualizer with SSH</h3>
 <div class="callout-content">
-<p>To use the Data Visualizer through an Secure Shell (SSH) connection,
+<p>To use the Data Visualizer through a Secure Shell (SSH) connection,
 you will have to set up port forwarding when connecting to the remote
 machine. Port forwarding will allow you to access a remotely hosted
 browser session on your local machine. See the instructions under “Using
@@ -1958,57 +1948,6 @@ episode</a> in this training module.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section level3">
-<h3 id="ngiab-datastream-ui">NGIAB DataStream UI<a class="anchor" aria-label="anchor" href="#ngiab-datastream-ui"></a>
-</h3>
-<p>The Visualizer also allows the user to download data as well from an
-<a href="https://datastream.ciroh.org/index.html" class="external-link">S3 bucket</a>
-containing the output of the <a href="https://github.com/CIROH-UA/ngen-datastream" class="external-link">NextGen
-DataStream</a>. The <code>ViewOnTethys.sh</code> script will create a
-<code>~/.datastream_ngiab</code> directory in which it saves all the
-different outputs downloaded by the visualizer. It will also create a
-<code>~/.datastream_ngiab/datastream_ngiab.json</code> in which metadata
-will be saved to locate the downloaded output directories. It serves as
-a cache, so it allows the user to look first at the
-<code>~/.datastream_ngiab</code> before trying to download the data</p>
-<div class="codewrapper sourceCode" id="cb8">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">ℹ</span> Reclaiming ownership of /home/aquagio/.datastream_ngiab  <span class="er">(</span><span class="fu">sudo</span> may prompt<span class="kw">)</span><span class="ex">…</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="ex">ℹ</span> No existing Datastream cache found – a fresh download will be used.</span></code></pre>
-</div>
-<p>The <code>.datastream_ngiab.json</code> appends the different
-downloads with metadata that allows the user to know the file being
-downloaded. The <code>prefix</code> belongs to the path on the s3
-bucket. The <code>label</code> is created with the following format:
-<code>ngen.&lt;date&gt;_&lt;forecast_type&gt;_&lt;cycle&gt;_&lt;VPU&gt;</code></p>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">JSON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode json" tabindex="0"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>    <span class="dt">"datastream"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>        <span class="fu">{</span></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>            <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"ngen.20250522_medium_range_06_VPU_02"</span><span class="fu">,</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>            <span class="dt">"bucket"</span><span class="fu">:</span> <span class="st">"ciroh-community-ngen-datastream"</span><span class="fu">,</span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>            <span class="dt">"prefix"</span><span class="fu">:</span> <span class="st">"v2.2/ngen.20250522/medium_range/06/VPU_02/ngen-run.tar.gz"</span><span class="fu">,</span></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>            <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/var/lib/tethys_persist/.datastream_ngiab/ngen.20250522_medium_range_06_VPU_02"</span><span class="fu">,</span></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>            <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2021-01-01:00:00:00"</span><span class="fu">,</span></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>            <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"15145d327f19426b890e4465160f963a"</span></span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>        <span class="fu">}</span></span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>    <span class="ot">]</span></span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="fu">}</span></span></code></pre>
-</div>
-<p><strong>Note</strong> assuming only the first ensemble. If we are
-specific it will look like this:
-<code>ngen.&lt;date&gt;_&lt;forecast_type&gt;_&lt;cycle&gt;_&lt;ensemble&gt;_&lt;VPU&gt;</code></p>
-<p>This functionality allows the user to be able to quicklu search the
-data they want from the <a href="https://datastream.ciroh.org/index.html" class="external-link">S3 bucket</a> containing
-the output of the <a href="https://github.com/CIROH-UA/ngen-datastream" class="external-link">NextGen
-DataStream</a>. They can explore and download as needed.</p>
-<figure><img src="../fig/fig6-8.png" alt="A screenshot of the NGIAB and DataStream Visualizer web interface displaying the hydrofabric for DataStream output" class="figure mx-auto d-block"><div class="figcaption">Figure 8: NGIAB Visualizer Visualization of
-DataStream Data</div>
-</figure>
 </div>
 </section><section><h2 class="section-heading" id="your-turn">Your Turn<a class="anchor" aria-label="anchor" href="#your-turn"></a>
 </h2>
@@ -2048,7 +1987,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-calibration"><p>Content from <a href="calibration.html">Calibration</a></p>
 <hr>
-<p>Last updated on 2025-06-10 |
+<p>Last updated on 2026-04-16 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/calibration.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 25 minutes</p>
@@ -2097,26 +2036,29 @@ and the validation period is used to test the calibrated parameters.</p>
 <a class="anchor" aria-label="anchor" href="#using-ngiab-cal"></a>
 </h2>
 <hr class="half-width">
+<p>First, you will need a data package with at least a couple years of
+data. Follow the instructions from the data preparation episode.</p>
 <p>To use <code>ngiab-cal</code> without installation:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Run directly without installation</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">uvx</span> ngiab-cal <span class="at">--help</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="co"># Run directly without installation</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">uvx</span> ngiab-cal <span class="at">--help</span></span></code></pre>
 </div>
 <p>To install <code>ngiab-cal</code> as a package:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Or install as a tool</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">uv</span> tool install ngiab-cal</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="ex">ngiab-cal</span> <span class="at">--help</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="co"># Or install as a tool</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="ex">uv</span> tool install ngiab-cal</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a><span class="ex">ngiab-cal</span> <span class="at">--help</span></span></code></pre>
 </div>
 <p>A configuration file at <code>calibration/ngen_cal_conf.yaml</code>
-controls the calibration process. Users can edit the configuration file
-to meet their needs and preferences, such as number of iterations,
-acceptable parameter ranges, and time periods. The layout of the
-configuration file is as follows:</p>
+generated each time <code>ngiab_cal</code> is run. This file controls
+the calibration process. Users can edit the configuration file to meet
+their needs and preferences, such as number of iterations, acceptable
+parameter ranges, and time periods. The layout of the configuration file
+is as follows:</p>
 <pre><code>general:
   strategy:
     type: estimation
@@ -2149,19 +2091,20 @@ eval_params:
   site_name: "USGS 01646500: "  # Label for plots</code></pre>
 <p>Calibrating and saving parameters requires the three following
 commands, where <code>/path/to/ngiab/data/folder</code> is replaced with
-the appropriate filepath, and <code>USGS_GAGE_ID</code> is replaced with
-an appropriate USGS gage within your study area.</p>
+the appropriate filepath to the aforementioned data folder, and
+<code>USGS_GAGE_ID</code> is replaced with an appropriate USGS gage
+within your study area.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Create calibration configuration</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">ngiab-cal</span> /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># Create and run calibration (200 iterations)</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="ex">ngiab-cal</span> /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID <span class="at">--run</span> <span class="at">-i</span> 200</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co"># Force recreation of calibration configuration</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="ex">ngiab-cal</span> /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID <span class="at">-f</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="co"># Create calibration configuration</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">[uvx]</span> ngiab-cal /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a><span class="co"># Create and run calibration (2 iterations)</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a><span class="ex">[uvx]</span> ngiab-cal /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID <span class="at">--run</span> <span class="at">-i</span> 2</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1" aria-label="code-block-4-7"></a><span class="co"># Force recreation of calibration configuration</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1" aria-label="code-block-4-8"></a><span class="ex">[uvx]</span> ngiab-cal /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID <span class="at">-f</span></span></code></pre>
 </div>
 <p>More details about usage of <code>ngiab-cal</code> can be found on <a href="https://github.com/CIROH-UA/ngiab-cal" class="external-link">its GitHub page</a>.</p>
 </section><section><h2 class="section-heading" id="your-turn">Your Turn<a class="anchor" aria-label="anchor" href="#your-turn"></a>
@@ -2196,7 +2139,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-advanced-topics"><p>Content from <a href="advanced-topics.html">Advanced Topics</a></p>
 <hr>
-<p>Last updated on 2025-05-01 |
+<p>Last updated on 2026-04-16 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/advanced-topics.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 65 minutes</p>
@@ -2289,8 +2232,8 @@ directly.</li>
 <p>This section explains how to run <strong>NextGen In A Box
 (NGIAB)</strong> using <strong>Singularity</strong> on the
 <strong>Pantarhei HPC system</strong> at the University of Alabama. To
-access Pantarhei, please follow the instructions on <a href="https://docs.ciroh.org/docs/services/access/#accessing-on-premises-infrastructure" class="external-link">CIROH’s
-DocuHub page</a>.</p>
+access Pantarhei, please follow the instructions on <a href="https://hub.ciroh.org/docs/services/on-prem/Pantarhei/access" class="external-link">CIROH’s
+Hub page</a>.</p>
 <hr>
 <div class="section level3">
 <h3 id="log-into-pantarhei">1. Log Into Pantarhei<a class="anchor" aria-label="anchor" href="#log-into-pantarhei"></a>
@@ -2299,7 +2242,7 @@ DocuHub page</a>.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>@pantarhei.ua.edu</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>@pantarhei.ua.edu</span></code></pre>
 </div>
 <p>Replace <code>&lt;USERNAME&gt;</code> with your actual Pantarhei
 username.</p>
@@ -2312,7 +2255,7 @@ username.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--partition</span><span class="op">=</span>normal <span class="at">--nodes</span><span class="op">=</span>1 <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--time</span><span class="op">=</span>02:00:00 <span class="at">--pty</span> bash</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">srun</span> <span class="at">--partition</span><span class="op">=</span>normal <span class="at">--nodes</span><span class="op">=</span>1 <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--time</span><span class="op">=</span>02:00:00 <span class="at">--pty</span> bash</span></code></pre>
 </div>
 <p>Use the <code>normal</code> partition unless you require more time or
 special resources.</p>
@@ -2324,7 +2267,7 @@ special resources.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">singularity</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">singularity</span> <span class="at">--version</span></span></code></pre>
 </div>
 <hr>
 </div>
@@ -2335,8 +2278,8 @@ special resources.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/NextGen/ngen-data</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="bu">cd</span> ~/NextGen/ngen-data</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/NextGen/ngen-data</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="bu">cd</span> ~/NextGen/ngen-data</span></code></pre>
 </div>
 <hr>
 </div>
@@ -2350,8 +2293,8 @@ special resources.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
 </div>
 <p>Other options: AWI-007 or AWI-008 can be used similarly, see the <a href="../training-NGIAB-101/installation.html#step-2-download-sample-data">Installation
 and Setup episode</a>.</p>
@@ -2364,9 +2307,9 @@ and Setup episode</a>.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="bu">cd</span> ~/NextGen</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-HPCInfra.git</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="bu">cd</span> NGIAB-HPCInfra</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="bu">cd</span> ~/NextGen</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-HPCInfra.git</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1" aria-label="code-block-6-3"></a><span class="bu">cd</span> NGIAB-HPCInfra</span></code></pre>
 </div>
 <blockquote>
 <p>✅ <strong>Note:</strong> Always run <code>guide.sh</code> from
@@ -2382,13 +2325,13 @@ inside the <code>NGIAB-HPCInfra</code> folder.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">chmod</span> +x guide.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="fu">chmod</span> +x guide.sh</span></code></pre>
 </div>
 <p>Then run it:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">./guide.sh</span></span></code></pre>
 </div>
 <p>Follow the prompts:</p>
 <ul>
@@ -2400,7 +2343,7 @@ extracted dataset folder. Example:</p></li>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">/home/</span><span class="op">&lt;</span>username<span class="op">&gt;</span>/NextGen/ngen-data/AWI_16_10154200_009</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">/home/</span><span class="op">&lt;</span>username<span class="op">&gt;</span>/NextGen/ngen-data/AWI_16_10154200_009</span></code></pre>
 </div>
 <p>This folder must contain:</p>
 <pre><code>forcings/
@@ -2458,7 +2401,7 @@ browser.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 80:localhost:80 username@remote_host</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 80:localhost:[local port number] username@remote_host</span></code></pre>
 </div>
 <p>Replace <code>username@remote_host</code> with your credentials.</p>
 <p>Now, you should be able to run NGIAB as usual through your SSH
@@ -2563,7 +2506,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/CIROH-UA/varnish/tree/93b60afcd3653ecde8cdf672fc782d83a37801a7" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/CIROH-UA/varnish/tree/93b60afcd3653ecde8cdf672fc782d83a37801a7" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -2586,8 +2529,8 @@ any links that you are not going to use.
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/instructor/aio.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/instructor/aio.html",
   "dateCreated": "2025-05-19",
-  "dateModified": "2026-04-14",
-  "datePublished": "2026-04-14"
+  "dateModified": "2026-04-16",
+  "datePublished": "2026-04-16"
 }
 
   </script><script>

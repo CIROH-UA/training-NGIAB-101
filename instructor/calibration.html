@@ -269,7 +269,7 @@
       </button>
     </div><!--/div.accordion-header-->
 
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#parameter-calibration-using-ngiab-cal">Parameter Calibration using <code>ngiab-cal</code></a></li>
 <li><a href="#using-ngiab-cal">Using <code>ngiab-cal</code></a></li>
@@ -347,7 +347,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Calibration</h1>
-        <p>Last updated on 2025-06-10 |
+        <p>Last updated on 2026-04-16 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/calibration.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -395,26 +395,29 @@ parameters are adjusted to match observations in the calibration period,
 and the validation period is used to test the calibrated parameters.</p>
 </section><section><h2 class="section-heading" id="using-ngiab-cal">Using <code>ngiab-cal</code>
 <a class="anchor" aria-label="anchor" href="#using-ngiab-cal"></a></h2>
-<hr class="half-width"><p>To use <code>ngiab-cal</code> without installation:</p>
+<hr class="half-width"><p>First, you will need a data package with at least a couple years of
+data. Follow the instructions from the data preparation episode.</p>
+<p>To use <code>ngiab-cal</code> without installation:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Run directly without installation</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">uvx</span> ngiab-cal <span class="at">--help</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="co"># Run directly without installation</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">uvx</span> ngiab-cal <span class="at">--help</span></span></code></pre>
 </div>
 <p>To install <code>ngiab-cal</code> as a package:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Or install as a tool</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">uv</span> tool install ngiab-cal</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="ex">ngiab-cal</span> <span class="at">--help</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="co"># Or install as a tool</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="ex">uv</span> tool install ngiab-cal</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a><span class="ex">ngiab-cal</span> <span class="at">--help</span></span></code></pre>
 </div>
 <p>A configuration file at <code>calibration/ngen_cal_conf.yaml</code>
-controls the calibration process. Users can edit the configuration file
-to meet their needs and preferences, such as number of iterations,
-acceptable parameter ranges, and time periods. The layout of the
-configuration file is as follows:</p>
+generated each time <code>ngiab_cal</code> is run. This file controls
+the calibration process. Users can edit the configuration file to meet
+their needs and preferences, such as number of iterations, acceptable
+parameter ranges, and time periods. The layout of the configuration file
+is as follows:</p>
 <pre><code>general:
   strategy:
     type: estimation
@@ -447,19 +450,20 @@ eval_params:
   site_name: "USGS 01646500: "  # Label for plots</code></pre>
 <p>Calibrating and saving parameters requires the three following
 commands, where <code>/path/to/ngiab/data/folder</code> is replaced with
-the appropriate filepath, and <code>USGS_GAGE_ID</code> is replaced with
-an appropriate USGS gage within your study area.</p>
+the appropriate filepath to the aforementioned data folder, and
+<code>USGS_GAGE_ID</code> is replaced with an appropriate USGS gage
+within your study area.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Create calibration configuration</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">ngiab-cal</span> /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># Create and run calibration (200 iterations)</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="ex">ngiab-cal</span> /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID <span class="at">--run</span> <span class="at">-i</span> 200</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co"># Force recreation of calibration configuration</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="ex">ngiab-cal</span> /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID <span class="at">-f</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="co"># Create calibration configuration</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">[uvx]</span> ngiab-cal /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a><span class="co"># Create and run calibration (2 iterations)</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a><span class="ex">[uvx]</span> ngiab-cal /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID <span class="at">--run</span> <span class="at">-i</span> 2</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1" aria-label="code-block-4-7"></a><span class="co"># Force recreation of calibration configuration</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1" aria-label="code-block-4-8"></a><span class="ex">[uvx]</span> ngiab-cal /path/to/ngiab/data/folder <span class="at">-g</span> USGS_GAGE_ID <span class="at">-f</span></span></code></pre>
 </div>
 <p>More details about usage of <code>ngiab-cal</code> can be found on <a href="https://github.com/CIROH-UA/ngiab-cal" class="external-link">its GitHub page</a>.</p>
 </section><section><h2 class="section-heading" id="your-turn">Your Turn<a class="anchor" aria-label="anchor" href="#your-turn"></a></h2>
@@ -526,7 +530,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/CIROH-UA/varnish/tree/93b60afcd3653ecde8cdf672fc782d83a37801a7" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/CIROH-UA/varnish/tree/93b60afcd3653ecde8cdf672fc782d83a37801a7" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -548,8 +552,8 @@ any links that you are not going to use.
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/instructor/calibration.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/instructor/calibration.html",
   "dateCreated": "2025-05-19",
-  "dateModified": "2025-06-10",
-  "datePublished": "2026-04-14"
+  "dateModified": "2026-04-16",
+  "datePublished": "2026-04-16"
 }
 
   </script><script>

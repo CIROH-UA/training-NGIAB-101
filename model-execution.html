@@ -242,7 +242,7 @@
       </button>
     </div><!--/div.accordion-header-->
 
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#model-execution-using-guide.sh">Model Execution using <code>guide.sh</code></a></li>
 <li><a href="#model-execution-using-data-preprocess-tool">Model Execution using Data Preprocess tool</a></li>
@@ -347,7 +347,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Model Execution</h1>
-        <p>Last updated on 2025-05-01 |
+        <p>Last updated on 2026-04-16 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/model-execution.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -386,14 +386,17 @@
 <hr class="half-width"><p><code>guide.sh</code> is used to execute pre-configured NextGen runs
 in NGIAB. These settings can be configured by users ahead of time using
 the <a href="/training-NGIAB-101/data-preparation.html">Data Preprocess
-tool</a>. Execute the following commands:</p>
+tool</a>. If you haven’t already in Episode 2, execute the following
+commands to install NGIAB, and follow the guide script instructions to
+run a simulation using the data you have preprocessed from the previous
+episode:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">cd</span> NextGen</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">cd</span> NGIAB-CloudInfra</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="bu">cd</span> NextGen</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="bu">cd</span> NGIAB-CloudInfra</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a><span class="ex">./guide.sh</span></span></code></pre>
 </div>
 <p><code>guide.sh</code> will prompt you to enter input data pathways
 and allow you to select a computational mode (serial or parallel
@@ -467,7 +470,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/CIROH-UA/varnish/tree/93b60afcd3653ecde8cdf672fc782d83a37801a7" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/CIROH-UA/varnish/tree/93b60afcd3653ecde8cdf672fc782d83a37801a7" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -489,8 +492,8 @@ any links that you are not going to use.
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/model-execution.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/model-execution.html",
   "dateCreated": "2025-05-19",
-  "dateModified": "2025-05-01",
-  "datePublished": "2026-04-14"
+  "dateModified": "2026-04-16",
+  "datePublished": "2026-04-16"
 }
 
   </script><script>

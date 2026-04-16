@@ -119,11 +119,11 @@
   NGIAB 101
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: NA%" class="percentage">
-    NA%
+<aside class="col-md-12 lesson-progress"><div style="width: %" class="percentage">
+    %
   </div>
   <div class="progress ciroh">
-    <div class="progress-bar ciroh" role="progressbar" style="width: NA%" aria-valuenow="NA" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar ciroh" role="progressbar" style="width: %" aria-valuenow="" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -368,13 +368,13 @@ command prompt:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span> <span class="pp">[</span><span class="ss">port</span><span class="pp">]</span>:localhost:<span class="pp">[</span><span class="ss">port</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">username</span><span class="pp">]</span>@<span class="pp">[</span><span class="ss">ip.address</span><span class="pp">]</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="fu">ssh</span> <span class="at">-L</span> <span class="pp">[</span><span class="ss">port</span><span class="pp">]</span>:localhost:<span class="pp">[</span><span class="ss">port</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">username</span><span class="pp">]</span>@<span class="pp">[</span><span class="ss">ip.address</span><span class="pp">]</span></span></code></pre>
 </div>
 <p>e.g.:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 5906:localhost:5906 exouser@<span class="pp">[</span><span class="ss">ip.address</span><span class="pp">]</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 5906:localhost:5906 exouser@<span class="pp">[</span><span class="ss">ip.address</span><span class="pp">]</span></span></code></pre>
 </div>
 <p>The -L flag is used to initiate SSH tunneling, which is necessary to
 view the NGIAB visualizer.</p>
@@ -406,7 +406,7 @@ instance’s terminal.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess cli <span class="at">-i</span> gage-10154200 <span class="at">-sfr</span> <span class="at">--start</span> 2017-09-01 <span class="at">--end</span> 2018-09-01 <span class="at">--source</span> aorc </span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess cli <span class="at">-i</span> gage-10154200 <span class="at">-sfr</span> <span class="at">--start</span> 2017-09-01 <span class="at">--end</span> 2018-09-01 <span class="at">--source</span> aorc </span></code></pre>
 </div>
 <p>Use the default output folder given.</p>
 </li>
@@ -416,11 +416,11 @@ run guide script:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">mkdir</span> NGIAB_demo</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="bu">cd</span> NGIAB_demo</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git </span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="bu">cd</span> NGIAB-CloudInfra </span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="ex">./guide.sh</span> </span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="fu">mkdir</span> NGIAB_demo</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="bu">cd</span> NGIAB_demo</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git </span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a><span class="bu">cd</span> NGIAB-CloudInfra </span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a><span class="ex">./guide.sh</span> </span></code></pre>
 </div>
 </li>
 <li><p>When prompted, enter the following input data directory
@@ -468,7 +468,7 @@ stations (black dots).</div>
 </figure><div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess map_app</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess map_app</span></code></pre>
 </div>
 </li>
 </ol><p>To view the map app in your VNC viewer or your local web browser, use
@@ -483,13 +483,13 @@ separately in order to use TEEHR and the Data Visualizer.</p></li>
 </ol><div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">chmod</span> +x runTeehr.sh viewOnTethys.sh</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">./runTeehr.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="fu">chmod</span> +x runTeehr.sh viewOnTethys.sh</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="ex">./runTeehr.sh</span></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">./viewOnTethys.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">./viewOnTethys.sh</span></span></code></pre>
 </div>
 <p>When you run <code>viewOnTethys.sh</code>, make sure to select a
 different port (we like 8081). Use your VNC viewer to access the
@@ -499,7 +499,7 @@ visualization at the given link.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">./guide.sh</span></span></code></pre>
 </div>
 <ol start="4" style="list-style-type: decimal"><li>Experiment with different basins or options as much as you’d like!
 <!--
@@ -549,7 +549,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/CIROH-UA/varnish/tree/93b60afcd3653ecde8cdf672fc782d83a37801a7" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/CIROH-UA/varnish/tree/93b60afcd3653ecde8cdf672fc782d83a37801a7" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -572,7 +572,7 @@ any links that you are not going to use.
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/instructor/devcon25js.html",
   "dateCreated": "2025-05-19",
   "dateModified": "2025-05-23",
-  "datePublished": "2026-04-14"
+  "datePublished": "2026-04-16"
 }
 
   </script><script>
