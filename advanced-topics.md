@@ -165,11 +165,11 @@ The script will:
 
 - Allow running in:
 
-    - Serial mode
+  - Serial mode
 
-    - Parallel mode
+  - Parallel mode
 
-    - Interactive container shell
+  - Interactive container shell
 
 
 ----------
@@ -186,6 +186,7 @@ The script will:
 ::::::::::::::::::::::::
 
 :::::::::::::::: spoiler
+
 ## Using NGIAB through an SSH connection
 
 NGIAB's core functions work through an SSH connection without port forwarding. However, to use the Data Visualizer, you will have to set up port forwarding to view visualization results on your local machine's browser.
@@ -196,6 +197,7 @@ To do so, run the following command on your local machine:
 ssh -L 80:localhost:[local port number] username@remote_host
 
 ```
+
 Replace `username@remote_host` with your credentials.
 
 Now, you should be able to run NGIAB as usual through your SSH tunnel, and access Data Visualizer results in your local browser.
@@ -203,6 +205,23 @@ Now, you should be able to run NGIAB as usual through your SSH tunnel, and acces
 ::::::::::::::::::::::::
 
 :::::::::::::::: spoiler
+
+## Running NGIAB in JupyterHub
+
+To run NGIAB in a JupyterHub environment, please follow the instructions in our [HydroShare resource](https://www.hydroshare.org/resource/27045581bdea4808a393330f2417379c/).
+
+::::::::::::::::::::::::
+
+:::::::::::::::: spoiler
+
+## Running NGIAB in DatastreamCLI
+
+To run NGIAB through DatastreamCLI, please follow the instructions in our [datastreamCLI GitHub page](https://github.com/CIROH-UA/datastreamcli/tree/main). This page has an example command that can be run locally, and the repository also contains a tutorial guide script at `scripts/datastream_guide`.
+
+::::::::::::::::::::::::
+
+:::::::::::::::: spoiler
+
 ## Community Contributions to NGIAB/NextGen
 
 The most up-to-date guidelines on community contributions for each repository can be found on its respective GitHub page.

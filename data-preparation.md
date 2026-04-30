@@ -23,9 +23,9 @@ exercises: 45
 
 **The Data Preprocess tool streamlines data preparation for NextGen runs in NGIAB.** This tool provides a graphical user interface (GUI) and a command line interface (CLI) to prepare input data and execute model runs. A graphical user interface facilitates catchment and date range selection options via an interactive map, simplifying the subsetting of hydrofabrics, generation of forcings, and creation of default NextGen realizations. While this module reduces procedural complexity, it incorporates pre-defined assumptions that may limit user flexibility in specific applications [(Cunningham, 2025)](https://github.com/CIROH-UA/NGIAB_data_preprocess).
 
-### Installing and Using the Data Preprocess Tool
+The Data Preprocess tool (like all of our software) is constantly being updated and refined. As of the time of writing (see last updated date above), there are two ways to run the tool. Instructions for installation, environment management, and the GUI/CLI are found on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess).
 
-The Data Preprocess tool (like all of our software) is constantly being updated and refined. As of the time of writing (see last updated date above), there are two ways to run the tool. Instructions for installation, environment management, and the GUI/CLI are found on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess). We will cover some examples of the CLI usage, but full documentation is on the GitHub page.
+### CLI instructions
 
 #### Example 1
 
@@ -58,6 +58,18 @@ python -m ngiab_data_cli -i cat-7080 -f --start 2022-01-01 --end 2022-02-28
 ```
 
 `python -m ngiab_data_cli` indicates that the Data Preprocess CLI tool will execute.
+
+### GUI instructions
+
+Either one of these commands will run the interactive GUI. The first command works without installing anything except UV. The second command requires the installation of the data preprocessor with UV.
+
+```bash
+uvx --from ngiab-data-preprocess map_app
+```
+
+```bash
+uv run map_app
+```
 
 ![Figure 1: Map showing an example drainage basin. View from the USGS National Map.](fig/fig3-1.png){alt='A screenshot of the USGS National Map centered on the Provo River network in Utah, showing streamflow and watershed data. A blue map marker identifies a Monitoring Location. A red dot marks an Active Monitoring Location farther downstream. The Upstream Basin is shaded in grey, while Upstream Flowlines and Downstream Flowlines are highlighted in dark and light blue, respectively. A scale bar in the bottom right shows distances of 5 kilometers and 3 miles. A map legend in the lower right corner explains the color codes for flowlines and monitoring locations.'}
 
