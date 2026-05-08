@@ -8,6 +8,7 @@ exercises: 60
 
 - How do I use NGIAB on an high-performance computing (HPC) system?
 - How do I use the Data Visualizer through an SSH connection?
+- Are there other ways I can run NGIAB?
 - How can I contribute to NGIAB?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -17,6 +18,7 @@ exercises: 60
 - Install and use NGIAB on an HPC
 - Use port forwarding to view NGIAB results
 - Explain the NGIAB community contribution process
+- Learn about other ways to run NGIAB
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -248,12 +250,14 @@ Based on your own interests and use cases, try out some of these options:
 - Install and use NGIAB on your HPC environment
 - Use NGIAB through an SSH connection
 - Contribute to NGIAB/NextGen!
+- Run NGIAB in another way!
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - NGIAB supports HPC environments through Singularity, not Docker, but the workflow mirrors the local Docker use.
 - Port forwarding is required to use the Data Visualizer through an SSH connection.
 - Community contribution guidelines are available in each repository's GitHub page.
+- NGIAB can also be run through JupyterHub or DatastreamCLI.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
