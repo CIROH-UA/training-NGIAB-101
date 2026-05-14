@@ -13,14 +13,14 @@ The source code for NextGen In A Box (NGIAB) is found at [our GitHub repository]
 
 To dive right into NGIAB as quickly as possible, follow the quick start guide on our [GitHub repository](https://github.com/CIROH-UA/NGIAB-CloudInfra/blob/main/docs/02_INSTALL.md), or head straight to our second episode, Installation. If you are interested in taking your time and learning in-depth about the features of NGIAB, follow the episodes in this module.
 
-For all users, the [Key Points summary page](/training-NGIAB-101/key-points.html) and the [Glossary](/training-NGIAB-101/reference.html) may be useful references. The [Advanced Topics episode](/training-NGIAB-101/advanced-topics.html) is optional, but may contain useful content depending on your specific use case.
+For all users, the [Key Points summary page](./key-points.html) and the [Glossary](./reference.html) may be useful references. The [Advanced Topics episode](./advanced-topics.html) is optional, but may contain useful content depending on your specific use case.
 
 Note: This module requires you to use Bash scripting in your command line and Git. All commands will be given in this module. However, if you are interested in learning more, you can refer to this [quick Bash tutorial by Ubuntu](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview), [this basic Git tutorial in the Git documentation](https://git-scm.com/docs/gittutorial), and this [Git workflow tutorial by CIROH](https://github.com/AlabamaWaterInstitute/data_access_examples/blob/main/doc/GIT_USAGE.md).
 
 ::::::::::::::::::::::::::::::::::::: callout
 
 ## HPC Users
-Are you planning on running NGIAB on an HPC? You can follow the episodes in order, but replace Episode 2: Installation and Setup with the HPC-specific instructions in the [Advanced Topics module](/training-NGIAB-101/advanced-topics.html).
+Are you planning on running NGIAB on an HPC? You can follow the episodes in order, but replace Episode 2: Installation and Setup with the HPC-specific instructions in the [Advanced Topics module](./advanced-topics.html).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 

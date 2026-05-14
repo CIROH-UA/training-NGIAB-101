@@ -19,7 +19,7 @@ exercises: 5
 
 ## Model Execution using `guide.sh`
 
-`guide.sh` is used to execute pre-configured NextGen runs in NGIAB. These settings can be configured by users ahead of time using the [Data Preprocess tool](/training-NGIAB-101/data-preparation.html). If you haven't already in Episode 2, execute the following commands to install NGIAB, and follow the guide script instructions to run a simulation using the data you have preprocessed from the previous episode:
+`guide.sh` is used to execute pre-configured NextGen runs in NGIAB. These settings can be configured by users ahead of time using the [Data Preprocess tool](./data-preparation.html). Execute the following commands:
 
 ``` bash
 cd NextGen
