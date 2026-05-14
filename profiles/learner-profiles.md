@@ -19,3 +19,4 @@ Are you joining us for the DevCon 2025 NGIAB workshop? We have prepared two DevC
 **These documents are key, since we will not be following the default episodes exactly as written.**
 
 After the workshop, feel free to explore the rest of this module to learn more about NGIAB!
+Are you planning on running NGIAB on an HPC? You can follow the episodes in order, but replace Episode 2: Installation and Setup with the HPC-specific instructions in the [Advanced Topics module](/training-NGIAB-101/advanced-topics.html).

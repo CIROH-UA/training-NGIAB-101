@@ -4,7 +4,7 @@ teaching: 5
 exercises: 5
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions 
+:::::::::::::::::::::::::::::::::::::: questions
 
 - How do I execute a NextGen run?
 
@@ -40,7 +40,7 @@ Use `guide.sh` to execute a NextGen run in NGIAB using your preprocessed data.
 
 Extra Credit: Use the Data Preprocess tool to automatically execute a NextGen run in NGIAB.
 
-::::::::::::::::::::::::::::::::::::: keypoints 
+::::::::::::::::::::::::::::::::::::: keypoints
 
 - To execute a NextGen run in NGIAB with full functionality, use `guide.sh` in the NGIAB container.
 - A NextGen run in NGIAB can also be automatically executed post-preprocessing using the Data Preprocess tool.
