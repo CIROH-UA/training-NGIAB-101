@@ -334,9 +334,9 @@ cd ~/NextGen/NGIAB-CloudInfra
 
 Are you interested in customizing your run with your own catchments (watersheds) and run configurations? Do you want to explore more functionalities of NGIAB? Check out the following episodes:
 
--   [Data Preparation - NGIAB Data Preprocessor](./data-preparation.html)
+-   [Data Preparation - NGIAB Data Preprocessor](./data-preprocessor.html)
     
--   [Evaluation - NGIAB TEEHR Integration](./evaluation.html)
+-   [Evaluation - NGIAB TEEHR Integration](./teehr.html)
     
 -   [Visualization - Data Visualizer](./visualization.html)
 

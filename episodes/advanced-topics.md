@@ -9,6 +9,7 @@ exercises: 60
 - How do I use NGIAB on an high-performance computing (HPC) system?
 - How do I use the Data Visualizer through an SSH connection?
 - How can I contribute to NGIAB?
+- How can new models be integrated into NGIAB and NextGen?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -17,6 +18,7 @@ exercises: 60
 - Install and use NGIAB on an HPC
 - Use port forwarding to view NGIAB results
 - Explain the NGIAB community contribution process
+- Describe the general workflow for integrating models into NGIAB
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -222,6 +224,55 @@ The most up-to-date guidelines on community contributions for each repository ca
 
 ::::::::::::::::::::::::
 
+:::::::::::::::: spoiler
+
+## Model Integration Guidelines
+
+One of the strengths of the NextGen framework is its ability to support community-developed hydrologic models through a modular architecture. NGIAB extends this capability by providing a reproducible environment for integrating, testing, evaluating, and distributing models within the broader NextGen ecosystem.
+
+### Integration Requirements
+
+Before integrating a model into NGIAB, developers should prepare:
+
+- An example input data package.
+- Instructions for generating forcings and configuration files.
+- Documentation describing required inputs, outputs, and parameters.
+- Access instructions for any external datasets required by the model.
+
+For Python-based models, compatibility with the NGIAB software environment is required. For compiled models, developers should ensure that the model can be built and executed within the NGIAB container environment.
+
+### Integration into NGIAB
+
+The integration process depends on the type of model being added.
+
+For Python models, integration typically involves adding the model package and its dependencies to the NGIAB container environment.
+
+For compiled models, integration typically involves incorporating the model into the NextGen build system and generating the required shared libraries for execution.
+
+Regardless of implementation language, models should be configured so that they can be executed through standard NextGen realizations and workflows.
+
+### Integration into Supporting Tools
+
+Model integration often requires updates to supporting NGIAB software:
+
+- The Data Preprocessor may require new realization templates, BMI configuration files, or forcing-generation workflows.
+- Calibration workflows may require parameter definitions and configuration updates.
+- Evaluation and visualization tools should be verified to ensure compatibility with new model outputs.
+
+### Best Practices
+
+When integrating a new model, developers should:
+
+- Test the model using a small study area before large-scale execution.
+- Verify that forcings and hydrofabric inputs are correctly mapped.
+- Compare outputs against benchmark simulations and observations.
+- Document assumptions, parameters, and required dependencies.
+- Maintain reproducible workflows using version control and configuration files.
+
+Through this process, NGIAB provides a consistent framework for integrating new hydrologic models while maintaining compatibility with existing workflows for preprocessing, execution, calibration, evaluation, and visualization.
+
+::::::::::::::::::::::::.
+
 ## Your Turn
 
 Based on your own interests and use cases, try out some of these options:
@@ -229,12 +280,14 @@ Based on your own interests and use cases, try out some of these options:
 - Install and use NGIAB on your HPC environment
 - Use NGIAB through an SSH connection
 - Contribute to NGIAB/NextGen!
+- Review the requirements for integrating a new model and identify what information would be needed to add your own model to NGIAB.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - NGIAB supports HPC environments through Singularity, not Docker, but the workflow mirrors the local Docker use.
 - Port forwarding is required to use the Data Visualizer through an SSH connection.
 - Community contribution guidelines are available in each repository's GitHub page.
+- Model integration in NGIAB requires model configuration, supporting input datasets, and compatibility with the broader NGIAB ecosystem, including preprocessing, calibration, evaluation, and visualization tools.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
