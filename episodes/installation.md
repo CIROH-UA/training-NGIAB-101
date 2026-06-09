@@ -351,11 +351,9 @@ Are you interested in customizing your run with your own catchments (watersheds)
     
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-
 -   NGIAB simplifies NextGen framework deployment through Docker.
 -   Use `guide.sh` for interactive configuration and run execution.
 -   Always confirm successful setup by executing provided sample runs.
 
-::::::::::::::::::::::::::::::::::::::::::::::::
-
+:::::::::::::::::::::::::::::::::::::::::::::::: 
 

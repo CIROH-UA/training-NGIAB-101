@@ -1,7 +1,7 @@
 ---
 title: "Related Software"
-teaching:
-exercises:
+teaching: 5
+exercises: 5
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions

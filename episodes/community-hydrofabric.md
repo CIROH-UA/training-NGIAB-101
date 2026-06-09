@@ -1,12 +1,14 @@
 ---
 title: "Community Hydrofabric"
 teaching: 5
-exercises: 10
+exercises: 45
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions
 
 - How does the Community Hydrofabric support NGIAB workflows?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
@@ -61,9 +63,11 @@ Figure 2 shows the spatial extent of Community Hydrofabric datasets across the c
 
 NGIAB automatically accesses and subsets the required hydrofabric data during preprocessing, so users generally do not need to manually download hydrofabric products.
 
+Each hydrofabric dataset contains the watershed boundaries, stream network geometry, nexus connectivity, and supporting attributes required to configure and execute NextGen simulations.
+
 ## Community Hydrofabric in NGIAB
 
-The Community Hydrofabric supports multiple NGIAB components:
+Because nearly every NGIAB workflow relies on watershed connectivity and spatial relationships, the Community Hydrofabric acts as a shared foundation across preprocessing, model execution, calibration, evaluation, and visualization. The Community Hydrofabric supports multiple NGIAB components:
 
 - The Data Preprocessor uses hydrofabric data to subset study areas and generate model-ready inputs.
 - Model execution workflows use hydrofabric connectivity to define routing relationships.
@@ -86,5 +90,3 @@ Use the Data Preprocessor to generate a study area for a selected gage. Explore 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 [r-markdown]: https://rmarkdown.rstudio.com/
-
-:::

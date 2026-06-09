@@ -271,8 +271,7 @@ When integrating a new model, developers should:
 
 Through this process, NGIAB provides a consistent framework for integrating new hydrologic models while maintaining compatibility with existing workflows for preprocessing, execution, calibration, evaluation, and visualization.
 
-::::::::::::::::::::::::.
-
+::::::::::::::::::::::::
 ## Your Turn
 
 Based on your own interests and use cases, try out some of these options:
