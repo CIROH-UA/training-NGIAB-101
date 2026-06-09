@@ -22,20 +22,18 @@ The Community Hydrofabric provides the geospatial foundation used by NextGen and
 Several enhancements have been added to improve compatibility with NGIAB, including corrected gage-to-flowpath mappings, GeoPackage-compliant hydrolocation layers, and database indexing for faster data retrieval. During preprocessing, NGIAB automatically retrieves and subsets the required hydrofabric data for the selected study area, allowing users to work directly with model-ready inputs rather than managing hydrofabric datasets manually.
 
 For additional information about the Community Hydrofabric and its role in NGIAB workflows, see the [Community Hydrofabric](./community-hydrofabric.html). 
-<!-- .md needs to be changed to .html for web. -->
 
 
 
-## Data Preprocess Tool
+## Data Preprocessor Tool
 
-The Data Preprocess tool simplifies the preparation of input data for NextGen simulations in NGIAB. Through both a graphical user interface (GUI) and command-line interface (CLI), users can select a catchment, gage, watershed, or geographic location, define a simulation period, and generate a complete run package for NGIAB with minimal manual effort.
+The Data Preprocessor tool simplifies the preparation of input data for NextGen simulations in NGIAB. Through both a graphical user interface (GUI) and command-line interface (CLI), users can select a catchment, gage, watershed, or geographic location, define a simulation period, and generate a complete run package for NGIAB with minimal manual effort.
 
 The tool automatically subsets the hydrofabric upstream of the selected location, generates catchment-scale meteorological forcings from NWM retrospective or AORC datasets, and creates the configuration files required for NextGen execution. It supports multiple model realizations, and an interactive map interface further streamlines workflow setup by enabling catchment selection and data preparation through a few simple steps.
 
 While the tool significantly reduces the complexity of configuring NextGen simulations, it relies on predefined workflows and default model configurations, which may limit customization and advanced calibration options for some applications [(Cunningham, 2025)](https://github.com/CIROH-UA/NGIAB_data_preprocess).
 
-For additional information about the Data Preprocess Tool and its role in NGIAB workflows, see the [Data Preprocessor](./data-preprocessor.html). 
-<!-- .md needs to be changed to .html for web. -->
+For additional information about the Data Preprocessor Tool and its role in NGIAB workflows, see the [Data Preprocessor](./data-preprocessor.html). 
 
 
 ## NGIAB-Cal
@@ -45,7 +43,6 @@ NGIAB-Cal is a calibration utility for NextGen In A Box (NGIAB) workflows that a
 The calibration workflow divides the simulation period into warmup, calibration, and validation phases. After allowing the model to stabilize during the warmup period, parameters are optimized against observations during calibration and subsequently evaluated on an independent validation period. NGIAB-Cal automatically generates the required configuration files, supports Docker-based calibration runs, and updates the model configuration with the optimized parameter values [(Cunningham, 2025)](https://github.com/CIROH-UA/ngiab-cal). 
 
 For additional information about the NGIAB Calibration workflows, see the [Calibration](./calibration.html). 
-<!-- .md needs to be changed to .html for web. -->
 
 
 ## TEEHR
@@ -57,7 +54,6 @@ TEEHR provides tools for data ingestion, analytics, visualization, and performan
 Through these capabilities, TEEHR helps researchers quantify model accuracy, identify sources of error, and evaluate the reliability of hydrologic simulations.
 
 For additional information about the TEEHR framework, see the [TEEHR](./teehr.html). 
-<!-- .md needs to be changed to .html for web. -->
 
 ## Data Visualizer
 
@@ -75,7 +71,7 @@ For additional information about the Data Visualizer application, see the [Visua
 
 ### Terminology
 - **Community Hydrofabric** – provides the geospatial framework used by NGIAB.
-- **Data Preprocess Tool** – prepares inputs for NextGen runs.
+- **Data Preprocessor Tool** – prepares inputs for NextGen runs.
 - **NGIAB-Cal** – calibrates model parameters.
 - **TEEHR** – evaluates simulation performance.
 - **Data Visualizer** – explores and visualizes results.
@@ -86,7 +82,7 @@ For additional information about the Data Visualizer application, see the [Visua
 
 Here are some self-assessment questions for discussion or consideration:
 
-- What role does each tool (Community Hydrofabrics, Data Preprocess, NGIAB-Cal, TEEHR, and Data Visualizer) play in the NextGen modeling workflow?
+- What role does each tool (Community Hydrofabric, Data Preprocessor, NGIAB-Cal, TEEHR, and Data Visualizer) play in the NextGen modeling workflow?
 - Why are catchments, flowpaths, and nexus points important for hydrologic simulations?
 - Why is model calibration important, and how does NGIAB-Cal help improve simulation performance?
 - How can TEEHR be used to evaluate the accuracy of a NextGen simulation?
@@ -97,7 +93,7 @@ Here are some self-assessment questions for discussion or consideration:
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - The Community Hydrofabric provides the watershed connectivity, catchments, flowpaths, and nexus information used throughout NGIAB workflows.
-- The Data Preprocess tool simplifies the creation of NextGen run packages by generating hydrofabric subsets, forcings, and model configurations.
+- The Data Preprocessor tool simplifies the creation of NextGen run packages by generating hydrofabric subsets, forcings, and model configurations.
 - NGIAB-Cal supports parameter calibration by optimizing model parameters against observed streamflow data.
 - TEEHR provides automated model evaluation through hydrograph visualization and performance metrics such as KGE, NSE, and Relative Bias.
 - The Data Visualizer enables interactive exploration of model outputs, including geospatial views, time series analysis, and TEEHR results.

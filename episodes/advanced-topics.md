@@ -232,22 +232,45 @@ One of the strengths of the NextGen framework is its ability to support communit
 
 ### Integration Requirements
 
+One of the core requirements for model integration is compatibility with the Basic Model Interface (BMI). All integrated models must expose functionality through BMI so they can communicate with the NextGen framework and participate in standard NextGen workflows.
+
 Before integrating a model into NGIAB, developers should prepare:
 
 - An example input data package.
-- Instructions for generating forcings and configuration files.
-- Documentation describing required inputs, outputs, and parameters.
-- Access instructions for any external datasets required by the model.
+- Instructions for generating forcings and BMI configuration files.
+- Instructions for accessing any source data required for forcings or model attributes.
 
-For Python-based models, compatibility with the NGIAB software environment is required. For compiled models, developers should ensure that the model can be built and executed within the NGIAB container environment.
+#### Python Models
+
+Because of potential package dependency conflicts with existing Python models in NGIAB, new Python models should meet the following requirements:
+
+- Compatible with Python 3.11.
+- `netcdf==1.63` if the model uses the `netcdf` package.
+- `pydantic<2` if the model uses `pydantic`.
+- `pandas<3` if the model uses `pandas`.
+- PyPI distributions should be available for the model and any non-standard dependencies to simplify wheel building and deployment.
+
+#### Non-Python Models
+
+For compiled models written in languages such as C, C++, or Fortran:
+
+- The model should be compilable against `libc 2.34` or lower.
+- The model must be compatible with the NextGen build environment and containerized execution workflows.
 
 ### Integration into NGIAB
 
 The integration process depends on the type of model being added.
 
-For Python models, integration typically involves adding the model package and its dependencies to the NGIAB container environment.
+For Python models:
 
-For compiled models, integration typically involves incorporating the model into the NextGen build system and generating the required shared libraries for execution.
+- Add the model package and its dependencies to the NGIAB container environment.
+- Configure BMI and realization files so the model can be executed through standard NextGen workflows.
+
+For compiled models:
+
+- Add the model as a component within the NextGen build system.
+- Build the model's shared object libraries within the NGIAB container environment.
+- Configure BMI and realization files for execution through NextGen.
 
 Regardless of implementation language, models should be configured so that they can be executed through standard NextGen realizations and workflows.
 
@@ -255,7 +278,7 @@ Regardless of implementation language, models should be configured so that they 
 
 Model integration often requires updates to supporting NGIAB software:
 
-- The Data Preprocessor may require new realization templates, BMI configuration files, or forcing-generation workflows.
+- The Data Preprocessor may require new realization templates, BMI configuration files, forcing-generation workflows, or additional model-selection options within the CLI.
 - Calibration workflows may require parameter definitions and configuration updates.
 - Evaluation and visualization tools should be verified to ensure compatibility with new model outputs.
 
@@ -270,8 +293,8 @@ When integrating a new model, developers should:
 - Maintain reproducible workflows using version control and configuration files.
 
 Through this process, NGIAB provides a consistent framework for integrating new hydrologic models while maintaining compatibility with existing workflows for preprocessing, execution, calibration, evaluation, and visualization.
-
 ::::::::::::::::::::::::
+
 ## Your Turn
 
 Based on your own interests and use cases, try out some of these options:
