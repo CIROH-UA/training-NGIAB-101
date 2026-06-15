@@ -1,5 +1,5 @@
 ---
-title: "Evaluation"
+title: "TEEHR"
 teaching: 5
 exercises: 10
 ---

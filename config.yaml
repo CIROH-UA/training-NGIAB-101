@@ -52,9 +52,11 @@ contact: 'ciroh-it-support@ua.edu'
 episodes:
 - introduction.md
 - installation.md
-- data-preparation.md
-- model-execution.md
-- evaluation.md
+- ways-to-run-NGIAB.md
+- ngiab-related-software.md
+- community-hydrofabric.md
+- data-preprocessor.md
+- teehr.md
 - visualization.md
 - calibration.md
 - advanced-topics.md

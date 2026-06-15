@@ -29,7 +29,7 @@ This lesson guides you through installing and setting up NGIAB, a containerized 
 
 ## Are you using an HPC?
 
-Instead of following these instructions, follow the guidance in the HPC sections in [Advanced Topics](/training-NGIAB-101/advanced-topics.html).
+Instead of following these instructions, follow the guidance in the HPC sections in [Advanced Topics](./advanced-topics.html).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -46,7 +46,7 @@ Before installing NGIAB, ensure you have:
 
 ## Connecting to a remote machine through SSH?
 
-To use the Data Visualizer through a Secure Shell (SSH) connection, you will have to set up port forwarding when connecting to the remote machine. Port forwarding will allow you to access a remotely hosted browser session on your local machine. See the instructions under "Using NGIAB through an SSH connection" in the [Advanced Topics episode](/training-NGIAB-101/advanced-topics.html) in this training module.
+To use the Data Visualizer through a Secure Shell (SSH) connection, you will have to set up port forwarding when connecting to the remote machine. Port forwarding will allow you to access a remotely hosted browser session on your local machine. See the instructions under "Using NGIAB through an SSH connection" in the [Advanced Topics episode](./advanced-topics.html) in this training module. 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -282,6 +282,7 @@ If you've completed the steps above and verified your dataset and working direct
 ```
 This will walk you through the NGIAB setup and launch your first run.
 
+
 ::::::::::::::::::::::::::::::::::::: callout
 
 ### `guide.sh` Tips
@@ -334,14 +335,20 @@ cd ~/NextGen/NGIAB-CloudInfra
 
 Are you interested in customizing your run with your own catchments (watersheds) and run configurations? Do you want to explore more functionalities of NGIAB? Check out the following episodes:
 
--   [Data Preparation - NGIAB Data Preprocessor](/training-NGIAB-101/data-preparation.html)
+-   [Ways to Run NGIAB](./ways-to-run-NGIAB.html)
 
--   [Evaluation - NGIAB TEEHR Integration](/training-NGIAB-101/evaluation.html)
+-   [NGIAB-related Software](./ngiab-related-software.html)
 
--   [Visualization - Data Visualizer](/training-NGIAB-101/visualization.html)
+-   [Community Hydrofabric](./community-hydrofabric.html)
 
--   [Advanced Topics](/training-NGIAB-101/advanced-topics.html)
+-   [NGIAB Data Preprocessor](./data-preprocessor.html)
+    
+-   [Evaluation - NGIAB TEEHR Integration](./teehr.html)
+    
+-   [Visualization - Data Visualizer](./visualization.html)
 
+-   [Advanced Topics](./advanced-topics.html)
+    
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 -   NGIAB simplifies NextGen framework deployment through Docker.
@@ -349,5 +356,4 @@ Are you interested in customizing your run with your own catchments (watersheds)
 -   Always confirm successful setup by executing provided sample runs.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
 

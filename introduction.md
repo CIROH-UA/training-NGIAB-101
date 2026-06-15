@@ -33,10 +33,11 @@ Managing NextGen's complex software ecosystem remains challenging. The NextGen f
 
 ### Terminology
 
-- NextGen: overarching framework
-- NGIAB: containerized packaging of NextGen
-- `ngen`: the engine used within NextGen
-- NWM: specific operational implementation used by the National Weather Service
+- NextGen: overarching hydrologic modeling framework
+- NGIAB: containerized distribution of NextGen
+- `ngen`: model execution engine used within NextGen
+- Community Hydrofabric: geospatial dataset containing catchments, flowpaths, nexus points, and watershed connectivity information
+- NWM: operational implementation maintained by the National Weather Service
 
 :::::::::::::::::::::::::::::::::::::::::::::
 
@@ -55,7 +56,7 @@ NGIAB is designed as a multi-layered containerized tool that encapsulates the Ne
 
 Figure 1 illustrates the layered architecture of NGIAB.
 
-- **Layer 1:** At its core (Layer 1) lies a suite of integrated hydrological modeling components and hydrofabric (a geopatial dataset representing hydrologic features like rivers, basins, and connections), designed to work together within the NextGen framework. Hydrologic models in NGIAB are Basic Model Interface (BMI) compliant, meaning that they follow a standard structure and can be swapped in and out for one another.
+- **Layer 1:** At its core (Layer 1) lies a suite of integrated hydrological modeling components and hydrofabric (a geospatial dataset representing hydrologic features like rivers, basins, and connections), designed to work together within the NextGen framework. Hydrologic models in NGIAB are Basic Model Interface (BMI) compliant, meaning that they follow a standard structure and can be swapped in and out for one another.
 - **Layer 2:** Layer 1 is wrapped by the Continuous Integration/Continuous Deployment (CI/CD) Pipeline layer (Layer 2). CI/CD are tools and practices that automate code testing and updates. NGIAB leverages GitHub Actions to ensure automated testing, integration, and deployment capabilities for reproducible workflows.
 - **Layer 3:** The NGIAB Containerization layer (Layer 3) provides the containerized environment and essential configuration tools.
 - **Layer 4:** The outermost layer (Layer 4), Technologies & Methods, provides broader infrastructure, best practices, and support for deployment across different computing environments (local, cloud, HPC), and facilitates community engagement and contribution.
@@ -69,14 +70,16 @@ The architecture emphasizes four key aspects:
 
 ## Extensions of NGIAB
 
-Several extensions of NGIAB are already integrated with NextGen-related tools like [Data Preprocess](/training-NGIAB-101/data-preparation.html), [Tools for Exploratory Evaluation in Hydrologic Research (TEEHR)](/training-NGIAB-101/evaluation.html), and [Data Visualizer](/training-NGIAB-101/visualization.html) (Figure 2). These extensions will be discussed in later episodes.
+Several extensions of NGIAB are already integrated with supporting tools and datasets, including the [Community Hydrofabric](./community-hydrofabric.html), [Data Preprocessor](./data-preprocessor.html), [Tools for Exploratory Evaluation in Hydrologic Research (TEEHR)](./teehr.html), and [Data Visualizer](./visualization.html) (Figure 2).
 
-![Figure 2: Workflow of data acquisition, model execution, evaluation, and results visualization.](fig/fig1-2.png){alt='A flowchart diagram showing the NGIAB model execution process. The central box labeled "NGIAB Model Execution" is connected to three components. To the left is a yellow-green box labeled "Data Preprocess," with three subcomponents listed: "GPKG Sub-setting," "Realization," and "Forcing." To the right, two boxes are connected to the center: a purple box labeled "TEEHR Evaluation" and a green box labeled "Data Visualizer." Dashed arrows indicate the flow of data between preprocessing, model execution, and evaluation/visualization.'}
+![Figure 2: Workflow of data acquisition, model execution, evaluation, and results visualization.](fig/fig1-2.png){alt='A flowchart diagram showing the NGIAB model execution process. The central box labeled "NGIAB Model Execution" is connected to three components. To the left is a yellow-green box labeled "Data Preprocess," with three subcomponents listed: "GPKG Sub-setting," "Realization," and "Forcing." To the right, two boxes are connected to the center: a purple box labeled "TEEHR Evaluation" and a green box labeled "Data Visualizer." Dashed arrows indicate the flow of data between preprocessing, model execution, and evaluation/visualization.'} 
+
+These components support a complete workflow from hydrofabric and forcing preparation through model execution, evaluation, calibration, and visualization.
 
 
 ## Example Applications
 
-Steps common to all hydrologic modeling frameworks include data collection and preparation, framework setup and model execution, evaluation, results visualization, and calibration. Researchers can use NGIAB to execute model runs for their basins of interest. *Note that calibration is not yet an integrated capability within NGIAB.* Figures 3 and 4 show examples of how NGIAB and its extensions have been used to simulate streamflow for five years in the Provo River basin.
+Steps common to all hydrologic modeling frameworks include data collection and preparation, framework setup and model execution, evaluation, results visualization, and calibration. Researchers can use NGIAB to execute model runs for their basins of interest. Figures 3 and 4 show examples of how NGIAB and its extensions have been used to simulate streamflow for five years in the Provo River basin.
 
 ![Figure 3: Map showing the drainage basin used as our demonstration case, the Provo River near Woodland, UT (Gage-10154200). This view shows the NGIAB interactive preprocessing tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots).](fig/fig1-4.png){alt='A map view displaying the Provo River network and basin boundaries in the area around Woodland, UT. The map includes the stream network shown in blue, basin boundaries in orange shaded regions, the downstream-most basin in a pink shaded reagion, and black dots representing USGS gage locations.'}
 
@@ -84,7 +87,7 @@ Steps common to all hydrologic modeling frameworks include data collection and p
 
 ## Why should I use NGIAB?
 
-NGIAB makes **community contribution** possible in research settings by simplifying setup and providing demos, allowing hydrologists and researchers to configure and modify localized water models. Built on open-source code and the `ngen`/BMI foundation, NGIAB allows integration of a hydrology process model into a larger hydrologic simulation framework, allowing a researcher to focus on their area of specific modeling expertise. Its lightweight container size also empowers hydrologists to execute large-scale runs efficiently and reduce computational bottlenecks. By strengthening collaboration across research teams, NGIAB will help drive the evolution of community-scale water modeling and accelerate the transition from academic innovation to real-world operational use.
+NGIAB makes **community contribution** and **model integration** possible in research settings by simplifying setup and providing demos, allowing hydrologists and researchers to configure and modify localized water models. Built on open-source code and the `ngen`/BMI foundation, NGIAB allows integration of a hydrology process model into a larger hydrologic simulation framework, allowing a researcher to focus on their area of specific modeling expertise. Its lightweight container size also empowers hydrologists to execute large-scale runs efficiently and reduce computational bottlenecks. By strengthening collaboration across research teams, NGIAB will help drive the evolution of community-scale water modeling and accelerate the transition from academic innovation to real-world operational use.
 
 ## Your Turn
 
@@ -94,13 +97,14 @@ Here are some self-assessment questions for discussion or consideration:
 - What are the key design features and extensions of NGIAB?
 - How can I use NGIAB to answer my research questions?
 - How can I use NGIAB to contribute my expertise to the NextGen Framework?
+- How do the Community Hydrofabric, Data Preprocessor, TEEHR, and Data Visualizer support the NGIAB workflow?
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - The Next Generation Water Resources Modeling Framework (NextGen) advances the National Water Model with flexible, modular, and regionally adaptive hydrologic modeling at national scale.
 - NextGen In A Box (NGIAB) packages the complex NextGen system into an open-source, containerized application for easier access and usability.
 - NGIAB uses Docker and Singularity for portability across local machines, cloud platforms, and HPC systems.
-- NGIAB's multi-layered architecture integrates hydrologic modeling tools, CI/CD pipelines, and supportive technologies and is complemented by a suite of extensions that allow for end-to-end workflows from data acquisition to visualization and evaluation.
+- NGIAB's ecosystem includes the Community Hydrofabric, Data Preprocessor, TEEHR, Data Visualizer, and calibration tools that support end-to-end hydrologic modeling workflows.
 - NGIAB fosters an open ecosystem where researchers, developers, and practitioners actively contribute new models, extensions, and workflows.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
