@@ -72,7 +72,8 @@ The architecture emphasizes four key aspects:
 
 Several extensions of NGIAB are already integrated with supporting tools and datasets, including the [Community Hydrofabric](./community-hydrofabric.html), [Data Preprocessor](./data-preprocessor.html), [Tools for Exploratory Evaluation in Hydrologic Research (TEEHR)](./teehr.html), and [Data Visualizer](./visualization.html) (Figure 2).
 
-![Figure 2: Workflow of data acquisition, model execution, evaluation, and results visualization.](fig/fig1-2.png){alt='A flowchart diagram showing the NGIAB model execution process. The central box labeled "NGIAB Model Execution" is connected to three components. To the left is a yellow-green box labeled "Data Preprocess," with three subcomponents listed: "GPKG Sub-setting," "Realization," and "Forcing." To the right, two boxes are connected to the center: a purple box labeled "TEEHR Evaluation" and a green box labeled "Data Visualizer." Dashed arrows indicate the flow of data between preprocessing, model execution, and evaluation/visualization.'} 
+
+![Figure 2: Workflow of data acquisition, model execution, evaluation, and results visualization.](fig/fig1-2.png){alt='A flowchart diagram showing the NGIAB model execution process. The central box labeled "NGIAB Model Execution" is connected to three components. To the left is a yellow-green box labeled "Data Preprocess" (Data Preprocessor), with three subcomponents listed: "GPKG Sub-setting," "Realization," and "Forcing." To the right, two boxes are connected to the center: a purple box labeled "TEEHR Evaluation" and a green box labeled "Data Visualizer." Dashed arrows indicate the flow of data between preprocessing, model execution, and evaluation/visualization.'} 
 
 These components support a complete workflow from hydrofabric and forcing preparation through model execution, evaluation, calibration, and visualization.
 

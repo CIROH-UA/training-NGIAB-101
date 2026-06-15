@@ -65,7 +65,7 @@ The Visualizer can be launched directly from NGIAB workflows through the `ViewOn
 In addition, the Visualizer integrates with NextGen DataStream products, enabling the discovery, download, and visualization of forecast and retrospective datasets.
 
 For additional information about the Data Visualizer application, see the [Visualization](./visualization.html). 
-<!-- .md needs to be changed to .html for web. -->
+
 
 ::::::::::::::::::::::::::::::::::::: callout
 

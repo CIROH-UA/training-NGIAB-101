@@ -314,7 +314,7 @@ newgrp docker
 ### Are You in the Right Directory?
 
 Before running any script, always check your current folder:
-``` bash
+```bash
 pwd
 ```
 You **should see something like**:

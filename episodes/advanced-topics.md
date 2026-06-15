@@ -266,7 +266,7 @@ Before integrating a model into NGIAB, developers should prepare:
 Because of potential package dependency conflicts with existing Python models in NGIAB, new Python models should meet the following requirements:
 
 - Compatible with Python 3.11.
-- `netCDF==1.6.3` if the model uses the `netCDF` package.
+- `netcdf==1.6.3` if the model uses the `netcdf` package.
 - `pydantic<2` if the model uses `pydantic`.
 - `pandas<3` if the model uses `pandas`.
 - PyPI distributions should be available for the model and any non-standard dependencies to simplify wheel building and deployment.

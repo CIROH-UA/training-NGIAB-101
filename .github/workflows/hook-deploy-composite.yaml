@@ -4,7 +4,6 @@ run-name: Deploy branch gh-pages to composite target
 on:
   repository_dispatch:
     types: [deployment-pushed]
-  workflow_dispatch:
 
 env:
   TARGET_REPO: ${{ vars.COMPOSITE_TARGET_REPO }}

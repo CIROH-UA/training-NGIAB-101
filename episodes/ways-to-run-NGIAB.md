@@ -35,7 +35,7 @@ cd NGIAB-CloudInfra
 A secondary method for executing a NextGen run in NGIAB is by using the Data Preprocessor's CLI. The Data Preprocessor prepares a complete NGIAB run package by subsetting the hydrofabric, generating forcings, and creating realization and BMI configuration files. It can also automatically launch a Docker-based NGIAB run after preprocessing using the `--run` flag. 
 
 ```bash
-uvx -p 3.10 --from ngiab-prep cli -i gage-02342500 -sfr --start 2020-01-01 --end 2020-01-07 --source aorc --run
+uvx -p 3.10 --from ngiab_data_preprocess cli -i gage-02342500 -sfr --start 2020-01-01 --end 2020-01-07 --source aorc --run
 ```
 In this command, `uvx` runs the Data Preprocessor without installing it as a package. The `-i` argument specifies the location to model, `-sfr` subsets the hydrofabric, generates forcings, and creates realization files, `--source aorc` selects AORC forcing data, and `--run` automatically launches the NGIAB simulation after preprocessing.
 
@@ -50,7 +50,7 @@ Another way to interactively run NextGen is through Jupyter notebooks using the 
 DataStreamCLI provides an alternative command-line workflow for executing NextGen simulations. In this workflow, users can subset the hydrofabric using the Data Preprocessor and then use that subset hydrofabric as input to DataStreamCLI. DataStreamCLI automatically generates forcings, realizations, and BMI configuration files as part of the execution workflow before launching a NextGen simulation. This approach is useful for users who prefer an automated and scriptable workflow for running simulations and managing forcing data.
 
 ```bash
-uvx --from ngiab-prep cli -i gage-02342500 -s
+ uvx --from ngiab_data_preprocess cli -i gage-02342500 -s
 cd /path/to/datastreamcli
 cp ~/ngiab_preprocess_output/gage-02342500/config/gage-02342500_subset.gpkg .
 chmod +x ./scripts/datastream
@@ -73,7 +73,7 @@ Try one of the four methods described in this lesson to execute a NextGen run:
 - Use `guide.sh` to execute a run from a preprocessed NGIAB dataset.
 - Use the Data Preprocessor tool with the `--run` option to automatically prepare and execute a simulation.
 - Explore the CIROH-2i2c JupyterHub workflow for cloud-based execution.
-- Review the DataStreamCLI workflow and compare it with the Data Preprocess and `guide.sh` approaches.
+- Review the DataStreamCLI workflow and compare it with the Data Preprocessor and `guide.sh` approaches.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
