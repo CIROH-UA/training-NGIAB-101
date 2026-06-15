@@ -1,5 +1,5 @@
 ---
-title: "Data Preparation"
+title: "Data Preprocessor"
 teaching: 5
 exercises: 45
 ---

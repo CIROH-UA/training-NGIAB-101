@@ -1,5 +1,5 @@
 ---
-title: "Related Software"
+title: "NGIAB-related Software"
 teaching: 5
 exercises: 5
 ---
