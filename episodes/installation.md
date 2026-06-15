@@ -46,7 +46,7 @@ Before installing NGIAB, ensure you have:
 
 ## Connecting to a remote machine through SSH?
 
-To use the Data Visualizer through an Secure Shell (SSH) connection, you will have to set up port forwarding when connecting to the remote machine. Port forwarding will allow you to access a remotely hosted browser session on your local machine. See the instructions under "Using NGIAB through an SSH connection" in the [Advanced Topics episode](./advanced-topics.html) in this training module. 
+To use the Data Visualizer through a Secure Shell (SSH) connection, you will have to set up port forwarding when connecting to the remote machine. Port forwarding will allow you to access a remotely hosted browser session on your local machine. See the instructions under "Using NGIAB through an SSH connection" in the [Advanced Topics episode](./advanced-topics.html) in this training module. 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -282,6 +282,7 @@ If you've completed the steps above and verified your dataset and working direct
 ```
 This will walk you through the NGIAB setup and launch your first run.
 
+
 ::::::::::::::::::::::::::::::::::::: callout
 
 ### `guide.sh` Tips
@@ -313,7 +314,7 @@ newgrp docker
 ### Are You in the Right Directory?
 
 Before running any script, always check your current folder:
-``` bash
+```bash
 pwd
 ```
 You **should see something like**:
@@ -334,16 +335,20 @@ cd ~/NextGen/NGIAB-CloudInfra
 
 Are you interested in customizing your run with your own catchments (watersheds) and run configurations? Do you want to explore more functionalities of NGIAB? Check out the following episodes:
 
--   [Data Preparation - NGIAB Data Preprocessor](./data-preparation.html)
+-   [Ways to Run NGIAB](./ways-to-run-NGIAB.html)
+
+-   [NGIAB-related Software](./ngiab-related-software.html)
+
+-   [Community Hydrofabric](./community-hydrofabric.html)
+
+-   [NGIAB Data Preprocessor](./data-preprocessor.html)
     
--   [Evaluation - NGIAB TEEHR Integration](./evaluation.html)
+-   [Evaluation - NGIAB TEEHR Integration](./teehr.html)
     
 -   [Visualization - Data Visualizer](./visualization.html)
 
 -   [Advanced Topics](./advanced-topics.html)
     
-::::::::::::::::::::::::::::::::::::: keypoints 
-
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 -   NGIAB simplifies NextGen framework deployment through Docker.
@@ -351,5 +356,4 @@ Are you interested in customizing your run with your own catchments (watersheds)
 -   Always confirm successful setup by executing provided sample runs.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
 

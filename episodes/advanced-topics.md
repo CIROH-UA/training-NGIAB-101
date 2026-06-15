@@ -10,6 +10,7 @@ exercises: 60
 - How do I use the Data Visualizer through an SSH connection?
 - Are there other ways I can run NGIAB?
 - How can I contribute to NGIAB?
+- How can new models be integrated into NGIAB and NextGen?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -19,6 +20,7 @@ exercises: 60
 - Use port forwarding to view NGIAB results
 - Explain the NGIAB community contribution process
 - Learn about other ways to run NGIAB
+- Describe the general workflow for integrating models into NGIAB
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -243,6 +245,77 @@ The most up-to-date guidelines on community contributions for each repository ca
 
 ::::::::::::::::::::::::
 
+:::::::::::::::: spoiler
+
+## Model Integration Guidelines
+
+One of the strengths of the NextGen framework is its ability to support community-developed hydrologic models through a modular architecture. NGIAB extends this capability by providing a reproducible environment for integrating, testing, evaluating, and distributing models within the broader NextGen ecosystem.
+
+### Integration Requirements
+
+One of the core requirements for model integration is compatibility with the Basic Model Interface (BMI). All integrated models must expose functionality through BMI so they can communicate with the NextGen framework and participate in standard NextGen workflows.
+
+Before integrating a model into NGIAB, developers should prepare:
+
+- An example input data package.
+- Instructions for generating forcings and BMI configuration files.
+- Instructions for accessing any source data required for forcings or model attributes.
+
+#### Python Models
+
+Because of potential package dependency conflicts with existing Python models in NGIAB, new Python models should meet the following requirements:
+
+- Compatible with Python 3.11.
+- `netcdf==1.6.3` if the model uses the `netcdf` package.
+- `pydantic<2` if the model uses `pydantic`.
+- `pandas<3` if the model uses `pandas`.
+- PyPI distributions should be available for the model and any non-standard dependencies to simplify wheel building and deployment.
+
+#### Non-Python Models
+
+For compiled models written in languages such as C, C++, or Fortran:
+
+- The model should be compilable against `libc 2.34` or lower.
+- The model must be compatible with the NextGen build environment and containerized execution workflows.
+
+### Integration into NGIAB
+
+The integration process depends on the type of model being added.
+
+For Python models:
+
+- Add the model package and its dependencies to the NGIAB container environment.
+- Configure BMI and realization files so the model can be executed through standard NextGen workflows.
+
+For compiled models:
+
+- Add the model as a component within the NextGen build system.
+- Build the model's shared object libraries within the NGIAB container environment.
+- Configure BMI and realization files for execution through NextGen.
+
+Regardless of implementation language, models should be configured so that they can be executed through standard NextGen realizations and workflows.
+
+### Integration into Supporting Tools
+
+Model integration often requires updates to supporting NGIAB software:
+
+- The Data Preprocessor may require new realization templates, BMI configuration files, forcing-generation workflows, or additional model-selection options within the CLI.
+- Calibration workflows may require parameter definitions and configuration updates.
+- Evaluation and visualization tools should be verified to ensure compatibility with new model outputs.
+
+### Best Practices
+
+When integrating a new model, developers should:
+
+- Test the model using a small study area before large-scale execution.
+- Verify that forcings and hydrofabric inputs are correctly mapped.
+- Compare outputs against benchmark simulations and observations.
+- Document assumptions, parameters, and required dependencies.
+- Maintain reproducible workflows using version control and configuration files.
+
+Through this process, NGIAB provides a consistent framework for integrating new hydrologic models while maintaining compatibility with existing workflows for preprocessing, execution, calibration, evaluation, and visualization.
+::::::::::::::::::::::::
+
 ## Your Turn
 
 Based on your own interests and use cases, try out some of these options:
@@ -251,6 +324,7 @@ Based on your own interests and use cases, try out some of these options:
 - Use NGIAB through an SSH connection
 - Contribute to NGIAB/NextGen!
 - Run NGIAB in another way!
+- Review the requirements for integrating a new model and identify what information would be needed to add your own model to NGIAB.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
@@ -258,6 +332,7 @@ Based on your own interests and use cases, try out some of these options:
 - Port forwarding is required to use the Data Visualizer through an SSH connection.
 - Community contribution guidelines are available in each repository's GitHub page.
 - NGIAB can also be run through JupyterHub or DatastreamCLI.
+- Model integration in NGIAB requires model configuration, supporting input datasets, and compatibility with the broader NGIAB ecosystem, including preprocessing, calibration, evaluation, and visualization tools.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
