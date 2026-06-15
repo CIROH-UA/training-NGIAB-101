@@ -8,6 +8,7 @@ exercises: 60
 
 - How do I use NGIAB on an high-performance computing (HPC) system?
 - How do I use the Data Visualizer through an SSH connection?
+- Are there other ways I can run NGIAB?
 - How can I contribute to NGIAB?
 - How can new models be integrated into NGIAB and NextGen?
 
@@ -18,6 +19,7 @@ exercises: 60
 - Install and use NGIAB on an HPC
 - Use port forwarding to view NGIAB results
 - Explain the NGIAB community contribution process
+- Learn about other ways to run NGIAB
 - Describe the general workflow for integrating models into NGIAB
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -167,11 +169,11 @@ The script will:
 
 - Allow running in:
 
-    - Serial mode
+  - Serial mode
 
-    - Parallel mode
+  - Parallel mode
 
-    - Interactive container shell
+  - Interactive container shell
 
 
 ----------
@@ -188,6 +190,7 @@ The script will:
 ::::::::::::::::::::::::
 
 :::::::::::::::: spoiler
+
 ## Using NGIAB through an SSH connection
 
 NGIAB's core functions work through an SSH connection without port forwarding. However, to use the Data Visualizer, you will have to set up port forwarding to view visualization results on your local machine's browser.
@@ -198,6 +201,7 @@ To do so, run the following command on your local machine:
 ssh -L 80:localhost:[local port number] username@remote_host
 
 ```
+
 Replace `username@remote_host` with your credentials.
 
 Now, you should be able to run NGIAB as usual through your SSH tunnel, and access Data Visualizer results in your local browser.
@@ -205,6 +209,23 @@ Now, you should be able to run NGIAB as usual through your SSH tunnel, and acces
 ::::::::::::::::::::::::
 
 :::::::::::::::: spoiler
+
+## Running NGIAB in JupyterHub
+
+To run NGIAB in a JupyterHub environment, please follow the instructions in our [HydroShare resource](https://www.hydroshare.org/resource/27045581bdea4808a393330f2417379c/).
+
+::::::::::::::::::::::::
+
+:::::::::::::::: spoiler
+
+## Running NGIAB in DatastreamCLI
+
+To run NGIAB through DatastreamCLI, please follow the instructions in our [datastreamCLI GitHub page](https://github.com/CIROH-UA/datastreamcli/tree/main). This page has an example command that can be run locally, and the repository also contains a tutorial guide script at `scripts/datastream_guide`.
+
+::::::::::::::::::::::::
+
+:::::::::::::::: spoiler
+
 ## Community Contributions to NGIAB/NextGen
 
 The most up-to-date guidelines on community contributions for each repository can be found on its respective GitHub page.
@@ -302,6 +323,7 @@ Based on your own interests and use cases, try out some of these options:
 - Install and use NGIAB on your HPC environment
 - Use NGIAB through an SSH connection
 - Contribute to NGIAB/NextGen!
+- Run NGIAB in another way!
 - Review the requirements for integrating a new model and identify what information would be needed to add your own model to NGIAB.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
@@ -309,6 +331,7 @@ Based on your own interests and use cases, try out some of these options:
 - NGIAB supports HPC environments through Singularity, not Docker, but the workflow mirrors the local Docker use.
 - Port forwarding is required to use the Data Visualizer through an SSH connection.
 - Community contribution guidelines are available in each repository's GitHub page.
+- NGIAB can also be run through JupyterHub or DatastreamCLI.
 - Model integration in NGIAB requires model configuration, supporting input datasets, and compatibility with the broader NGIAB ecosystem, including preprocessing, calibration, evaluation, and visualization tools.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
