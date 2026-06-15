@@ -64,6 +64,32 @@ python -m ngiab_data_cli -i cat-7080 -f --start 2022-01-01 --end 2022-02-28
 
 ![Figure 2: Map showing an example drainage basin. View from the Data Preprocess tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots).](fig/fig1-4.png){alt='A map view displaying the Provo River network and basin boundaries in the area around Woodland, UT. The map includes the stream network shown in blue, basin boundaries in orange shaded regions, the downstream-most basin in a pink shaded reagion, and black dots representing USGS gage locations.'}
 
+## What models can I preprocess data for?
+
+The Data Preprocess tool supports a number of models that are integrated into NGIAB. These include:
+
+- [Conceptual Functional Equivalent (CFE)](https://github.com/NOAA-OWP/cfe/tree/master) and [Noah-OWP-Modular (NOM)](https://github.com/NOAA-OWP/noah-owp-modular/tree/main) (default)
+    - Developed by NOAA-OWP
+- [Long Short-Term Memory (LSTM)](https://github.com/CIROH-UA/lstm/tree/ngiab)
+    - Developed by NOAA-OWP, weights by Jonathan Frame (University of Alabama)
+- [LSTM (Rust version)](https://github.com/CIROH-UA/rust-lstm)
+    - Rust port of the original LSTM, developed by Josh Cunningham (University of Alabama)
+- [Differentiable Hydrologiska Byråns Vattenbalansavdelning 2.0 (δHBV2.0) (Hourly version)](https://github.com/mhpi/dhbv2)
+    - Developed by Wencong Yang et al. (Pennsylvania State University)
+- [δHBV2.0 (Daily version)](https://github.com/mhpi/dhbv2)
+    - Developed by Yalan Song et al. (Pennsylvania State University)
+- [Structure for Unifying Multiple Modeling Alternatives (SUMMA)](https://github.com/CH-Earth/summa/tree/master)
+    - Developed by Martyn Clark et al. (University of Calgary)
+
+To preprocess data and configure a realization for a non-default model configuration, simply add a flag for that model at the end of the command.
+
+```bash
+uvx ngiab-prep -i gage-10154200 -sfr --start 2022-01-01 --end 2022-02-28 --lstm
+#         you can replace --lstm with any other model, like --lstm_rust, --dhbv2, --dhbv2_daily, --summa
+```
+
+NGIAB will automatically detect which model you want to run by reading the realization.
+
 ## NextGen Run Directory Structure (`ngen-run/`)
 
 Running NextGen requires building a standard run directory complete with only the necessary files. This is done automatically with the Data Preprocess tool. Below is an explanation of the standard run directory.
