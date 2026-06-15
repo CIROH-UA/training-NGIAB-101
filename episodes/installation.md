@@ -46,7 +46,7 @@ Before installing NGIAB, ensure you have:
 
 ## Connecting to a remote machine through SSH?
 
-To use the Data Visualizer through an Secure Shell (SSH) connection, you will have to set up port forwarding when connecting to the remote machine. Port forwarding will allow you to access a remotely hosted browser session on your local machine. See the instructions under "Using NGIAB through an SSH connection" in the [Advanced Topics episode](./advanced-topics.html) in this training module. 
+To use the Data Visualizer through an Secure Shell (SSH) connection, you will have to set up port forwarding when connecting to the remote machine. Port forwarding will allow you to access a remotely hosted browser session on your local machine. See the instructions under "Using NGIAB through an SSH connection" in the [Advanced Topics episode](./advanced-topics.html) in this training module.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -97,8 +97,6 @@ wsl --setdefault Ubuntu
 ```
 
 :::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::
 
 :::::::::::::::: spoiler
 
@@ -153,7 +151,7 @@ wsl --setdefault Ubuntu
 
 ::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::: challenge
+ç challenge
 
 ## Verify Docker
 
@@ -335,14 +333,12 @@ cd ~/NextGen/NGIAB-CloudInfra
 Are you interested in customizing your run with your own catchments (watersheds) and run configurations? Do you want to explore more functionalities of NGIAB? Check out the following episodes:
 
 -   [Data Preparation - NGIAB Data Preprocessor](./data-preparation.html)
-    
+
 -   [Evaluation - NGIAB TEEHR Integration](./evaluation.html)
-    
+
 -   [Visualization - Data Visualizer](./visualization.html)
 
 -   [Advanced Topics](./advanced-topics.html)
-    
-::::::::::::::::::::::::::::::::::::: keypoints 
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
