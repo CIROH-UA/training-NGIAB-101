@@ -123,8 +123,8 @@
             More <i data-feather="chevron-down"></i>
           </button>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-<li><a class="dropdown-item" href="troubleshooting.html">DevCon 2025 Troubleshooting</a></li>
-<li><a class="dropdown-item" href="devcon25js.html">DevCon2025 Jetstream VM Instructions</a></li>
+<li><a class="dropdown-item" href="troubleshooting.html">Troubleshooting</a></li>
+<li><a class="dropdown-item" href="jetstream.html">Jetstream VM Instructions</a></li>
           </ul>
 </li>
       </ul>
@@ -269,7 +269,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="data-preparation.html">3. Data Preparation</a>
+        <a href="ways-to-run-NGIAB.html">3. Ways to run NGIAB</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -281,7 +281,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="model-execution.html">4. Model Execution</a>
+        <a href="ngiab-related-software.html">4. NGIAB-related Software</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -293,7 +293,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="evaluation.html">5. Evaluation</a>
+        <a href="community-hydrofabric.html">5. Community Hydrofabric</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -305,7 +305,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="visualization.html">6. Visualization</a>
+        <a href="data-preprocessor.html">6. Data Preprocessor</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -317,7 +317,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="calibration.html">7. Calibration</a>
+        <a href="teehr.html">7. TEEHR</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -329,7 +329,43 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="advanced-topics.html">8. Advanced Topics</a>
+        <a href="visualization.html">8. Visualization</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush10">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading10">
+        <a href="calibration.html">9. Calibration</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="advanced-topics.html">10. Advanced Topics</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush12">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading12">
+        <a href="model-integration.html">11. Model Integration</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -362,8 +398,8 @@
                       <li>
                         <a href="profiles.html">Learner Profiles</a>
                       </li>
-                      <li><a href="troubleshooting.html">DevCon 2025 Troubleshooting</a></li>
-<li><a href="devcon25js.html">DevCon2025 Jetstream VM Instructions</a></li>
+                      <li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="jetstream.html">Jetstream VM Instructions</a></li>
                     </ul>
 </div>
                 </div>
@@ -404,10 +440,9 @@ open-source, containerized application for easier access and
 usability.</li>
 <li>NGIAB uses Docker and Singularity for portability across local
 machines, cloud platforms, and HPC systems.</li>
-<li>NGIAB’s multi-layered architecture integrates hydrologic modeling
-tools, CI/CD pipelines, and supportive technologies and is complemented
-by a suite of extensions that allow for end-to-end workflows from data
-acquisition to visualization and evaluation.</li>
+<li>NGIAB’s ecosystem includes the Community Hydrofabric, Data
+Preprocessor, TEEHR, Data Visualizer, and calibration tools that support
+end-to-end hydrologic modeling workflows.</li>
 <li>NGIAB fosters an open ecosystem where researchers, developers, and
 practitioners actively contribute new models, extensions, and
 workflows.</li>
@@ -419,7 +454,53 @@ workflows.</li>
 execution.</li>
 <li>Always confirm successful setup by executing provided sample
 runs.</li>
-</ul></section><section id="data-preparation"><h2 class="section-heading"><a href="data-preparation.html">Data Preparation</a></h2>
+</ul></section><section id="ways-to-run-NGIAB"><h2 class="section-heading"><a href="ways-to-run-NGIAB.html">Ways to run NGIAB</a></h2>
+<hr class="half-width">
+<ul>
+<li>NGIAB supports multiple execution workflows, including
+<code>guide.sh</code>, the Data Preprocessor tool, CIROH-2i2c
+JupyterHub, and DataStreamCLI.</li>
+<li>The <code>guide.sh</code> workflow provides the most complete NGIAB
+experience, including optional evaluation and visualization.</li>
+<li>The Data Preprocessor tool can automatically prepare and execute a
+NextGen simulation using a single command.</li>
+<li>CIROH-2i2c JupyterHub provides a cloud-based environment for running
+NGIAB without local installation.</li>
+<li>DataStreamCLI automates forcing generation, realization creation,
+BMI configuration, and model execution through a command-line
+workflow.</li>
+</ul></section><section id="ngiab-related-software"><h2 class="section-heading"><a href="ngiab-related-software.html">NGIAB-related Software</a></h2>
+<hr class="half-width">
+<ul>
+<li>The Community Hydrofabric provides the watershed connectivity,
+catchments, flowpaths, and nexus information used throughout NGIAB
+workflows.</li>
+<li>The Data Preprocessor tool simplifies the creation of NextGen run
+packages by generating hydrofabric subsets, forcings, and model
+configurations.</li>
+<li>NGIAB-Cal supports parameter calibration by optimizing model
+parameters against observed streamflow data.</li>
+<li>TEEHR provides automated model evaluation through hydrograph
+visualization and performance metrics such as KGE, NSE, and Relative
+Bias.</li>
+<li>The Data Visualizer enables interactive exploration of model
+outputs, including geospatial views, time series analysis, and TEEHR
+results.</li>
+<li>Together, these tools support a complete workflow for preparing,
+calibrating, evaluating, and interpreting NextGen simulations.</li>
+</ul></section><section id="community-hydrofabric"><h2 class="section-heading"><a href="community-hydrofabric.html">Community Hydrofabric</a></h2>
+<hr class="half-width">
+<ul>
+<li>The Community Hydrofabric is a CIROH-maintained fork of NextGen
+Hydrofabric v2.2.</li>
+<li>NGIAB uses the Community Hydrofabric during preprocessing, routing,
+model execution, evaluation, calibration, and visualization.</li>
+<li>The Community Hydrofabric includes corrected gage mappings,
+GeoPackage compatibility improvements, and database indexing
+enhancements.</li>
+<li>Hydrofabric data are automatically accessed and subset by NGIAB
+during study area preparation.</li>
+</ul></section><section id="data-preprocessor"><h2 class="section-heading"><a href="data-preprocessor.html">Data Preprocessor</a></h2>
 <hr class="half-width">
 <ul>
 <li>
@@ -431,14 +512,7 @@ hydrofabric.</li>
 offering a GUI and CLI for selecting catchments and date ranges,
 subsetting hydrofabric data, generating forcing files, and creating
 realization files.</li>
-</ul></section><section id="model-execution"><h2 class="section-heading"><a href="model-execution.html">Model Execution</a></h2>
-<hr class="half-width">
-<ul>
-<li>To execute a NextGen run in NGIAB with full functionality, use
-<code>guide.sh</code> in the NGIAB container.</li>
-<li>A NextGen run in NGIAB can also be automatically executed
-post-preprocessing using the Data Preprocess tool.</li>
-</ul></section><section id="evaluation"><h2 class="section-heading"><a href="evaluation.html">Evaluation</a></h2>
+</ul></section><section id="teehr"><h2 class="section-heading"><a href="teehr.html">TEEHR</a></h2>
 <hr class="half-width">
 <ul>
 <li>Tools for Exploratory Evaluation in Hydrologic Research (TEEHR) is a
@@ -478,6 +552,24 @@ the workflow mirrors the local Docker use.</li>
 SSH connection.</li>
 <li>Community contribution guidelines are available in each repository’s
 GitHub page.</li>
+<li>NGIAB can also be run through JupyterHub or DatastreamCLI.</li>
+<li>Model integration in NGIAB requires model configuration, supporting
+input datasets, and compatibility with the broader NGIAB ecosystem,
+including preprocessing, calibration, evaluation, and visualization
+tools.</li>
+</ul></section><section id="model-integration"><h2 class="section-heading"><a href="model-integration.html">Model Integration</a></h2>
+<hr class="half-width">
+<ul>
+<li>Models integrate into NextGen/NGIAB through the Basic Model
+Interface (BMI), which lets models be swapped in and out of the
+framework.</li>
+<li>Python models must target Python 3.11, pin
+<code>netCDF</code>/<code>pydantic</code>/<code>pandas</code> to
+compatible versions, and ship a PyPI distribution; non-Python models
+must compile against <code>libc 2.34</code> or lower.</li>
+<li>A Python model is integrated by installing it in the
+<code>final</code> stage of the NGIAB Dockerfile, rebuilding the image,
+and running it against a test data package.</li>
 </ul></section>
 </div>
     </main>
@@ -505,7 +597,7 @@ GitHub page.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/CIROH-UA/varnish/tree/93b60afcd3653ecde8cdf672fc782d83a37801a7" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/CIROH-UA/varnish/tree/93b60afcd3653ecde8cdf672fc782d83a37801a7" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -528,8 +620,8 @@ GitHub page.</li>
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/key-points.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/key-points.html",
   "dateCreated": "2025-05-19",
-  "dateModified": "2026-05-12",
-  "datePublished": "2026-05-12"
+  "dateModified": "2026-06-16",
+  "datePublished": "2026-06-16"
 }
 
   </script><script>
