@@ -1,5 +1,5 @@
 ---
-title: "Data Preparation"
+title: "Data Preprocessor"
 teaching: 5
 exercises: 45
 ---
@@ -23,9 +23,12 @@ exercises: 45
 
 **The Data Preprocess tool streamlines data preparation for NextGen runs in NGIAB.** This tool provides a graphical user interface (GUI) and a command line interface (CLI) to prepare input data and execute model runs. A graphical user interface facilitates catchment and date range selection options via an interactive map, simplifying the subsetting of hydrofabrics, generation of forcings, and creation of default NextGen realizations. While this module reduces procedural complexity, it incorporates pre-defined assumptions that may limit user flexibility in specific applications [(Cunningham, 2025)](https://github.com/CIROH-UA/NGIAB_data_preprocess).
 
-### Installing and Using the Data Preprocess Tool
+The Data Preprocess tool (like all of our software) is constantly being updated and refined. As of the time of writing (see last updated date above), there are two ways to run the tool. Instructions for installation, environment management, and the GUI/CLI are found on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess).
 
-The Data Preprocess tool (like all of our software) is constantly being updated and refined. As of the time of writing (see last updated date above), there are two ways to run the tool. Instructions for installation, environment management, and the GUI/CLI are found on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess). We will cover some examples of the CLI usage, but full documentation is on the GitHub page.
+The Data Preprocess tool (like all of our software) is constantly being updated and refined. As of the time of writing (see last updated date above), there are two ways to run the tool. Instructions for installation, environment management, and the GUI/CLI are found on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess).
+
+### CLI instructions
+
 
 #### Example 1
 
@@ -38,6 +41,7 @@ uvx --from ngiab_data_preprocess cli -i gage-10154200 -sfr --start 2017-09-01 --
 ```
 
 `uvx --from ngiab_data_preprocess cli` indicates that the Data Preprocess tool will run without the user installing it.  The `-i` flag indicates the **I**D of the feature that is used to subset the hydrofabric. The `-sfr` flags indicate that the Data Preprocess tool will **s**ubset the hydrofabric to the desired catchments, produce **f**orcings over the desired area and time period, and produce a NextGen **r**ealization file. The `--start` and `--end` flags indicate the start and end dates of the desired time period. The `--source` flag determines where the Data Preprocess tool will pull forcing data from.
+
 #### Example 2
 
 This command produces forcings and a NextGen realization file for the catchments upstream of gage-10155000 for the time period 2022-08-13 to 2022-08-23 after installing the Data Preprocess tool. The forcing data source defaults to the NetCDF files in the [NWM 3.0 retrospective](https://aws.amazon.com/marketplace/pp/prodview-g6lcchc7brshw). Using this command requires you to have Astral UV (a package installer and environment manager) installed. Instructions for installing Astral UV are found in the [Astral UV documentation](https://docs.astral.sh/uv/#highlights).
@@ -49,6 +53,7 @@ uv run cli -i gage-10155000 -sfr --start 2022-08-13 --end 2022-08-23
 ```
 
 `uv run cli` indicates that the Data Preprocess CLI within your activated Astral UV environment will run.
+
 #### Example 3
 
 This command allows you to run the Data Preprocess CLI tool from a regular `pip install ngiab_data_preprocess`. **However, using Astral UV is highly recommended for its speed.** This command produces forcings for the catchments upstream of cat-7080 for the time period 2022-01-01 to 2022-02-28.
@@ -59,10 +64,53 @@ python -m ngiab_data_cli -i cat-7080 -f --start 2022-01-01 --end 2022-02-28
 
 `python -m ngiab_data_cli` indicates that the Data Preprocess CLI tool will execute.
 
+### GUI instructions
+
+Either one of these commands will run the interactive GUI. The first command works without installing anything except UV. The second command requires the installation of the data preprocessor with UV.
+
+```bash
+uvx --from ngiab-data-preprocess map_app
+```
+
+```bash
+uv run map_app
+```
+
 ![Figure 1: Map showing an example drainage basin. View from the USGS National Map.](fig/fig3-1.png){alt='A screenshot of the USGS National Map centered on the Provo River network in Utah, showing streamflow and watershed data. A blue map marker identifies a Monitoring Location. A red dot marks an Active Monitoring Location farther downstream. The Upstream Basin is shaded in grey, while Upstream Flowlines and Downstream Flowlines are highlighted in dark and light blue, respectively. A scale bar in the bottom right shows distances of 5 kilometers and 3 miles. A map legend in the lower right corner explains the color codes for flowlines and monitoring locations.'}
 
 
 ![Figure 2: Map showing an example drainage basin. View from the Data Preprocess tool. The highlighted region (light orange area; downstream-most basin in pink) represents the specific study basin, illustrating the river network (blue lines), sub-basins (orange), and surrounding USGS gaging stations (black dots).](fig/fig1-4.png){alt='A map view displaying the Provo River network and basin boundaries in the area around Woodland, UT. The map includes the stream network shown in blue, basin boundaries in orange shaded regions, the downstream-most basin in a pink shaded reagion, and black dots representing USGS gage locations.'}
+
+## What models can I preprocess data for?
+
+The Data Preprocessor tool supports a number of models that are integrated into NGIAB. These include:
+
+- [Conceptual Functional Equivalent (CFE)](https://github.com/NOAA-OWP/cfe/tree/master) and [Noah-OWP-Modular (NOM)](https://github.com/NOAA-OWP/noah-owp-modular/tree/main) (default)
+    - Developed by NOAA-OWP
+- [Long Short-Term Memory (LSTM)](https://github.com/CIROH-UA/lstm/tree/ngiab)
+    - Developed by NOAA-OWP, weights by Jonathan Frame (University of Alabama)
+- [LSTM (Rust version)](https://github.com/CIROH-UA/rust-lstm)
+    - Rust port of the original LSTM, developed by Josh Cunningham (University of Alabama)
+- [Differentiable Hydrologiska Byråns Vattenbalansavdelning 2.0 (δHBV2.0) (Hourly version)](https://github.com/mhpi/dhbv2)
+    - Developed by Wencong Yang et al. (Pennsylvania State University)
+- [δHBV2.0 (Daily version)](https://github.com/mhpi/dhbv2)
+    - Developed by Yalan Song et al. (Pennsylvania State University)
+- [Structure for Unifying Multiple Modeling Alternatives (SUMMA)](https://github.com/CH-Earth/summa/tree/master)
+    - Developed by Martyn Clark et al. (University of Calgary)
+- [Snow17](https://github.com/NOAA-OWP/snow17)
+    - National Oceanic and Atmospheric Administration, National Weather Service
+- [Sacramento Soil Moisture Accounting Model](https://github.com/NOAA-OWP/sac-sma)
+    - National Weather Service : State of California, Dept. of Water Resources
+
+
+To preprocess data and configure a realization for a non-default model configuration, simply add a flag for that model at the end of the command.
+
+```bash
+uvx ngiab-prep -i gage-10154200 -sfr --start 2022-01-01 --end 2022-02-28 --lstm
+#         you can replace --lstm with any other model, like --lstm_rust, --dhbv2, --dhbv2_daily, --summa
+```
+
+NGIAB will automatically detect which model you want to run by reading the realization.
 
 ## NextGen Run Directory Structure (`ngen-run/`)
 
