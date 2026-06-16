@@ -1,8 +1,8 @@
 ---
-title: DevCon 2025 Troubleshooting
+title: Troubleshooting
 ---
 
-# NGIAB-CloudInfra – DevCon 2025 Workshop Setup Guide
+# NGIAB-CloudInfra – Setup Guide
 
 Welcome to the NGIAB Workshop!  
 This guide will help you troubleshoot problems.

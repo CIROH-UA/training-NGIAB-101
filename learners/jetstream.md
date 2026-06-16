@@ -1,8 +1,8 @@
 ---
-title: DevCon2025 Jetstream VM Instructions
+title:  Jetstream VM Instructions
 ---
 
-# Running NGIAB on Jetstream VM for DevCon2025
+# Running NGIAB on Jetstream VM 
 
 ::::::::::::::::::::::::::::::::::::: callout
 

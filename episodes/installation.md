@@ -221,6 +221,7 @@ tar -xf AWI_16_2863657_007.tar.gz
 ```
 
 ::::::::::::::::::::::::::::::::::::: challenge
+
 ## Check: Did You Download the Dataset?
 Run this command:
 ```bash

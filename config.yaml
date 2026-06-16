@@ -60,13 +60,15 @@ episodes:
 - visualization.md
 - calibration.md
 - advanced-topics.md
+- model-integration.md
+
 
 # Information for Learners
 learners:
 - setup.md
 # - reference.md
 - troubleshooting.md
-- devcon25js.md
+- jetstream.md
 
 # Information for Instructors
 instructors:

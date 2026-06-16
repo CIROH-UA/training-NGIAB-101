@@ -25,14 +25,10 @@ exercises: 45
 
 The Data Preprocess tool (like all of our software) is constantly being updated and refined. As of the time of writing (see last updated date above), there are two ways to run the tool. Instructions for installation, environment management, and the GUI/CLI are found on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess).
 
-<<<<<<< HEAD
-### CLI instructions
-=======
 The Data Preprocess tool (like all of our software) is constantly being updated and refined. As of the time of writing (see last updated date above), there are two ways to run the tool. Instructions for installation, environment management, and the GUI/CLI are found on the [Data Preprocess GitHub page](https://github.com/CIROH-UA/NGIAB_data_preprocess).
 
 ### CLI instructions
 
->>>>>>> f30e770 (Update NGIAB documentation and incorporate merged review changes)
 
 #### Example 1
 
@@ -101,6 +97,11 @@ The Data Preprocessor tool supports a number of models that are integrated into 
     - Developed by Yalan Song et al. (Pennsylvania State University)
 - [Structure for Unifying Multiple Modeling Alternatives (SUMMA)](https://github.com/CH-Earth/summa/tree/master)
     - Developed by Martyn Clark et al. (University of Calgary)
+- [Snow17](https://github.com/NOAA-OWP/snow17)
+    - National Oceanic and Atmospheric Administration, National Weather Service
+- [Sacramento Soil Moisture Accounting Model](https://github.com/NOAA-OWP/sac-sma)
+    - National Weather Service : State of California, Dept. of Water Resources
+
 
 To preprocess data and configure a realization for a non-default model configuration, simply add a flag for that model at the end of the command.
 
