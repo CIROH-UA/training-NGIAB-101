@@ -42,7 +42,7 @@ value is `0`) for you to integrate into NGIAB. You will need:
 
 - The model source code, in a [GitHub repository](https://github.com/quinnylee/bmi_dummy)
 - The model's published [PyPI distribution](https://pypi.org/project/bmi-dummy/)
-- An [input data package](https://alabama.box.com/s/8sx72ozsg9uxh3e61how7fi0qoolpy1w) for testing the model within NGIAB
+- An [input data package](https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-011/cat-485551_devcon.tar.gz) for testing the model within NGIAB
 
 Before starting, make sure you have cloned the
 [NGIAB-CloudInfra](https://github.com/CIROH-UA/NGIAB-CloudInfra) repository and installed your
@@ -116,9 +116,15 @@ Run the same build command as in Step 3 so the rebuilt image includes your model
 
 ## Step 6: Run NGIAB with the test package
 
-Download the data package from Box (if you have not already), then run NGIAB, replacing
-`/absolute/path/to/test/package` with the real absolute path to the downloaded package. Follow
-the interactive prompts once the container starts.
+Download and extract the test data package (if you have not already):
+
+```bash
+wget https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-011/cat-485551_devcon.tar.gz
+tar -xf cat-485551_devcon.tar.gz
+```
+
+Then run NGIAB, replacing `/absolute/path/to/test/package` with the real absolute path to the
+extracted `cat-485551_devcon` directory. Follow the interactive prompts once the container starts.
 
 ```bash
 # Docker
