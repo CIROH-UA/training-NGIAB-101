@@ -379,7 +379,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Model Integration</h1>
-        <p>Last updated on 2026-06-16 |
+        <p>Last updated on 2026-06-17 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/model-integration.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -451,7 +451,7 @@ into NGIAB. You will need:</p>
 </li>
 <li>The model’s published <a href="https://pypi.org/project/bmi-dummy/" class="external-link">PyPI distribution</a>
 </li>
-<li>An <a href="https://alabama.box.com/s/8sx72ozsg9uxh3e61how7fi0qoolpy1w" class="external-link">input
+<li>An <a href="https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-011/cat-485551_devcon.tar.gz" class="external-link">input
 data package</a> for testing the model within NGIAB</li>
 </ul><p>Before starting, make sure you have cloned the <a href="https://github.com/CIROH-UA/NGIAB-CloudInfra" class="external-link">NGIAB-CloudInfra</a>
 repository and installed your containerization software of choice
@@ -537,18 +537,26 @@ the image. (<code>uv pip install</code> behaves like
 <hr class="half-width"><p>Run the same build command as in Step 3 so the rebuilt image includes
 your model.</p>
 </section><section><h2 class="section-heading" id="step-6-run-ngiab-with-the-test-package">Step 6: Run NGIAB with the test package<a class="anchor" aria-label="anchor" href="#step-6-run-ngiab-with-the-test-package"></a></h2>
-<hr class="half-width"><p>Download the data package from Box (if you have not already), then
-run NGIAB, replacing <code>/absolute/path/to/test/package</code> with
-the real absolute path to the downloaded package. Follow the interactive
-prompts once the container starts.</p>
+<hr class="half-width"><p>Download and extract the test data package (if you have not
+already):</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="co"># Docker</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">-v</span> <span class="st">"/absolute/path/to/test/package:/ngen/ngen/data"</span> devcon-workshop /ngen/ngen/data</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a><span class="co"># Podman</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1" aria-label="code-block-3-5"></a><span class="ex">podman</span> run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">-v</span> <span class="st">"/absolute/path/to/test/package:/ngen/ngen/data"</span> devcon-workshop /ngen/ngen/data</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-011/cat-485551_devcon.tar.gz</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="fu">tar</span> <span class="at">-xf</span> cat-485551_devcon.tar.gz</span></code></pre>
+</div>
+<p>Then run NGIAB, replacing <code>/absolute/path/to/test/package</code>
+with the real absolute path to the extracted
+<code>cat-485551_devcon</code> directory. Follow the interactive prompts
+once the container starts.</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="co"># Docker</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">-v</span> <span class="st">"/absolute/path/to/test/package:/ngen/ngen/data"</span> devcon-workshop /ngen/ngen/data</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a><span class="co"># Podman</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a><span class="ex">podman</span> run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">-v</span> <span class="st">"/absolute/path/to/test/package:/ngen/ngen/data"</span> devcon-workshop /ngen/ngen/data</span></code></pre>
 </div>
 <p>Here <code>--rm</code> removes the container when it finishes,
 <code>-it</code> opens an interactive terminal, <code>-v</code> mounts
@@ -607,12 +615,12 @@ number of processes, such as <code>-j 4</code> or <code>-j 2</code>.</p>
 <h3 id="podman-ngiab-run-randomly-crashes">Podman NGIAB run randomly crashes<a class="anchor" aria-label="anchor" href="#podman-ngiab-run-randomly-crashes"></a></h3>
 <p>Your Podman virtual machine may default to a smaller size than NGIAB
 needs. Restart the machine with more RAM and try again:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">podman</span> machine stop</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">podman</span> machine init <span class="at">-m</span> 8192 <span class="co"># 8 GiB of RAM</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a><span class="ex">podman</span> machine start</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">podman</span> machine stop</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a><span class="ex">podman</span> machine init <span class="at">-m</span> 8192 <span class="co"># 8 GiB of RAM</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1" aria-label="code-block-5-3"></a><span class="ex">podman</span> machine start</span></code></pre>
 </div>
 </div>
 </div>
@@ -712,8 +720,8 @@ any links that you are not going to use.
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/model-integration.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/model-integration.html",
   "dateCreated": "2025-05-19",
-  "dateModified": "2026-06-16",
-  "datePublished": "2026-06-16"
+  "dateModified": "2026-06-17",
+  "datePublished": "2026-06-17"
 }
 
   </script><script>
