@@ -356,7 +356,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Jetstream VM Instructions</h1>
-        <p>Last updated on 2026-06-16 |
+        <p>Last updated on 2026-06-25 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/learners/jetstream.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -368,7 +368,7 @@
 
         
 <div class="section level1">
-<h1 id="running-ngiab-on-jetstream-vm">Running NGIAB on Jetstream VM<a class="anchor" aria-label="anchor" href="#running-ngiab-on-jetstream-vm"></a></h1>
+<h1 id="running-ngiab-on-jetstream2">Running NGIAB on Jetstream2<a class="anchor" aria-label="anchor" href="#running-ngiab-on-jetstream2"></a></h1>
 <div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -376,158 +376,242 @@
 <span class="callout-header">Callout</span>
 <div class="callout-inner">
 <div class="callout-content">
-<p>Before continuing, you will need the SSH credentials for your
-instance. These have been emailed to you.</p>
+<p>For the workshop, an instance may already be created for you. If so,
+skip ahead to <a href="#connecting-to-your-instance">Connecting to your
+instance</a> and use the SSH credentials emailed to you. The steps below
+show how to create your own instance if you need to.</p>
 </div>
 </div>
 </div>
 <div class="section level2">
-<h2 id="setting-up-an-ssh-session-with-ssh-tunneling">Setting up an SSH session with SSH tunneling<a class="anchor" aria-label="anchor" href="#setting-up-an-ssh-session-with-ssh-tunneling"></a></h2>
-<p>Input the following command into your Unix terminal or Windows
-command prompt:</p>
+<h2 id="creating-a-jetstream2-instance">Creating a Jetstream2 instance<a class="anchor" aria-label="anchor" href="#creating-a-jetstream2-instance"></a></h2>
+<ol style="list-style-type: decimal"><li><p>Go to <a href="https://jetstream2.exosphere.app/exosphere/" class="external-link">https://jetstream2.exosphere.app/exosphere/</a>
+and log in using your <strong>NSF ACCESS</strong> credentials.</p></li>
+<li><p>Click <strong>Create</strong> → <strong>Instance</strong> and
+choose the <strong>Ubuntu 24.04</strong> image.</p></li>
+<li><p>Choose an instance flavor based on your computational needs. For
+this workshop, <strong><code>m3.medium</code></strong> is a good
+general-purpose starting point.</p></li>
+<li><p>In the instance configuration, set <strong>“Enable web
+desktop?”</strong> to <strong>Yes</strong>. This is what lets you open a
+web desktop in your browser later. It is required for the recommended
+workflow below.</p></li>
+<li><p>Click <strong>Create</strong> and wait for the instance to finish
+building. When it is ready, you will be taken to the instance
+dashboard.</p></li>
+<li><p>On the dashboard, find the <strong>Credentials</strong> section.
+Note the <strong>public IP address</strong> and the
+<strong>passphrase</strong>. You will use these to connect to the VM
+from your local machine.</p></li>
+</ol></div>
+<div class="section level2">
+<h2 id="connecting-to-your-instance">Connecting to your instance<a class="anchor" aria-label="anchor" href="#connecting-to-your-instance"></a></h2>
+<p>You will connect to your instance in two stages:</p>
+<ol style="list-style-type: decimal"><li>Stage 1: <strong>SSH Terminal.</strong> This is what you use for
+everything in the <a href="#running-nextgen-in-a-box-ngiab">Running
+NextGen in a Box (NGIAB)</a> section: running the ngiab data preprocess,
+the guide script, etc.</li>
+<li>Stage 2: <strong>Web Browser (as needed)</strong> You only need this
+during the visualization step of the tasks, near the end. When you get
+there, use the <strong>Jetstream Web Desktop</strong> (recommended) or a
+VNC client.</li>
+</ol><p>Start with Step 1 now. Steps 2’s two options are documented below so
+they’re ready when you reach the visualization step. You don’t need to
+set them up yet.</p>
+<div class="section level3">
+<h3 id="step-1-open-a-terminal-over-ssh">Step 1: Open a terminal over SSH<a class="anchor" aria-label="anchor" href="#step-1-open-a-terminal-over-ssh"></a></h3>
+<p>To run the NGIAB commands, open a terminal on your own computer (Unix
+terminal or Windows command prompt / PowerShell) and connect to your
+instance:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="fu">ssh</span> <span class="at">-L</span> <span class="pp">[</span><span class="ss">port</span><span class="pp">]</span>:localhost:<span class="pp">[</span><span class="ss">port</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">username</span><span class="pp">]</span>@<span class="pp">[</span><span class="ss">ip.address</span><span class="pp">]</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="fu">ssh</span> exouser@<span class="pp">[</span><span class="ss">ip.address</span><span class="pp">]</span></span></code></pre>
 </div>
-<p>e.g.:</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 5906:localhost:5906 exouser@<span class="pp">[</span><span class="ss">ip.address</span><span class="pp">]</span></span></code></pre>
+<p>Replace <code>[ip.address]</code> with the public IP address from
+your dashboard. When prompted, enter the <strong>passphrase</strong>
+shown in the Credentials section.</p>
+<p>When logging in for the first time, you may be asked whether you’d
+like to trust the host. Type <code>yes</code> to continue. After
+verifying your credentials, you will be logged into your instance’s
+terminal. You’re now ready to start the <a href="#running-nextgen-in-a-box-ngiab">Running NextGen in a Box
+(NGIAB)</a> section.</p>
 </div>
-<p>The -L flag is used to initiate SSH tunneling, which is necessary to
-view the NGIAB visualizer.</p>
-<p>Your selected port in the above command will differ depending on how
-you’d prefer to connect to the visualizer.</p>
-<ul><li>
-<strong>[Recommended]</strong> To open the visualizer via a Virtual
-Network Computing (VNC) client, use port <code>5906</code>.
-<ul><li>This approach requires a VNC client to be installed on your
-computer. <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">RealVNC</a>
-and <a href="https://tigervnc.org/" class="external-link">TigerVNC</a> are common
-choices.</li>
-</ul></li>
-<li>To open the visualizer directly in your web browser, use a port such
-as <code>80</code> or <code>8080</code>.
-<ul><li>You may receive a message such as “Could not request local
-forwarding.” If this happens, you will need to select a different
-port.</li>
-</ul></li>
-</ul><p>When logging in for the first time, you may be asked whether you’d
-like to trust the host. Type ‘yes’ to do so.</p>
-<p>After that, simply type in your password to gain access to your
-instance’s terminal.</p>
+<div class="section level3">
+<h3 id="step-2-viewing-the-visualizer-in-a-browser">Step 2: Viewing the visualizer in a browser<a class="anchor" aria-label="anchor" href="#step-2-viewing-the-visualizer-in-a-browser"></a></h3>
+<div id="callout2" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level2">
-<h2 id="task-1-running-ngiab-with-prepared-data">Task 1: Running NGIAB With Prepared Data<a class="anchor" aria-label="anchor" href="#task-1-running-ngiab-with-prepared-data"></a></h2>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>You only need this once you reach the <strong>visualization
+step</strong> in the tasks below (when the console prints a link like
+<code>http://127.0.0.1:8080/apps/ngiab</code>). Pick
+<strong>one</strong> of the two options below.</p>
+</div>
+</div>
+</div>
+<div class="section level4">
+<h4 id="recommended-jetstream-web-desktop">[Recommended] Jetstream Web Desktop<a class="anchor" aria-label="anchor" href="#recommended-jetstream-web-desktop"></a></h4>
+<p>The Web Desktop gives you a full Linux desktop right in your web
+browser. This is the easiest way to view the NGIAB visualizer.</p>
+<ol style="list-style-type: decimal"><li><p>On your Jetstream2 instance dashboard, find the
+<strong>Interactions</strong> section and click <strong>Web
+Desktop</strong>.</p></li>
+<li>
+<p>A graphical desktop opens in a new browser tab.</p>
+<!-- SCREENSHOT PLACEHOLDER: The Jetstream Web Desktop running in a browser tab, with a terminal and Firefox open. Save as fig/jetstream-web-desktop.png -->
+<figure><img src="fig/jetstream-web-desktop.png" alt="The Jetstream2 web desktop environment shown inside a browser tab." class="figure mx-auto d-block"><div class="figcaption">Figure 5: The Jetstream Web Desktop running
+inside your browser.</div>
+</figure></li>
+<li>
+<p>Open <strong>Firefox</strong> inside the Web Desktop and go to
+the link printed by the console, for example:</p>
+<pre><code>http://127.0.0.1:8080/apps/ngiab</code></pre>
+</li>
+</ol></div>
+<div class="section level4">
+<h4 id="alternative-connecting-with-a-vnc-client">Alternative: connecting with a VNC client<a class="anchor" aria-label="anchor" href="#alternative-connecting-with-a-vnc-client"></a></h4>
+<p>If you prefer a dedicated VNC client instead of the Web Desktop, you
+can connect over an SSH tunnel. This requires a VNC client installed on
+your computer. <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">RealVNC</a>
+and <a href="https://tigervnc.org/" class="external-link">TigerVNC</a> are common choices.</p>
 <ol style="list-style-type: decimal"><li>
-<p>Run the following command to preprocess data:</p>
+<p>Open a <strong>second</strong> SSH session, separate from the one
+running your commands. This time with tunneling by adding the
+<code>-L</code> flag, which forwards the VNC port (<code>5906</code>)
+from the instance to your local machine:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess cli <span class="at">-i</span> gage-10154200 <span class="at">-sfr</span> <span class="at">--start</span> 2017-09-01 <span class="at">--end</span> 2018-09-01 <span class="at">--source</span> aorc </span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 5906:localhost:5906 exouser@<span class="pp">[</span><span class="ss">ip.address</span><span class="pp">]</span></span></code></pre>
 </div>
-<p>Use the default output folder given.</p>
+<p>The <code>-L</code> flag is what makes the remote port reachable
+locally. Keep this terminal open for as long as you want the VNC
+connection to stay alive.</p>
 </li>
 <li>
-<p>Run the following commands to clone the NGIAB-CloudInfra repo and
-run guide script:</p>
-<div class="codewrapper sourceCode" id="cb4">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="fu">mkdir</span> NGIAB_demo</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="bu">cd</span> NGIAB_demo</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git </span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a><span class="bu">cd</span> NGIAB-CloudInfra </span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a><span class="ex">./guide.sh</span> </span></code></pre>
-</div>
+<p>Open your VNC client (RealVNC or TigerVNC) and connect to:</p>
+<pre><code><span><span class="va">localhost</span><span class="op">:</span><span class="fl">5906</span></span></code></pre>
+<p>Enter the passphrase emailed to you / shown on the dashboard when
+prompted.</p>
 </li>
-<li><p>When prompted, enter the following input data directory
-path:</p></li>
-</ol><pre><code>/home/exouser/ngiab_preprocess_output/gage-10154200 </code></pre>
-<ol start="4" style="list-style-type: decimal"><li>When prompted about which Docker image to use, select Option 1 (use
-existing Docker image).</li>
-<li>When prompted about which run option to use, select Option 2 (run
-NextGen in parallel mode).</li>
-<li>When prompted to redirect command output to <code>/dev/null</code>,
-select no. This allows you to see details about your NextGen run.</li>
-<li>After the NextGen run is complete, you will be asked “Would you like
-to continue?”. Select Option 2 (exit), which will allow you to progress
-to the TEEHR evaluation.</li>
-<li>Run the TEEHR evaluation when prompted. When given the option to
-select an image tag, choose <code>x86</code>, and choose option 1 (use
-existing TEEHR image).</li>
-<li>After the TEEHR evaluation is complete, run the Tethys visualizer
-when prompted. When asked about the image, choose the default latest
-image. Note: the visualizer may take a while to load. When asked which
-port to use, use the default port (80).
-<ul><li>If you are opening the visualizer in a VNC client, first connect to
-<code>localhost:5906</code> using the password emailed to you. Then,
-open the link provided by the console output in the remote desktop’s web
-browser.</li>
-<li>If you are opening the visualizer in your local web browser, simply
-enter the link provided by the console output.</li>
-</ul></li>
-<li>Enter <code>Ctrl+C</code> in the terminal to stop the visualizer
-when you are done.</li>
-</ol></div>
+<li><p>A remote desktop opens. Open the web browser inside it and enter
+the visualizer link printed by the console
+(e.g. <code>http://127.0.0.1:8080/apps/ngiab</code>).</p></li>
+</ol><div id="callout3" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>You can also forward a plain web port (such as <code>80</code> or
+<code>8080</code>) instead of the VNC port to view the visualizer
+directly in your <em>local</em> browser,
+e.g. <code>ssh -L 8080:localhost:8080 exouser@[ip.address]</code>. If
+you see a message like “Could not request local forwarding”, that port
+is already in use, pick a different one.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level2">
-<h2 id="task-2-running-ngiab-with-your-own-data">Task 2: Running NGIAB with Your Own Data<a class="anchor" aria-label="anchor" href="#task-2-running-ngiab-with-your-own-data"></a></h2>
+<h2 id="running-nextgen-in-a-box-ngiab">Running NextGen in a Box (NGIAB)<a class="anchor" aria-label="anchor" href="#running-nextgen-in-a-box-ngiab"></a></h2>
+<p>Before starting this section, make sure you have <code>uv</code>
+installed, and make sure you have cloned the NGIAB-CloudInfra and
+DataStreamCLI repositories.</p>
 <ol style="list-style-type: decimal"><li>
-<p>Use the Data Preprocess tool’s graphical user interface (map app)
-to select your favorite catchments and time period that you would like
-to perform a NextGen run on. To be able to use TEEHR, you must select a
-region that contains USGS gages. You can show or hide USGS gages in the
-map app by toggling the “Show/Hide gages” button in the upper left.</p>
-<figure><img src="fig/fig1-4.png" alt="A map view displaying the Provo River network and basin boundaries in the area around Woodland, UT. The map includes the stream network shown in blue, basin boundaries in orange shaded regions, the downstream-most basin in a pink shaded reagion, and black dots representing USGS gage locations." class="figure mx-auto d-block"><div class="figcaption">Figure 1: Example view from the Data Preprocess
-tool. The highlighted region (light orange area; downstream-most basin
-in pink) represents the specific study basin, illustrating the river
-network (blue lines), sub-basins (orange), and surrounding USGS gaging
-stations (black dots).</div>
-</figure><div class="codewrapper sourceCode" id="cb6">
+<p>Verify you have Docker, and that it works as expected:</p>
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab_data_preprocess map_app</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
+</div>
+<p>This should generate a message like this:</p>
+<pre><code>Hello from Docker!
+This message shows that your installation appears to be working correctly.</code></pre>
+</li>
+<li>
+<p>Clone the NGIAB source code in your desired directory:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="bu">cd</span> /<span class="op">&lt;</span>path_to_directory<span class="op">&gt;</span>   <span class="co"># Optional: navigate to your desired directory</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span></code></pre>
 </div>
 </li>
-</ol><p>To view the map app in your VNC viewer or your local web browser, use
-one of the IP addresses listed after the map app is started.</p>
-<ol start="2" style="list-style-type: decimal"><li><p>Copy the given command. Exit out of the Data Preprocess tool in
-the terminal using <code>Ctrl+C</code> and run the copied command to
-preprocess data. If you include the <code>--run</code> tag, the Data
-Preprocessor will automatically execute a NextGen run.</p></li>
-<li><p>If you included the <code>--run</code> tag, you will need to run
-the <code>runTeehr.sh</code> and <code>viewOnTethys.sh</code> scripts
-separately in order to use TEEHR and the Data Visualizer.</p></li>
-</ol><div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="fu">chmod</span> +x runTeehr.sh viewOnTethys.sh</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="ex">./runTeehr.sh</span></span></code></pre>
-</div>
+<li>
+<p>Install <code>uv</code>:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">./viewOnTethys.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre>
 </div>
-<p>When you run <code>viewOnTethys.sh</code>, make sure to select a
-different port (we like 8081). Use your VNC viewer to access the
-visualization at the given link.</p>
-<p>If you did not include the <code>--run</code> tag, you can run
-<code>guide.sh</code> as described in Task 1.</p>
+</li>
+</ol><p>In this section, we will be running NOM+CFE+t-route for the area
+upstream of USGS gage 02342500 (Uchee Creek Near Fort Mitchell, Al.)
+over the time period 2020-01-01 to 2020-01-07.</p>
+<div class="section level3">
+<h3 id="data-preprocess">Data Preprocess<a class="anchor" aria-label="anchor" href="#data-preprocess"></a></h3>
+<p>The NGIAB Data Preprocess has a built-in function to run NGIAB. This
+is convenient, but does not allow you to modify any of the preprocessed
+data files before the run starts.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">uvx</span> <span class="at">-p</span> 3.10 <span class="at">--from</span> ngiab-prep cli <span class="at">-i</span> gage-02342500 <span class="at">-sfr</span> <span class="at">--start</span> 2020-01-01 <span class="at">--end</span> 2020-01-07 <span class="at">--source</span> aorc <span class="at">--run</span></span></code></pre>
 </div>
-<ol start="4" style="list-style-type: decimal"><li>Experiment with different basins or options as much as you’d like!
-<!--
+<figure><img src="fig/data_prep_ngiab-ezgif.com-cut.gif" alt="Animated terminal recording of the data preprocessor running and automatically starting a NextGen simulation." class="figure mx-auto d-block"><div class="figcaption">Demo: running the Data Preprocess with the
+<code>--run</code> flag to preprocess data and automatically launch a
+NextGen run.</div>
+</figure><p>In this command, <code>uvx</code> allows for you to run the data
+preprocessor without installing it as a package.
+<code>-i gage-02342500</code> selects USGS gage 02342500 as the location
+to be modeled. <code>-s</code> subsets the NextGen hydrofabric
+geopackage, <code>-f</code> generates forcings, <code>-r</code>
+generates realization and BMI configuration files, <code>--start</code>
+and <code>--end</code> specify the start and end dates of the
+simulation, <code>--source</code> specifies the source of raw forcing
+data, and <code>--run</code> indicates that a Docker image containing
+NGIAB should be spun up after the data has been preprocessed, and a
+NextGen simulation should be automatically run with the data.</p>
+<p>For more information on the data preprocessor and its
+functionalities, see the <a href="https://github.com/CIROH-UA/NGIAB_data_preprocess" class="external-link">documentation</a>.</p>
+</div>
+<div class="section level3">
+<h3 id="data-preprocess-guide-script">Data Preprocess + Guide Script<a class="anchor" aria-label="anchor" href="#data-preprocess-guide-script"></a></h3>
+<p>This method allows you to preprocess data and run NGIAB as separate
+steps. The guide script in the NGIAB-CloudInfra repository walks you
+through the NGIAB run and gives you the option to evaluate your results
+using TEEHR and visualize the results using the Tethys visualizer.</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="bu">cd</span> /path/to/NGIAB-CloudInfra</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="ex">uvx</span> <span class="at">--from</span> ngiab-prep cli <span class="at">-i</span> gage-02342500 <span class="at">-sfr</span> <span class="at">--start</span> 2020-01-01 <span class="at">--end</span> 2020-01-07 <span class="at">--source</span> aorc</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a><span class="fu">chmod</span> +x guide.sh</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1" aria-label="code-block-10-4"></a><span class="ex">./guide.sh</span></span></code></pre>
+</div>
+<figure><img src="fig/data_prep_guide.gif" alt="Animated terminal recording of the guide script walking through a NextGen run." class="figure mx-auto d-block"><div class="figcaption">Demo: preprocessing data and then walking
+through the NGIAB run with the guide script.</div>
+</figure><p>When the guide script finishes the visualization step, view the
+results in the <strong>Web Desktop</strong> (recommended) by opening
+Firefox and going to the link printed by the console output
+(e.g. <code>http://127.0.0.1:8080/apps/ngiab</code>). If you are using a
+VNC client instead, first connect to <code>localhost:5906</code>, then
+open the link in the remote desktop’s web browser.</p>
+<figure><img src="fig/vis.gif" alt="Animated recording of the NGIAB Tethys visualizer displaying simulation results." class="figure mx-auto d-block"><div class="figcaption">Demo: viewing the NGIAB results in the Tethys
+visualizer.</div>
+</figure><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- -->
-</li>
-</ol></div>
+ --></div>
+</div>
 </div>
 
 
@@ -586,8 +670,8 @@ any links that you are not going to use.
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/jetstream.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/jetstream.html",
   "dateCreated": "2025-05-19",
-  "dateModified": "2026-06-16",
-  "datePublished": "2026-06-23"
+  "dateModified": "2026-06-25",
+  "datePublished": "2026-06-25"
 }
 
   </script><script>
