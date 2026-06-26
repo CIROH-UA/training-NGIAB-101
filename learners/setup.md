@@ -26,12 +26,17 @@ Are you planning on running NGIAB on an HPC? You can follow the episodes in orde
 
 ::::::::::::::::::::::::::::::::::::: callout
 
-## 2i2c Users
-Are you planning on running NGIAB through CIROH-2i2c JupyterHub? If so, you do not need to install Docker, NGIAB, or supporting software on your local machine. Instead, request access to CIROH-2i2c through the [Infrastructure Access page](https://hub.ciroh.org/docs/services/access), launch a **CIROH Community NextGen Hub** server, and follow the Jupyter notebook workflows provided in the cloud environment.
+## 2i2c JupyterHub Users
 
-You may still find the Installation episode useful for understanding the NGIAB ecosystem, but local software installation steps can be skipped.
+Are you planning on running NGIAB through CIROH-2i2c JupyterHub? If so, you do not need to install Docker, NGIAB, or supporting software on your local machine.
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+Instead, open the HydroShare resource below and select **Open With → CIROH-2i2c JupyterHub**:
+
+https://www.hydroshare.org/resource/27045581bdea4808a393330f2417379c/
+
+The resource contains a complete NextGen modeling workflow with notebooks for data preparation, model execution, evaluation, output analysis, and calibration. Once your JupyterHub server starts, you can begin working through the workflow immediately in the cloud environment.
+
+::::::::::::::::::::::::::::::::::::::::::::
 
 ## System Requirements
 
