@@ -17,6 +17,28 @@ exercises: 5
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::: prereq
+
+## Before you start
+
+Every method below runs NextGen inside Docker, so the host needs:
+
+- **Docker** installed and running
+- **Python 3.10+** with [`uv`/`uvx`](https://docs.astral.sh/uv/)
+- **At least 50 GB of free disk** (more for large domains) — the hydrofabric is downloaded on the first run (~1.7 GB compressed, much larger once decompressed), in addition to forcings and outputs
+- **8+ GB RAM and 4+ CPU cores** recommended
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Which method should I use?
+
+| If you want to... | Use |
+|---|---|
+| Run a preprocessed dataset with guided evaluation/visualization | `guide.sh` |
+| Prepare and run in a single command | Data Preprocessor (`--run`) |
+| Run in the cloud with no local install | CIROH-2i2c JupyterHub |
+| Use a scriptable workflow with custom forcing | DataStreamCLI |
+
 ## 1. Model Execution using `guide.sh`
 
 `guide.sh` is used to execute pre-configured NextGen runs in NGIAB. These settings can be configured by users ahead of time using the [Data Preprocessor tool](./data-preprocessor.html). Execute the following commands:
@@ -39,7 +61,20 @@ uvx -p 3.10 --from ngiab_data_preprocess cli -i gage-02342500 -sfr --start 2020-
 ```
 In this command, `uvx` runs the Data Preprocessor without installing it as a package. The `-i` argument specifies the location to model, `-sfr` subsets the hydrofabric, generates forcings, and creates realization files, `--source aorc` selects AORC forcing data, and `--run` automatically launches the NGIAB simulation after preprocessing.
 
-As this module is being updated constantly, check back on the [(NGIAB_data_preprocess GitHub Repository)](https://github.com/CIROH-UA/NGIAB_data_preprocess) for the latest updates on its functionality.
+As this module is being updated constantly, check back on the [(NGIAB_data_preprocess GitHub Repository)](https://github.com/CIROH-UA/NGIAB_data_preprocess) for the latest updates on its functionality. By default, results are written to `~/ngiab_preprocess_output/<gage-id>/`.
+
+:::::::::::::::::::::::::::::::::::::: callout
+
+## Tip: long-running runs
+
+Preprocessing and the NextGen run can take several minutes (longer for large domains or date ranges). If you are working over SSH or a remote console, start the command inside [`tmux`](https://github.com/tmux/tmux/wiki) (or `screen`) so it keeps running if your connection drops:
+
+```bash
+tmux new -s ngiab      # run your command here; detach with Ctrl-b then d
+tmux attach -t ngiab   # reattach later
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## 3. Model Execution using CIROH-2i2c JupyterHub
 
@@ -65,6 +100,15 @@ chmod +x ./scripts/datastream
 In this command, `-s` specifies the simulation start time, `-e` specifies the end time, `-C` selects the forcing source, `-d` specifies the output directory, `-g` provides the hydrofabric geopackage, `-R` specifies the realization template, and `-n` sets the number of processes used during execution.
 
 For installation instructions and additional examples, refer to the [DataStreamCLI GitHub Repository](https://github.com/CIROH-UA/datastreamcli).
+
+:::::::::::::::::::::::::::::::::::::: callout
+
+## Troubleshooting
+
+- **`No space left on device`** — the run ran out of disk, often during the hydrofabric download. Use a larger disk (≥ 50 GB), remove any partial download under `~/.ngiab`, and re-run.
+- **A long run stopped when the terminal disconnected** — re-run inside `tmux`/`screen` (see the tip above) so it survives dropped connections.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Your Turn
 
