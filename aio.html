@@ -431,7 +431,7 @@
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">Introduction</a></p>
 <hr>
-<p>Last updated on 2026-06-16 |
+<p>Last updated on 2026-07-13 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -533,12 +533,12 @@ everything needed is inside..</li>
 <li>This ensures consistent execution across diverse computing
 environments, regardless of differences in hardware or software
 configurations.</li>
-<li>NGIAB leverages Docker (<a href="https://doi.org/10.1145/2723872.2723882" class="external-link">Boettiger, 2015</a>) and
-Singularity (<a href="https://www.researchgate.net/publication/236160050_An_Overview_of_the_Singularity_Project" class="external-link">Hunt
-et al., 2005</a>) to streamline deployment.</li>
-</ul></section><section><h2 class="section-heading" id="architectural-components">Architectural Components<a class="anchor" aria-label="anchor" href="#architectural-components"></a>
-</h2>
-<hr class="half-width">
+<li>NGIAB can leverage many containerization suites to streamline
+deployment. NGIAB-CloudInfra offers Docker (<a href="https://doi.org/10.1145/2723872.2723882" class="external-link">Boettiger, 2015</a>) and
+Podman (<a href="https://zenodo.org/records/4735634" class="external-link">Heon et al.,
+2018</a>) support, while NGIAB-HPCInfra uses Singularity (<a href="https://www.researchgate.net/publication/236160050_An_Overview_of_the_Singularity_Project" class="external-link">Hunt
+et al., 2005</a>). s ## Architectural Components</li>
+</ul>
 <p>NGIAB is designed as a multi-layered containerized tool that
 encapsulates the NextGen framework and many components relevant to the
 NWM within a reproducible environment.</p>
@@ -676,7 +676,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-installation"><p>Content from <a href="installation.html">Installation and Setup</a></p>
 <hr>
-<p>Last updated on 2026-06-16 |
+<p>Last updated on 2026-07-13 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/installation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -746,7 +746,7 @@ Topics</a>.</p>
 <strong>Operating System:</strong> Windows (with WSL), macOS, or
 Linux</li>
 <li>
-<strong>Software:</strong> Docker, Git</li>
+<strong>Software:</strong> Git, Docker or Podman</li>
 <li>
 <strong>Recommended Minimum RAM:</strong> 8 GB</li>
 </ul>
@@ -771,6 +771,19 @@ training module.</p>
 </section><section><h2 class="section-heading" id="docker-installation">Docker Installation<a class="anchor" aria-label="anchor" href="#docker-installation"></a>
 </h2>
 <hr class="half-width">
+<div id="callout3" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>Docker is appropriate for most general use cases. If you already have
+Docker configured, or if you are using Podman, then this section can be
+skipped.</p>
+</div>
+</div>
+</div>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
@@ -779,7 +792,7 @@ training module.</p>
   Windows (WSL)
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>Note: Users who already have Docker installed will still need to
 install a separate WSL distro and set it as their default, if they have
@@ -853,7 +866,7 @@ distribution with the following commands:</p>
   macOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Install Docker Desktop from <a href="https://docs.docker.com/desktop/setup/install/mac-install/" class="external-link">Docker’s
@@ -893,7 +906,7 @@ working.</p>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Install Docker by following the <a href="https://docs.docker.com/desktop/setup/install/linux/" class="external-link">official
@@ -951,7 +964,7 @@ installation steps.</p>
   Troubleshooting
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>If <code>docker ps -a</code> fails, ensure Docker Desktop is running,
 or Docker service is active on Linux:</p>
@@ -960,6 +973,173 @@ or Docker service is active on Linux:</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="fu">sudo</span> systemctl start docker</span></code></pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="podman-installation">Podman Installation<a class="anchor" aria-label="anchor" href="#podman-installation"></a>
+</h2>
+<hr class="half-width">
+<div id="callout4" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>Podman is appropriate if you do not have administrative privileges.
+Your system administrator must install or build Podman if you do not
+have administrative (<code>sudo</code>) privileges.</p>
+<p>If you already have Podman configured, or if you are using Docker,
+then this section can be skipped.</p>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler4" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler4" aria-expanded="false" aria-controls="collapseSpoiler4">
+  <h3 class="accordion-header" id="headingSpoiler4">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Windows (WSL)
+  </h3>
+</button>
+<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
+<div class="accordion-body">
+<div id="caution2" class="callout caution">
+<div class="callout-square">
+<i class="callout-icon" data-feather="alert-triangle"></i>
+</div>
+<span class="callout-header">Caution</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>NGIAB’s Podman support on Windows/WSL is tenuous at best. We strongly
+recommend that WSL users opt for Docker if possible.</p>
+<p>This limitation is because Podman is subject to significant
+filesystem constraints (see <a href="https://github.com/containers/podman/issues/21813" class="external-link">containers/podman#21813</a>).
+While it can technically work, it will require fairly specific
+configurations to work reliably, and it will not support the visualizer
+script at this time.</p>
+</div>
+</div>
+</div>
+<ol style="list-style-type: decimal">
+<li>
+<p>Make sure Windows Subsystem for Linux (WSL) is installed. If it
+is not, you can install it with this command:</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">POWERSHELL<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode powershell" tabindex="0"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a>wsl <span class="op">--</span>install</span></code></pre>
+</div>
+</li>
+<li><p>Install and configure the Podman engine within windows, as well
+as a Podman remote client within WSL. Detailed instructions on this
+process and related considerations can be found here: <a href="https://dev.to/octasoft-ltd/running-podman-on-windows-with-wsl-a-practical-guide-4jl8" class="external-link uri">https://dev.to/octasoft-ltd/running-podman-on-windows-with-wsl-a-practical-guide-4jl8</a></p></li>
+<li>
+<p>Within WSL, clone the NGIAB source code into your desired
+directory. This and all subsequent steps <strong>must</strong> be done
+within a subdirectory of <code>/mnt/wsl/</code> or a named volume that
+is exposed to the Podman machine. Otherwise, your container will be
+unable to access your files.</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="bu">cd</span> /mnt/wsl/path/to/directory <span class="co"># navigate to your desired directory</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span></code></pre>
+</div>
+</li>
+<li>
+<p>Within WSL, install <code>uv</code>.</p>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1" aria-label="code-block-13-3"></a><span class="co"># if you don't have curl, you can use wget</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1" aria-label="code-block-13-4"></a><span class="co"># wget -qO- https://astral.sh/uv/install.sh | sh</span></span></code></pre>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler5" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler5" aria-expanded="false" aria-controls="collapseSpoiler5">
+  <h3 class="accordion-header" id="headingSpoiler5">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  macOS
+  </h3>
+</button>
+<div id="collapseSpoiler5" class="accordion-collapse collapse" aria-labelledby="headingSpoiler5" data-bs-parent="#accordionSpoiler5">
+<div class="accordion-body">
+<ol style="list-style-type: decimal">
+<li><p>Make sure Podman is installed. If you have administrative
+privileges, you can install it with the official Podman installer or
+with Homebrew. Follow the instructions on the <a href="https://podman.io/docs/installation#macos" class="external-link">official Podman
+documentation site</a>.</p></li>
+<li>
+<p>Clone the NGIAB source code in your desired directory.</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">ZSH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode zsh" tabindex="0"><code class="sourceCode zsh"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="bu">cd</span> /path/to/directory <span class="co"># navigate to your desired directory</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1" aria-label="code-block-14-2"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span></code></pre>
+</div>
+</li>
+<li>
+<p>Install <code>uv</code>.</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">ZSH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode zsh" tabindex="0"><code class="sourceCode zsh"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1" aria-label="code-block-15-3"></a><span class="co"># if you don't have curl, you can use wget</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1" aria-label="code-block-15-4"></a><span class="co"># wget -qO- https://astral.sh/uv/install.sh | sh</span></span></code></pre>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler6" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler6" aria-expanded="false" aria-controls="collapseSpoiler6">
+  <h3 class="accordion-header" id="headingSpoiler6">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Linux
+  </h3>
+</button>
+<div id="collapseSpoiler6" class="accordion-collapse collapse" aria-labelledby="headingSpoiler6" data-bs-parent="#accordionSpoiler6">
+<div class="accordion-body">
+<ol style="list-style-type: decimal">
+<li><p>Make sure Podman is installed. If you have <code>sudo</code>
+privileges, you can install Podman using the instructions on the <a href="https://podman.io/docs/installation#linux-distributions" class="external-link">Podman
+documentation site</a>. Make sure to use the instructions for the
+correct Linux distribution.</p></li>
+<li>
+<p>Clone the NGIAB source code in your desired directory.</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="bu">cd</span> /path/to/directory <span class="co"># navigate to your desired directory</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span></code></pre>
+</div>
+</li>
+<li>
+<p>Install <code>uv</code>.</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1" aria-label="code-block-17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1" aria-label="code-block-17-3"></a><span class="co"># if you don't have curl, you can use wget</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1" aria-label="code-block-17-4"></a><span class="co"># wget -qO- https://astral.sh/uv/install.sh | sh</span></span></code></pre>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -973,11 +1153,11 @@ file is a scenario using a specific model on a specific region.</p>
 <div class="section level3">
 <h3 id="step-1-create-project-directory">Step 1: Create Project Directory<a class="anchor" aria-label="anchor" href="#step-1-create-project-directory"></a>
 </h3>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> NextGen/ngen-data</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="bu">cd</span> NextGen/ngen-data</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> NextGen/ngen-data</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="bu">cd</span> NextGen/ngen-data</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -992,11 +1172,11 @@ for your interests, available disk space, and network speed.</p>
 <p>Models: SLOTH (dummy model), NoahOWP (land surface model), CFE
 (conceptual rainfall-runoff model, functionally equivalent to NWM)</p>
 <p>Compressed file size: 249 MB | Extracted file size: 1.77 GB</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-009/AWI_16_10154200_009.tar.gz</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1" aria-label="code-block-19-2"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_10154200_009.tar.gz</span></code></pre>
 </div>
 </div>
 <div class="section level4">
@@ -1004,11 +1184,11 @@ for your interests, available disk space, and network speed.</p>
 </h4>
 <p>Models: SLOTH, NoahOWP, CFE</p>
 <p>Compressed file size: 1.87 MB | Extracted file size: 5.53 MB</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-007/AWI_16_2863657_007.tar.gz</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_2863657_007.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="fu">wget</span> https://ciroh-ua-ngen-data.s3.us-east-2.amazonaws.com/AWI-007/AWI_16_2863657_007.tar.gz</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a><span class="fu">tar</span> <span class="at">-xf</span> AWI_16_2863657_007.tar.gz</span></code></pre>
 </div>
 <div id="check-did-you-download-the-dataset" class="callout challenge">
 <div class="callout-square">
@@ -1019,10 +1199,10 @@ for your interests, available disk space, and network speed.</p>
 <h3 class="callout-title">Check: Did You Download the Dataset?</h3>
 <div class="callout-content">
 <p>Run this command:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="fu">ls</span>  ~/NextGen/ngen-data</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="fu">ls</span>  ~/NextGen/ngen-data</span></code></pre>
 </div>
 </div>
 </div>
@@ -1034,7 +1214,7 @@ for your interests, available disk space, and network speed.</p>
   Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You should see a folder like:</p>
 <pre><code><span><span class="va">AWI_16_10154200_009</span></span></code></pre>
@@ -1042,10 +1222,10 @@ for your interests, available disk space, and network speed.</p>
 correctly.</p>
 <p>If you see nothing or just the <code>.tar.gz</code> file, run the
 following again:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="fu">tar</span>  <span class="at">-xf</span>  AWI_16_10154200_009.tar.gz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="fu">tar</span>  <span class="at">-xf</span>  AWI_16_10154200_009.tar.gz</span></code></pre>
 </div>
 </div>
 </div>
@@ -1075,10 +1255,10 @@ running properly.</p>
 breaks.</p></li>
 <li><p>Git can be configured from the command line.</p></li>
 </ol>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf false</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf false</span></code></pre>
 </div>
 <ol start="3" style="list-style-type: decimal">
 <li>Download, extract, and run <a href="data/ngiab-newline-fixer.zip">this interactive <code>.bat</code>
@@ -1088,12 +1268,12 @@ script</a>
 </div>
 </div>
 </div>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="bu">cd</span> ../  <span class="co"># back to NextGen folder</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1" aria-label="code-block-18-3"></a><span class="bu">cd</span> NGIAB-CloudInfra</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="bu">cd</span> ../  <span class="co"># back to NextGen folder</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a><span class="fu">git</span> clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1" aria-label="code-block-25-3"></a><span class="bu">cd</span> NGIAB-CloudInfra</span></code></pre>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="ready-to-go">✅ Ready to Go!<a class="anchor" aria-label="anchor" href="#ready-to-go"></a>
@@ -1103,13 +1283,26 @@ script</a>
 working directory, you are ready to run the interactive guide script
 <code>guide.sh</code>. It will prompt you to select input data,
 processing modes, and will initiate your run.</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">./guide.sh</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="ex">./guide.sh</span>      <span class="co"># Docker</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1" aria-label="code-block-26-2"></a><span class="ex">./guide.sh</span> <span class="at">-p</span>   <span class="co"># Podman</span></span></code></pre>
 </div>
 <p>This will walk you through the NGIAB setup and launch your first
 run.</p>
+<div id="callout5" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>If you are using Podman, then you should use the <code>-p</code> CLI
+option with any NGIAB shell scripts that you run.</p>
+</div>
+</div>
+</div>
 <div id="guide.sh-tips" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -1146,20 +1339,20 @@ redirect the output.</li>
 <li>
 <p>Ensure Docker is running before executing
 <code>guide.sh</code>.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="ex">docker</span> run hello-world</span></code></pre>
 </div>
 </li>
 <li><p>For permission errors on Linux, run Docker commands with
 <code>sudo</code> or add your user to the Docker group:</p></li>
 </ul>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">${USER}</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a><span class="ex">newgrp</span> docker</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1" aria-label="code-block-28-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">${USER}</span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1" aria-label="code-block-28-2"></a><span class="ex">newgrp</span> docker</span></code></pre>
 </div>
 <div id="are-you-in-the-right-directory" class="callout">
 <div class="callout-square">
@@ -1170,18 +1363,18 @@ redirect the output.</li>
 <h3 class="callout-title">Are You in the Right Directory?</h3>
 <div class="callout-content">
 <p>Before running any script, always check your current folder:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="bu">pwd</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a><span class="bu">pwd</span></span></code></pre>
 </div>
 <p>You <strong>should see something like</strong>:</p>
 <pre><code>/home/yourname/NextGen/NGIAB-CloudInfra</code></pre>
 <p>If not, move into the folder:</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="bu">cd</span> ~/NextGen/NGIAB-CloudInfra</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1" aria-label="code-block-31-1"></a><span class="bu">cd</span> ~/NextGen/NGIAB-CloudInfra</span></code></pre>
 </div>
 </div>
 </div>

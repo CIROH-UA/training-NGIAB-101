@@ -220,7 +220,6 @@
         <ul><li><a href="#introduction-to-nextgen">Introduction to NextGen</a></li>
 <li><a href="#what-is-ngiab">What is NGIAB?</a></li>
 <li><a href="#containerization">Containerization</a></li>
-<li><a href="#architectural-components">Architectural Components</a></li>
 <li><a href="#extensions-of-ngiab">Extensions of NGIAB</a></li>
 <li><a href="#example-applications">Example Applications</a></li>
 <li><a href="#why-should-i-use-ngiab">Why should I use NGIAB?</a></li>
@@ -379,7 +378,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction</h1>
-        <p>Last updated on 2026-06-16 |
+        <p>Last updated on 2026-07-13 |
 
         <a href="https://github.com/CIROH-UA/training-NGIAB-101/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -474,11 +473,12 @@ everything needed is inside..</li>
 <li>This ensures consistent execution across diverse computing
 environments, regardless of differences in hardware or software
 configurations.</li>
-<li>NGIAB leverages Docker (<a href="https://doi.org/10.1145/2723872.2723882" class="external-link">Boettiger, 2015</a>) and
-Singularity (<a href="https://www.researchgate.net/publication/236160050_An_Overview_of_the_Singularity_Project" class="external-link">Hunt
-et al., 2005</a>) to streamline deployment.</li>
-</ul></section><section><h2 class="section-heading" id="architectural-components">Architectural Components<a class="anchor" aria-label="anchor" href="#architectural-components"></a></h2>
-<hr class="half-width"><p>NGIAB is designed as a multi-layered containerized tool that
+<li>NGIAB can leverage many containerization suites to streamline
+deployment. NGIAB-CloudInfra offers Docker (<a href="https://doi.org/10.1145/2723872.2723882" class="external-link">Boettiger, 2015</a>) and
+Podman (<a href="https://zenodo.org/records/4735634" class="external-link">Heon et al.,
+2018</a>) support, while NGIAB-HPCInfra uses Singularity (<a href="https://www.researchgate.net/publication/236160050_An_Overview_of_the_Singularity_Project" class="external-link">Hunt
+et al., 2005</a>). s ## Architectural Components</li>
+</ul><p>NGIAB is designed as a multi-layered containerized tool that
 encapsulates the NextGen framework and many components relevant to the
 NWM within a reproducible environment.</p>
 <figure><img src="fig/fig1-1.png" alt='A concentric circle diagram titled "NGIAB Containerization Architecture." It consists of four nested layers representing different components. At the center is "1. Core Framework" in gray, symbolizing the core hydrological modeling framework. Surrounding it is "2. CI/CD Pipeline" in green, representing tools that facilitate rapid development and reliability. The next layer is "3. NGIAB Containerization" in blue, indicating simplified access to modeling tools. The outermost layer is "4. Technologies &amp; Methods" in dark blue, representing supportive tools and practices. Labels on the left of the diagram describe the increasing level of support from the core outward.' class="figure mx-auto d-block"><div class="figcaption">Figure 1: Architecture of the NGIAB,
@@ -658,7 +658,7 @@ any links that you are not going to use.
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/introduction.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/introduction.html",
   "dateCreated": "2025-05-19",
-  "dateModified": "2026-06-16",
+  "dateModified": "2026-07-13",
   "datePublished": "2026-07-13"
 }
 
