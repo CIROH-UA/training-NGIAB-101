@@ -46,8 +46,8 @@ Managing NextGen's complex software ecosystem remains challenging. The NextGen f
 - Containerization addresses compatibility issues and hardware variation challenges by **encapsulating applications, their dependencies, and runtime environments into a single, portable unit**.
 - Think of containerization like putting a model and all its tools into a sealed toolbox -- you can carry and run it anywhere, and everything needed is inside..
 - This ensures consistent execution across diverse computing environments, regardless of differences in hardware or software configurations.
-- NGIAB leverages Docker ([Boettiger, 2015](https://doi.org/10.1145/2723872.2723882)) and Singularity ([Hunt et al., 2005](https://www.researchgate.net/publication/236160050_An_Overview_of_the_Singularity_Project)) to streamline deployment.
-
+- NGIAB can leverage many containerization suites to streamline deployment. NGIAB-CloudInfra offers Docker ([Boettiger, 2015](https://doi.org/10.1145/2723872.2723882)) and Podman ([Heon et al., 2018](https://zenodo.org/records/4735634)) support, while NGIAB-HPCInfra uses Singularity ([Hunt et al., 2005](https://www.researchgate.net/publication/236160050_An_Overview_of_the_Singularity_Project)).
+s
 ## Architectural Components
 
 NGIAB is designed as a multi-layered containerized tool that encapsulates the NextGen framework and many components relevant to the NWM within a reproducible environment.
