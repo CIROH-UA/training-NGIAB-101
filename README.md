@@ -10,6 +10,8 @@ To test this repository locally, open training-NGIAB-101 in RStudio, then run `s
 
 Most contributors should only need to edit markdown files to contribute content to this module. For more involved changes, please reference the [Introduction to the Carpentries Workbench](https://carpentries.github.io/sandpaper-docs/index.html).
 
+> If you've not used Sandpaper before, please see [the setup instructions](https://carpentries.github.io/sandpaper-docs/index.html#setup). Note that you may need to update to the latest version of R.
+
 ## References
 
 This training module relied heavily on material from 
