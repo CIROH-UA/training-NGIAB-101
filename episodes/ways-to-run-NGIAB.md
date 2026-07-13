@@ -61,11 +61,11 @@ uvx -p 3.10 --from ngiab_data_preprocess cli -i gage-02342500 -sfr --start 2020-
 ```
 In this command, `uvx` runs the Data Preprocessor without installing it as a package. The `-i` argument specifies the location to model, `-sfr` subsets the hydrofabric, generates forcings, and creates realization files, `--source aorc` selects AORC forcing data, and `--run` automatically launches the NGIAB simulation after preprocessing.
 
-As this module is being updated constantly, check back on the [(NGIAB_data_preprocess GitHub Repository)](https://github.com/CIROH-UA/NGIAB_data_preprocess) for the latest updates on its functionality. By default, results are written to `~/ngiab_preprocess_output/<gage-id>/`.
+As this module is being updated constantly, check back on the [NGIAB_data_preprocess GitHub Repository](https://github.com/CIROH-UA/NGIAB_data_preprocess) for the latest updates on its functionality. By default, results are written to `~/ngiab_preprocess_output/<gage-id>/`.
 
 :::::::::::::::::::::::::::::::::::::: callout
 
-## Tip: long-running runs
+## Tip: long runs
 
 Preprocessing and the NextGen run can take several minutes (longer for large domains or date ranges). If you are working over SSH or a remote console, start the command inside [`tmux`](https://github.com/tmux/tmux/wiki) (or `screen`) so it keeps running if your connection drops:
 
@@ -105,7 +105,7 @@ For installation instructions and additional examples, refer to the [DataStreamC
 
 ## Troubleshooting
 
-- **`No space left on device`** — the run ran out of disk, often during the hydrofabric download. Use a larger disk (≥ 50 GB), remove any partial download under `~/.ngiab`, and re-run.
+- **`No space left on device`** — the run ran out of disk space (often during the hydrofabric download). Use a larger disk (≥ 50 GB), remove any partial download under `~/.ngiab`, and re-run.
 - **A long run stopped when the terminal disconnected** — re-run inside `tmux`/`screen` (see the tip above) so it survives dropped connections.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
