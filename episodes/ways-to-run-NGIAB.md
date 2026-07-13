@@ -21,12 +21,16 @@ exercises: 5
 
 ## Before you start
 
-Every method below runs NextGen inside Docker, so the host needs:
+NGIAB always runs NextGen inside a container. As such, the host needs:
 
-- **Docker** installed and running
+- **Docker** (or Podman) installed and running
 - **Python 3.10+** with [`uv`/`uvx`](https://docs.astral.sh/uv/)
 - **At least 50 GB of free disk** (more for large domains) — the hydrofabric is downloaded on the first run (~1.7 GB compressed, much larger once decompressed), in addition to forcings and outputs
 - **8+ GB RAM and 4+ CPU cores** recommended
+
+::::::::::::::: callout
+When running NextGen on CIROH-2i2c JupyterHub, the cloud serves as the host, so you won't need these prerequisites locally.
+:::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
