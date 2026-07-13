@@ -280,8 +280,6 @@ This limitation is because Podman is subject to significant filesystem constrain
 
 ::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::
-
 ## NGIAB Setup
 
 These steps will lead you through the process of running NGIAB with a set of pre-configured input data and realization files. A realization file is a scenario using a specific model on a specific region.
