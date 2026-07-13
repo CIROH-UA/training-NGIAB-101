@@ -39,7 +39,7 @@ Instead of following these instructions, follow the guidance in the HPC sections
 Before installing NGIAB, ensure you have:
 
 - **Operating System:** Windows (with WSL), macOS, or Linux
-- **Software:** Docker, Git
+- **Software:** Git, Docker or Podman
 - **Recommended Minimum RAM:** 8 GB
 
 ::::::::::::::::::::::::::::::::::::: callout
@@ -48,9 +48,15 @@ Before installing NGIAB, ensure you have:
 
 To use the Data Visualizer through a Secure Shell (SSH) connection, you will have to set up port forwarding when connecting to the remote machine. Port forwarding will allow you to access a remotely hosted browser session on your local machine. See the instructions under "Using NGIAB through an SSH connection" in the [Advanced Topics episode](./advanced-topics.html) in this training module. 
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::
 
 ## Docker Installation
+
+::::::::::::::::::::::::::::::::::::: callout
+
+Docker is appropriate for most general use cases. If you already have Docker configured, or if you are using Podman, then this section can be skipped.
+
+:::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::: spoiler
 
@@ -180,6 +186,100 @@ sudo systemctl start docker
 :::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Podman Installation
+::::::::::::::::::::::::::::::::::::: callout
+
+Podman is appropriate if you do not have administrative privileges. Your system administrator must install or build Podman if you do not have administrative (`sudo`) privileges.
+
+If you already have Podman configured, or if you are using Docker, then this section can be skipped.
+
+:::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::: spoiler
+
+### Windows (WSL)
+
+:::::::::::::caution
+
+NGIAB's Podman support on Windows/WSL is tenuous at best. We strongly recommend that WSL users opt for Docker if possible.
+
+This limitation is because Podman is subject to significant filesystem constraints (see [containers/podman#21813](https://github.com/containers/podman/issues/21813)). While it can technically work, it will require fairly specific configurations to work reliably, and it will not support the visualizer script at this time.
+
+::::::::::::::::::::
+
+1. Make sure Windows Subsystem for Linux (WSL) is installed. If it is not, you can install it with this command:
+
+   ```powershell
+   wsl --install
+   ```
+
+2. Install and configure the Podman engine within windows, as well as a Podman remote client within WSL. Detailed instructions on this process and related considerations can be found here: https://dev.to/octasoft-ltd/running-podman-on-windows-with-wsl-a-practical-guide-4jl8
+
+3. Within WSL, clone the NGIAB source code into your desired directory. This and all subsequent steps **must** be done within a subdirectory of `/mnt/wsl/` or a named volume that is exposed to the Podman machine. Otherwise, your container will be unable to access your files.
+
+   ```bash
+   cd /mnt/wsl/path/to/directory # navigate to your desired directory
+   git clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git
+   ```
+
+4. Within WSL, install `uv`.
+
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+
+   # if you don't have curl, you can use wget
+   # wget -qO- https://astral.sh/uv/install.sh | sh
+   ```
+
+::::::::::::::::::::::::
+
+:::::::::::::::: spoiler
+
+### macOS
+
+1. Make sure Podman is installed. If you have administrative privileges, you can install it with the official Podman installer or with Homebrew. Follow the instructions on the [official Podman documentation site](https://podman.io/docs/installation#macos).
+2. Clone the NGIAB source code in your desired directory.
+
+    ```zsh
+    cd /path/to/directory # navigate to your desired directory
+    git clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git
+    ```
+
+3. Install `uv`.
+
+   ```zsh
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+
+   # if you don't have curl, you can use wget
+   # wget -qO- https://astral.sh/uv/install.sh | sh
+   ```
+
+::::::::::::::::::::::::
+
+:::::::::::::::: spoiler
+
+### Linux
+
+1. Make sure Podman is installed. If you have `sudo` privileges, you can install Podman using the instructions on the [Podman documentation site](https://podman.io/docs/installation#linux-distributions). Make sure to use the instructions for the correct Linux distribution.
+
+2. Clone the NGIAB source code in your desired directory.
+
+    ```bash
+    cd /path/to/directory # navigate to your desired directory
+    git clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git
+    ```
+
+3. Install `uv`.
+
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+
+   # if you don't have curl, you can use wget
+   # wget -qO- https://astral.sh/uv/install.sh | sh
+   ```
+
+::::::::::::::::::::::::
+
 ## NGIAB Setup
 
 These steps will lead you through the process of running NGIAB with a set of pre-configured input data and realization files. A realization file is a scenario using a specific model on a specific region.
@@ -279,9 +379,17 @@ If you've completed the steps above and verified your dataset and working direct
 
 
 ```bash
-./guide.sh
+./guide.sh      # Docker
+./guide.sh -p   # Podman
 ```
+
 This will walk you through the NGIAB setup and launch your first run.
+
+::::::::::::::::::::::::::::::::::::: callout
+
+If you are using Podman, then you should use the `-p` CLI option with any NGIAB shell scripts that you run.
+
+:::::::::::::::::::::::::::::::::::::::::::::
 
 
 ::::::::::::::::::::::::::::::::::::: callout
