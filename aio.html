@@ -792,7 +792,7 @@ skipped.</p>
   Windows (WSL)
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Note: Users who already have Docker installed will still need to
 install a separate WSL distro and set it as their default, if they have
@@ -866,7 +866,7 @@ distribution with the following commands:</p>
   macOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Install Docker Desktop from <a href="https://docs.docker.com/desktop/setup/install/mac-install/" class="external-link">Docker’s
@@ -906,7 +906,7 @@ working.</p>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Install Docker by following the <a href="https://docs.docker.com/desktop/setup/install/linux/" class="external-link">official
@@ -964,7 +964,7 @@ installation steps.</p>
   Troubleshooting
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>If <code>docker ps -a</code> fails, ensure Docker Desktop is running,
 or Docker service is active on Linux:</p>
@@ -1003,7 +1003,7 @@ then this section can be skipped.</p>
   Windows (WSL)
   </h3>
 </button>
-<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
+<div id="collapseSpoiler4" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler4" aria-labelledby="headingSpoiler4">
 <div class="accordion-body">
 <div id="caution2" class="callout caution">
 <div class="callout-square">
@@ -1072,7 +1072,7 @@ unable to access your files.</p>
   macOS
   </h3>
 </button>
-<div id="collapseSpoiler5" class="accordion-collapse collapse" aria-labelledby="headingSpoiler5" data-bs-parent="#accordionSpoiler5">
+<div id="collapseSpoiler5" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler5" aria-labelledby="headingSpoiler5">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Make sure Podman is installed. If you have administrative
@@ -1112,7 +1112,7 @@ documentation site</a>.</p></li>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler6" class="accordion-collapse collapse" aria-labelledby="headingSpoiler6" data-bs-parent="#accordionSpoiler6">
+<div id="collapseSpoiler6" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler6" aria-labelledby="headingSpoiler6">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Make sure Podman is installed. If you have <code>sudo</code>
@@ -1214,7 +1214,7 @@ for your interests, available disk space, and network speed.</p>
   Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You should see a folder like:</p>
 <pre><code><span><span class="va">AWI_16_10154200_009</span></span></code></pre>
@@ -3809,7 +3809,7 @@ on your own:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>You should end up adding <code>RUN uv pip install bmi-dummy</code> to
 the <code>final</code> stage of the Dockerfile, rebuilding the image,
@@ -3825,7 +3825,7 @@ above.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Troubleshooting </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="running-out-of-memory-during-builds">Running out of memory during builds<a class="anchor" aria-label="anchor" href="#running-out-of-memory-during-builds"></a>
@@ -3939,8 +3939,8 @@ any links that you are not going to use.
   "url": "https://CIROH-UA.github.io/training-NGIAB-101/aio.html",
   "identifier": "https://CIROH-UA.github.io/training-NGIAB-101/aio.html",
   "dateCreated": "2025-05-19",
-  "dateModified": "2026-07-28",
-  "datePublished": "2026-07-28"
+  "dateModified": "2026-08-04",
+  "datePublished": "2026-08-04"
 }
 
   </script><script>
